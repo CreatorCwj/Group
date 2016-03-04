@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#31BBAD</color>
+    <color name="windowBackground">@android:color/white</color>
+    <color name="colorPrimaryDark">#3DBFB1</color>
+    <color name="navigationBarColor">@android:color/black</color>
+    <color name="black">#353535</color>
+    <color name="dividerColor">#D9D9D9</color>
+</resources>

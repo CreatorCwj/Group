@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ImageViewPager">
+        <attr name="imageNum" format="integer" />
+        <attr name="selectColor" format="color" />
+        <attr name="unSelectColor" format="color" />
+        <attr name="bottomTextColor" format="color" />
+        <attr name="bottomTextSize" format="dimension" />
+        <attr name="defaultImage" format="reference" />
+        <attr name="pointText" format="string"/>
+        <attr name="pointTextColor" format="color"/>
+        <attr name="pointTextSize" format="dimension"/>
+        <attr name="pointStrokeWidth" format="dimension"/>
+        <attr name="pointStrokeColor" format="color"/>
+        <attr name="pointGravity" format="enum">
+            <enum name="center" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,5 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--bar上面的部分的颜色-->
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <!--bar样式-->
+        <item name="toolbarStyle">@style/toolbar</item>
+        <!--中间背景色-->
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <!--底部导航栏颜色-->
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
+
+        <!--控件标记颜色和点击效果颜色(如checkbox等),往往设置了背景的话就没有作用了-->
+        <item name="android:colorControlHighlight">@color/navigationBarColor</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <!--datePicker-->
+        <item name="android:datePickerDialogTheme">@style/datePickerTheme</item>
+    </style>
+
+    <!--Toolbar style-->
+    <style name="toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/windowBackground</item>
+    </style>
+
+    <!--datePickerTheme-->
+    <style name="datePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:datePickerStyle">@style/datePickerStyle</item>
+    </style>
+    <!--datePickerStyle-->
+    <style name="datePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/colorPrimary</item>
+    </style>
+
+    <!--透明无边框dialog样式-->
+    <style name="loadingDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="MainRadioButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">61dp</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

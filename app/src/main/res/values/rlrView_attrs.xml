@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RLRView">
+        <attr name="layoutType">
+            <enum name="linear" value="0" />
+            <enum name="grid" value="1" />
+            <enum name="water_fall" value="2" />
+        </attr>
+        <attr name="orientation" format="enum">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+        <attr name="columnCount" format="integer" />
+        <attr name="canLoadMore" format="boolean" />
+        <attr name="autoRefresh" format="boolean" />
+        <attr name="dividerHeight" format="dimension" />
+        <attr name="dividerColor" format="color" />
+        <attr name="emptyView" format="reference" />
+    </declare-styleable>
+</resources>
