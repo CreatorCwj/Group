@@ -13,10 +13,10 @@ import java.io.File;
 public class FileCache {
 
     //缓存文件夹名字
-    private static final String CACHE_DIR_NAME = "TestLeanCloudCache" + File.separator + "cache";
+    private static final String CACHE_DIR_NAME = "Group" + File.separator + "cache";
 
     //下载文件夹名字
-    private static final String DOWNLOAD_DIR_NAME = "TestLeanCloudCache" + File.separator + "download";
+    private static final String DOWNLOAD_DIR_NAME = "Group" + File.separator + "download";
 
     public static File getCacheDir() {
         File file = getDir(CACHE_DIR_NAME);
