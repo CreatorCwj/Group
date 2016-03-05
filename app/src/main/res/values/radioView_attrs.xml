@@ -8,5 +8,6 @@
         <attr name="radioText" format="string"/>
         <attr name="radioTextSize" format="dimension"/>
         <attr name="radioChecked" format="boolean"/>
+        <attr name="imageBottom" format="dimension"/>
     </declare-styleable>
 </resources>

@@ -43,13 +43,14 @@
     </style>
 
     <!-- 主界面底部RadioButton样式-->
-    <style name="MainRadioButtonStyle">
+    <style name="MainRadioViewStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1.0</item>
-        <item name="android:button">@null</item>
-        <item name="android:gravity">center</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:textSize">12sp</item>
+        <item name="com.group:imageWidth">25dp</item>
+        <item name="com.group:imageHeight">25dp</item>
+        <item name="com.group:radioTextSize">13sp</item>
+        <item name="android:background">#F5F5F5</item>
+        <item name="com.group:textBackground">@color/main_radio_text_colors</item>
     </style>
 </resources>

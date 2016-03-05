@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 /**
  * Created by cwj on 16/3/5.
+ * 与RadioView联合使用,子view只能是RadioView,否则会有错
  */
 public class RadioLayout extends LinearLayout {
 
@@ -35,18 +36,16 @@ public class RadioLayout extends LinearLayout {
     public void checkChanged(RadioView radioView) {
         for (int i = 0; i < getChildCount(); i++) {
             View view = getChildAt(i);
-            if (view instanceof RadioView) {
-                if (view == radioView) {
-                    if (listener != null)
-                        listener.onCheckedChanged(RadioLayout.this, i);
-                } else {
-                    ((RadioView) view).setRadioChecked(false);
-                }
+            if (view == radioView) {
+                if (listener != null)
+                    listener.onCheckedChanged(RadioLayout.this, i);
+            } else {
+                ((RadioView) view).setRadioChecked(false);
             }
         }
     }
 
-    public void setListener(OnCheckedChangeListener listener) {
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
         this.listener = listener;
     }
 }

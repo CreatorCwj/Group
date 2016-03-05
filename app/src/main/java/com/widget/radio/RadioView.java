@@ -35,6 +35,7 @@ public class RadioView extends RelativeLayout {
 
     private int imageWidth;
     private int imageHeight;
+    private int imageBottom;
 
     private ImageView imageView;
     private TextView textView;
@@ -71,6 +72,7 @@ public class RadioView extends RelativeLayout {
             radioText = typedArray.getString(R.styleable.RadioView_radioText);
             radioTextSize = typedArray.getDimensionPixelSize(R.styleable.RadioView_radioTextSize, UIUtils.sp2px(getContext(), 13));
             radioChecked = typedArray.getBoolean(R.styleable.RadioView_radioChecked, false);
+            imageBottom = typedArray.getDimensionPixelSize(R.styleable.RadioView_imageBottom, UIUtils.dp2px(getContext(), 3));
             typedArray.recycle();
         }
     }
@@ -87,7 +89,7 @@ public class RadioView extends RelativeLayout {
         imageView = new ImageView(getContext());
         imageView.setBackground(imageBackground);
         LinearLayout.LayoutParams ivParams = new LinearLayout.LayoutParams(imageWidth, imageHeight);
-        ivParams.bottomMargin = UIUtils.dp2px(getContext(), 3);
+        ivParams.bottomMargin = imageBottom;
         linearLayout.addView(imageView, ivParams);
         //TextView
         textView = new TextView(getContext());
@@ -102,7 +104,7 @@ public class RadioView extends RelativeLayout {
     }
 
     private void setCheckListener() {
-        setRadioChecked(radioChecked);//init
+        check(radioChecked);//init
         this.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -127,10 +129,7 @@ public class RadioView extends RelativeLayout {
                 if (isRadioChecked())//已经选择则不做任何处理
                     return;
                 setRadioChecked(true);
-                //通知父view
-                if (getParent() != null && getParent() instanceof RadioLayout) {
-                    ((RadioLayout) getParent()).checkChanged(RadioView.this);
-                }
+                press(false);//此时先设置checked为true,再取消之前的press状态,则不会闪,因为已经改变成checked的background了
             }
         });
     }
@@ -152,6 +151,16 @@ public class RadioView extends RelativeLayout {
     public void setRadioChecked(boolean radioChecked) {
         this.radioChecked = radioChecked;
         check(radioChecked);
+        //改变的话要通知父view
+        if (radioChecked)
+            notifyParent();
+    }
+
+    private void notifyParent() {
+        //通知父view
+        if (getParent() != null && getParent() instanceof RadioLayout) {
+            ((RadioLayout) getParent()).checkChanged(RadioView.this);
+        }
     }
 
     public void setImageBackground(Drawable imageBackground) {
