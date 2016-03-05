@@ -19,6 +19,12 @@ public class Category {
         this.id = id;
     }
 
+    public Category(int categoryId, String name, int parentId) {
+        this.categoryId = categoryId;
+        this.name = name;
+        this.parentId = parentId;
+    }
+
     public Category(Long id, int categoryId, String name, int parentId) {
         this.id = id;
         this.categoryId = categoryId;

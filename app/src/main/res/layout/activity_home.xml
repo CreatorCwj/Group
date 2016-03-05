@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dividerColor" />
+
+    <com.widget.radio.RadioLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:orientation="horizontal">
+
+        <com.widget.radio.RadioView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:imageBackground="@drawable/text_pressed"
+            app:imageHeight="35dp"
+            app:imageWidth="35dp"
+            app:radioChecked="true"
+            app:radioText="首页"
+            app:radioTextSize="14sp"
+            app:textBackground="@drawable/text_pressed_color" />
+
+        <com.widget.radio.RadioView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:imageBackground="@drawable/text_pressed"
+            app:imageHeight="35dp"
+            app:imageWidth="35dp"
+            app:radioText="首页"
+            app:radioTextSize="14sp"
+            app:textBackground="@drawable/text_pressed_color" />
+
+        <com.widget.radio.RadioView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:imageBackground="@drawable/text_pressed"
+            app:imageHeight="35dp"
+            app:imageWidth="35dp"
+            app:radioText="首页"
+            app:radioTextSize="14sp"
+            app:textBackground="@drawable/text_pressed_color" />
+
+        <com.widget.radio.RadioView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:imageBackground="@drawable/text_pressed"
+            app:imageHeight="35dp"
+            app:imageWidth="35dp"
+            app:radioText="首页"
+            app:radioTextSize="14sp"
+            app:textBackground="@drawable/text_pressed_color" />
+
+    </com.widget.radio.RadioLayout>
+
+
+    <!--<RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            style="@style/MainRadioButtonStyle"
+            android:checked="true"
+            android:text="首页" />
+
+        <RadioButton
+            style="@style/MainRadioButtonStyle"
+            android:text="首页" />
+
+        <RadioButton
+            style="@style/MainRadioButtonStyle"
+            android:text="首页" />
+
+        <RadioButton
+            style="@style/MainRadioButtonStyle"
+            android:text="首页" />
+    </RadioGroup>-->
+
+</LinearLayout>

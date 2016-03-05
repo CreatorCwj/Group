@@ -20,6 +20,13 @@ public class Area {
         this.id = id;
     }
 
+    public Area(int areaId, String name, int parentId, int cityId) {
+        this.areaId = areaId;
+        this.name = name;
+        this.parentId = parentId;
+        this.cityId = cityId;
+    }
+
     public Area(Long id, int areaId, String name, int parentId, int cityId) {
         this.id = id;
         this.areaId = areaId;

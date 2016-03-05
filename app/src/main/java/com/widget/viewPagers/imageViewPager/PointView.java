@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.group.R;
+import com.util.UIUtils;
 
 /**
  * Created by cwj on 16/2/9.
@@ -53,7 +54,7 @@ public class PointView extends View {
             strokeColor = typedArray.getColor(R.styleable.ImageViewPager_pointStrokeColor, Color.TRANSPARENT);
             text = typedArray.getString(R.styleable.ImageViewPager_pointText);
             textColor = typedArray.getColor(R.styleable.ImageViewPager_pointTextColor, Color.WHITE);
-            textSize = typedArray.getDimensionPixelSize(R.styleable.ImageViewPager_pointTextSize, 15);
+            textSize = typedArray.getDimensionPixelSize(R.styleable.ImageViewPager_pointTextSize, UIUtils.sp2px(getContext(), 13));
             typedArray.recycle();
         }
     }

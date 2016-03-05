@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RadioView">
+        <attr name="imageBackground" format="reference" />
+        <attr name="textBackground" format="reference" />
+        <attr name="imageWidth" format="dimension"/>
+        <attr name="imageHeight" format="dimension"/>
+        <attr name="radioText" format="string"/>
+        <attr name="radioTextSize" format="dimension"/>
+        <attr name="radioChecked" format="boolean"/>
+    </declare-styleable>
+</resources>
