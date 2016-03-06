@@ -6,8 +6,6 @@
         <!--bar上面的部分的颜色-->
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorPrimary">@color/colorPrimary</item>
-        <!--bar样式-->
-        <item name="toolbarStyle">@style/toolbar</item>
         <!--中间背景色-->
         <item name="android:windowBackground">@color/windowBackground</item>
         <!--底部导航栏颜色-->
@@ -21,10 +19,10 @@
         <item name="android:datePickerDialogTheme">@style/datePickerTheme</item>
     </style>
 
-    <!--Toolbar style-->
-    <style name="toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="titleTextColor">@color/windowBackground</item>
+    <!-- 欢迎页风格-->
+    <style name="WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimaryDark">@android:color/white</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <!--datePickerTheme-->
@@ -52,5 +50,12 @@
         <item name="com.group:radioTextSize">13sp</item>
         <item name="android:background">#F5F5F5</item>
         <item name="com.group:textBackground">@color/main_radio_text_colors</item>
+    </style>
+
+    <!-- RatingBarStyle-->
+    <style name="MyRatingBarStyle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+        <item name="android:minHeight">16dp</item>
+        <item name="android:maxHeight">16dp</item>
     </style>
 </resources>

@@ -1,8 +1,6 @@
 package com.model;
 
 import com.avos.avoscloud.AVClassName;
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
 import com.model.base.BaseModel;
 
 /**
@@ -16,7 +14,7 @@ public class Area extends BaseModel {
     public static final String NAME = "name";
     public static final String AREA_ID = "areaId";
     public static final String PARENT_ID = "parentId";
-    public static final String CITY = "city";
+    public static final String CITY_ID = "cityId";
 
     public void setName(String name) {
         put(NAME, name);
@@ -42,25 +40,12 @@ public class Area extends BaseModel {
         put(PARENT_ID, parentId);
     }
 
-    public void setCity(String cityId) {
-        try {
-            put(CITY, AVObject.createWithoutData(City.class, cityId));
-        } catch (AVException e) {
-            e.printStackTrace();
-        }
+    public void setCityId(int cityId) {
+        put(CITY_ID, cityId);
     }
 
-    public void setCity(City city) {
-        put(CITY, city);
-    }
-
-    public City getCity() {
-        try {
-            return getAVObject(CITY, City.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public int getCityId() {
+        return getInt(CITY_ID);
     }
 
 }

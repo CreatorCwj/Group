@@ -5,6 +5,7 @@ import com.dao.inter.AsyncDBInterface;
 import com.dao.inter.SyncDBInterface;
 import com.dao.listener.DBOperationListener;
 
+import java.util.Arrays;
 import java.util.List;
 
 import de.greenrobot.dao.AbstractDao;
@@ -12,6 +13,7 @@ import de.greenrobot.dao.async.AsyncOperation;
 import de.greenrobot.dao.async.AsyncOperationListener;
 import de.greenrobot.dao.async.AsyncSession;
 import de.greenrobot.dao.query.Query;
+import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * Created by cwj on 16/2/16.
@@ -85,6 +87,7 @@ public class BaseDBHelper<T, K> implements SyncDBInterface<T, K>, AsyncDBInterfa
                 List<T> result;
                 try {
                     result = (List<T>) operation.getResult();//只获取正确的List集合
+                    refresh(result);
                 } catch (Exception e) {
                     result = null;
                 }
@@ -131,12 +134,23 @@ public class BaseDBHelper<T, K> implements SyncDBInterface<T, K>, AsyncDBInterfa
 
     @Override
     public T find(K key) {
-        return dao.load(key);
+        T t = dao.load(key);
+        refresh(t);
+        return t;
     }
 
     @Override
     public List<T> findAll() {
-        return dao.loadAll();
+        List<T> list = dao.loadAll();
+        refresh(list);
+        return list;
+    }
+
+    @Override
+    public List<T> findByQuery(QueryBuilder<T> queryBuilder) {
+        List<T> list = queryBuilder.list();
+        refresh(list);
+        return list;
     }
 
     @Override
@@ -147,6 +161,22 @@ public class BaseDBHelper<T, K> implements SyncDBInterface<T, K>, AsyncDBInterfa
     @Override
     public boolean isEmpty() {
         return getCount() <= 0;
+    }
+
+    /**
+     * 查询更新前要刷新同步一下数据
+     */
+    protected void refresh(T... datas) {
+        refresh(Arrays.asList(datas));
+    }
+
+    /**
+     * 查询更新前要刷新同步一下数据
+     */
+    protected void refresh(List<T> datas) {
+        for (T t : datas) {
+            dao.refresh(t);
+        }
     }
 
 }

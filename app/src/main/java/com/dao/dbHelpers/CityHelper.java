@@ -22,13 +22,21 @@ public class CityHelper extends BaseDBHelper<City, Long> {
         super(getDaoSession().getCityDao(), City.class);
     }
 
+    /**
+     * 获取最近使用的城市
+     */
     public List<City> getRecentlyUsed() {
         QueryBuilder<City> builder = dao.queryBuilder();
         builder.where(CityDao.Properties.LastUseTime.notEq(0));//最近使用时间不为0的
         builder.orderDesc(CityDao.Properties.LastUseTime);//时间从最近到之前
-        return builder.list();
+        return findByQuery(builder);
     }
 
+    /**
+     * 更新最近使用的城市
+     *
+     * @return
+     */
     public void updateRecentlyUsed(City city) {
         updateData(city);//更新city
         //取出最近使用列表
@@ -39,6 +47,30 @@ public class CityHelper extends BaseDBHelper<City, Long> {
             c.setLastUseTime(0L);
             updateData(c);
         }
+    }
+
+    /**
+     * 根据名字和拼音来搜索城市
+     *
+     * @return
+     */
+    public List<City> searchByName(String text) {
+        QueryBuilder<City> builder = dao.queryBuilder();
+        builder.whereOr(CityDao.Properties.Name.like(text + "%"),
+                CityDao.Properties.Pinyin.like(text + "%"));
+        return findByQuery(builder);
+    }
+
+    /**
+     * 通过名字找城市,理论上名字是不重复的
+     */
+    public City getByName(String name) {
+        QueryBuilder<City> builder = dao.queryBuilder();
+        builder.where(CityDao.Properties.Name.eq(name));
+        List<City> cities = findByQuery(builder);
+        if (cities != null && cities.size() > 0)
+            return cities.get(0);
+        return null;
     }
 
 }

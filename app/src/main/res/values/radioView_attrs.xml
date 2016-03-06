@@ -7,7 +7,9 @@
         <attr name="imageHeight" format="dimension"/>
         <attr name="radioText" format="string"/>
         <attr name="radioTextSize" format="dimension"/>
+        <attr name="radioTextColor" format="color"/>
         <attr name="radioChecked" format="boolean"/>
         <attr name="imageBottom" format="dimension"/>
+        <attr name="canChecked" format="boolean"/>
     </declare-styleable>
 </resources>

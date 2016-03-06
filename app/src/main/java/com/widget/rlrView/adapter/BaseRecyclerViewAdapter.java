@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import java.util.ArrayList;
 import java.util.List;
 
+import roboguice.RoboGuice;
+
 /**
  * Created by cwj on 16/1/16.
  * Adapter基类(数据层面)
@@ -21,6 +23,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         dataList = new ArrayList<>();
+        RoboGuice.getInjector(context).injectMembersWithoutViews(this);
     }
 
     /**

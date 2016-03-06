@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">团来团去</string>
 
+    <!-- Custom-->
+    <string name="search_hint_text">输入商家名关键字/商圈/品类</string>
+    <string name="search_city_hint_text">输入城市名/拼音</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">HomeActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_select_city">SelectCityActivity</string>
 </resources>

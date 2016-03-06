@@ -1,0 +1,2725 @@
+[
+  {
+    "cityId": 6590021,
+    "id": 1,
+    "lastUseTime": 0,
+    "name": "阿拉尔",
+    "pinyin": "alaershi"
+  },
+  {
+    "cityId": 654300,
+    "id": 2,
+    "lastUseTime": 0,
+    "name": "阿勒泰地区",
+    "pinyin": "aletaidiqu"
+  },
+  {
+    "cityId": 513200,
+    "id": 3,
+    "lastUseTime": 0,
+    "name": "阿坝藏族羌族自治州",
+    "pinyin": "abazangzuqiangzuzizhizhou"
+  },
+  {
+    "cityId": 652900,
+    "id": 4,
+    "lastUseTime": 0,
+    "name": "阿克苏地区",
+    "pinyin": "akesudiqu"
+  },
+  {
+    "cityId": 152900,
+    "id": 5,
+    "lastUseTime": 0,
+    "name": "阿拉善盟",
+    "pinyin": "alashanmeng"
+  },
+  {
+    "cityId": 610900,
+    "id": 6,
+    "lastUseTime": 0,
+    "name": "安康",
+    "pinyin": "ankangshi"
+  },
+  {
+    "cityId": 542500,
+    "id": 7,
+    "lastUseTime": 0,
+    "name": "阿里地区",
+    "pinyin": "alidiqu"
+  },
+  {
+    "cityId": 340800,
+    "id": 8,
+    "lastUseTime": 0,
+    "name": "安庆",
+    "pinyin": "anqingshi"
+  },
+  {
+    "cityId": 210300,
+    "id": 9,
+    "lastUseTime": 0,
+    "name": "鞍山",
+    "pinyin": "anshanshi"
+  },
+  {
+    "cityId": 520400,
+    "id": 10,
+    "lastUseTime": 0,
+    "name": "安顺",
+    "pinyin": "anshunshi"
+  },
+  {
+    "cityId": 410500,
+    "id": 11,
+    "lastUseTime": 0,
+    "name": "安阳",
+    "pinyin": "anyangshi"
+  },
+  {
+    "cityId": 820001,
+    "id": 12,
+    "lastUseTime": 0,
+    "name": "澳门",
+    "pinyin": "aomen"
+  },
+  {
+    "cityId": 220800,
+    "id": 13,
+    "lastUseTime": 0,
+    "name": "白城",
+    "pinyin": "baichengshi"
+  },
+  {
+    "cityId": 4690251,
+    "id": 14,
+    "lastUseTime": 0,
+    "name": "白沙黎族自治县",
+    "pinyin": "baishalizuzizhixian"
+  },
+  {
+    "cityId": 220600,
+    "id": 15,
+    "lastUseTime": 0,
+    "name": "白山",
+    "pinyin": "baishanshi"
+  },
+  {
+    "cityId": 451000,
+    "id": 16,
+    "lastUseTime": 0,
+    "name": "百色",
+    "pinyin": "baiseshi"
+  },
+  {
+    "cityId": 620400,
+    "id": 17,
+    "lastUseTime": 0,
+    "name": "白银",
+    "pinyin": "baiyinshi"
+  },
+  {
+    "cityId": 340300,
+    "id": 18,
+    "lastUseTime": 0,
+    "name": "蚌埠",
+    "pinyin": "bangbushi"
+  },
+  {
+    "cityId": 130600,
+    "id": 19,
+    "lastUseTime": 0,
+    "name": "保定",
+    "pinyin": "baodingshi"
+  },
+  {
+    "cityId": 610300,
+    "id": 20,
+    "lastUseTime": 0,
+    "name": "宝鸡",
+    "pinyin": "baojishi"
+  },
+  {
+    "cityId": 530500,
+    "id": 21,
+    "lastUseTime": 0,
+    "name": "保山",
+    "pinyin": "baoshanshi"
+  },
+  {
+    "cityId": 4690291,
+    "id": 22,
+    "lastUseTime": 0,
+    "name": "保亭黎族苗族自治县",
+    "pinyin": "baotinglizumiaozuzizhixian"
+  },
+  {
+    "cityId": 150200,
+    "id": 23,
+    "lastUseTime": 0,
+    "name": "包头",
+    "pinyin": "baotoushi"
+  },
+  {
+    "cityId": 150800,
+    "id": 24,
+    "lastUseTime": 0,
+    "name": "巴彦淖尔",
+    "pinyin": "bayannaoershi"
+  },
+  {
+    "cityId": 511900,
+    "id": 25,
+    "lastUseTime": 0,
+    "name": "巴中",
+    "pinyin": "bazhongshi"
+  },
+  {
+    "cityId": 652800,
+    "id": 26,
+    "lastUseTime": 0,
+    "name": "巴音郭楞蒙古自治州",
+    "pinyin": "bayinguolengmengguzizhizhou"
+  },
+  {
+    "cityId": 450500,
+    "id": 27,
+    "lastUseTime": 0,
+    "name": "北海",
+    "pinyin": "beihaishi"
+  },
+  {
+    "cityId": 110100,
+    "id": 28,
+    "lastUseTime": 0,
+    "name": "北京",
+    "pinyin": "beijingshi"
+  },
+  {
+    "cityId": 6590051,
+    "id": 29,
+    "lastUseTime": 0,
+    "name": "北屯",
+    "pinyin": "beitunshi"
+  },
+  {
+    "cityId": 210500,
+    "id": 30,
+    "lastUseTime": 0,
+    "name": "本溪",
+    "pinyin": "benxishi"
+  },
+  {
+    "cityId": 520500,
+    "id": 31,
+    "lastUseTime": 0,
+    "name": "毕节",
+    "pinyin": "bijieshi"
+  },
+  {
+    "cityId": 652700,
+    "id": 32,
+    "lastUseTime": 0,
+    "name": "博尔塔拉蒙古自治州",
+    "pinyin": "boertalamengguzizhizhou"
+  },
+  {
+    "cityId": 341600,
+    "id": 33,
+    "lastUseTime": 0,
+    "name": "亳州",
+    "pinyin": "bozhoushi"
+  },
+  {
+    "cityId": 371600,
+    "id": 34,
+    "lastUseTime": 0,
+    "name": "滨州",
+    "pinyin": "binzhoushi"
+  },
+  {
+    "cityId": 130900,
+    "id": 35,
+    "lastUseTime": 0,
+    "name": "沧州",
+    "pinyin": "cangzhoushi"
+  },
+  {
+    "cityId": 220100,
+    "id": 36,
+    "lastUseTime": 0,
+    "name": "长春",
+    "pinyin": "changchunshi"
+  },
+  {
+    "cityId": 430700,
+    "id": 37,
+    "lastUseTime": 0,
+    "name": "常德",
+    "pinyin": "changdeshi"
+  },
+  {
+    "cityId": 542100,
+    "id": 38,
+    "lastUseTime": 0,
+    "name": "昌都地区",
+    "pinyin": "changdudiqu"
+  },
+  {
+    "cityId": 4690261,
+    "id": 39,
+    "lastUseTime": 0,
+    "name": "昌江黎族自治县",
+    "pinyin": "changjianglizuzizhixian"
+  },
+  {
+    "cityId": 652300,
+    "id": 40,
+    "lastUseTime": 0,
+    "name": "昌吉回族自治州",
+    "pinyin": "changjihuizuzizhizhou"
+  },
+  {
+    "cityId": 430100,
+    "id": 41,
+    "lastUseTime": 0,
+    "name": "长沙",
+    "pinyin": "changshashi"
+  },
+  {
+    "cityId": 140400,
+    "id": 42,
+    "lastUseTime": 0,
+    "name": "长治",
+    "pinyin": "changzhishi"
+  },
+  {
+    "cityId": 320400,
+    "id": 43,
+    "lastUseTime": 0,
+    "name": "常州",
+    "pinyin": "changzhoushi"
+  },
+  {
+    "cityId": 211300,
+    "id": 44,
+    "lastUseTime": 0,
+    "name": "朝阳",
+    "pinyin": "chaoyangshi"
+  },
+  {
+    "cityId": 445100,
+    "id": 45,
+    "lastUseTime": 0,
+    "name": "潮州",
+    "pinyin": "chaozhoushi"
+  },
+  {
+    "cityId": 130800,
+    "id": 46,
+    "lastUseTime": 0,
+    "name": "承德",
+    "pinyin": "chengdeshi"
+  },
+  {
+    "cityId": 4690231,
+    "id": 47,
+    "lastUseTime": 0,
+    "name": "澄迈县",
+    "pinyin": "chengmaixian"
+  },
+  {
+    "cityId": 431000,
+    "id": 48,
+    "lastUseTime": 0,
+    "name": "郴州",
+    "pinyin": "chenzhoushi"
+  },
+  {
+    "cityId": 510100,
+    "id": 49,
+    "lastUseTime": 0,
+    "name": "成都",
+    "pinyin": "chengdushi"
+  },
+  {
+    "cityId": 150400,
+    "id": 50,
+    "lastUseTime": 0,
+    "name": "赤峰",
+    "pinyin": "chifengshi"
+  },
+  {
+    "cityId": 341700,
+    "id": 51,
+    "lastUseTime": 0,
+    "name": "池州",
+    "pinyin": "chizhoushi"
+  },
+  {
+    "cityId": 500100,
+    "id": 52,
+    "lastUseTime": 0,
+    "name": "重庆",
+    "pinyin": "chongqingshi"
+  },
+  {
+    "cityId": 451400,
+    "id": 53,
+    "lastUseTime": 0,
+    "name": "崇左",
+    "pinyin": "chongzuoshi"
+  },
+  {
+    "cityId": 532300,
+    "id": 54,
+    "lastUseTime": 0,
+    "name": "楚雄彝族自治州",
+    "pinyin": "chuxiongyizuzizhizhou"
+  },
+  {
+    "cityId": 532900,
+    "id": 55,
+    "lastUseTime": 0,
+    "name": "大理白族自治州",
+    "pinyin": "dalibaizuzizhizhou"
+  },
+  {
+    "cityId": 210200,
+    "id": 56,
+    "lastUseTime": 0,
+    "name": "大连",
+    "pinyin": "dalianshi"
+  },
+  {
+    "cityId": 341100,
+    "id": 57,
+    "lastUseTime": 0,
+    "name": "滁州",
+    "pinyin": "chuzhoushi"
+  },
+  {
+    "cityId": 210600,
+    "id": 58,
+    "lastUseTime": 0,
+    "name": "丹东",
+    "pinyin": "dandongshi"
+  },
+  {
+    "cityId": 4690031,
+    "id": 59,
+    "lastUseTime": 0,
+    "name": "儋州",
+    "pinyin": "danzhoushi"
+  },
+  {
+    "cityId": 230600,
+    "id": 60,
+    "lastUseTime": 0,
+    "name": "大庆",
+    "pinyin": "daqingshi"
+  },
+  {
+    "cityId": 140200,
+    "id": 61,
+    "lastUseTime": 0,
+    "name": "大同",
+    "pinyin": "datongshi"
+  },
+  {
+    "cityId": 232700,
+    "id": 62,
+    "lastUseTime": 0,
+    "name": "大兴安岭地区",
+    "pinyin": "daxinganlingdiqu"
+  },
+  {
+    "cityId": 511700,
+    "id": 63,
+    "lastUseTime": 0,
+    "name": "达州",
+    "pinyin": "dazhoushi"
+  },
+  {
+    "cityId": 533100,
+    "id": 64,
+    "lastUseTime": 0,
+    "name": "德宏傣族景颇族自治州",
+    "pinyin": "dehongdaizujingpozuzizhizhou"
+  },
+  {
+    "cityId": 371400,
+    "id": 65,
+    "lastUseTime": 0,
+    "name": "德州",
+    "pinyin": "dezhoushi"
+  },
+  {
+    "cityId": 621100,
+    "id": 66,
+    "lastUseTime": 0,
+    "name": "定西",
+    "pinyin": "dingxishi"
+  },
+  {
+    "cityId": 533400,
+    "id": 67,
+    "lastUseTime": 0,
+    "name": "迪庆藏族自治州",
+    "pinyin": "diqingzangzuzizhizhou"
+  },
+  {
+    "cityId": 4690211,
+    "id": 68,
+    "lastUseTime": 0,
+    "name": "定安县",
+    "pinyin": "dinganxian"
+  },
+  {
+    "cityId": 510600,
+    "id": 69,
+    "lastUseTime": 0,
+    "name": "德阳",
+    "pinyin": "deyangshi"
+  },
+  {
+    "cityId": 4690071,
+    "id": 70,
+    "lastUseTime": 0,
+    "name": "东方",
+    "pinyin": "dongfangshi"
+  },
+  {
+    "cityId": 441900,
+    "id": 71,
+    "lastUseTime": 0,
+    "name": "东莞",
+    "pinyin": "dongwanshi"
+  },
+  {
+    "cityId": 150600,
+    "id": 72,
+    "lastUseTime": 0,
+    "name": "鄂尔多斯",
+    "pinyin": "eerduosishi"
+  },
+  {
+    "cityId": 370500,
+    "id": 73,
+    "lastUseTime": 0,
+    "name": "东营",
+    "pinyin": "dongyingshi"
+  },
+  {
+    "cityId": 422800,
+    "id": 74,
+    "lastUseTime": 0,
+    "name": "恩施土家族苗族自治州",
+    "pinyin": "enshitujiazumiaozuzizhizhou"
+  },
+  {
+    "cityId": 450600,
+    "id": 75,
+    "lastUseTime": 0,
+    "name": "防城港",
+    "pinyin": "fangchenggangshi"
+  },
+  {
+    "cityId": 420700,
+    "id": 76,
+    "lastUseTime": 0,
+    "name": "鄂州",
+    "pinyin": "ezhoushi"
+  },
+  {
+    "cityId": 440600,
+    "id": 77,
+    "lastUseTime": 0,
+    "name": "佛山",
+    "pinyin": "foshanshi"
+  },
+  {
+    "cityId": 210400,
+    "id": 78,
+    "lastUseTime": 0,
+    "name": "抚顺",
+    "pinyin": "fushunshi"
+  },
+  {
+    "cityId": 210900,
+    "id": 79,
+    "lastUseTime": 0,
+    "name": "阜新",
+    "pinyin": "fuxinshi"
+  },
+  {
+    "cityId": 341200,
+    "id": 80,
+    "lastUseTime": 0,
+    "name": "阜阳",
+    "pinyin": "fuyangshi"
+  },
+  {
+    "cityId": 361000,
+    "id": 81,
+    "lastUseTime": 0,
+    "name": "抚州",
+    "pinyin": "fuzhoushi"
+  },
+  {
+    "cityId": 350100,
+    "id": 82,
+    "lastUseTime": 0,
+    "name": "福州",
+    "pinyin": "fuzhoushi"
+  },
+  {
+    "cityId": 360700,
+    "id": 83,
+    "lastUseTime": 0,
+    "name": "赣州",
+    "pinyin": "ganzhoushi"
+  },
+  {
+    "cityId": 513300,
+    "id": 84,
+    "lastUseTime": 0,
+    "name": "甘孜藏族自治州",
+    "pinyin": "ganzizangzuzizhizhou"
+  },
+  {
+    "cityId": 511600,
+    "id": 85,
+    "lastUseTime": 0,
+    "name": "广安",
+    "pinyin": "guanganshi"
+  },
+  {
+    "cityId": 623000,
+    "id": 86,
+    "lastUseTime": 0,
+    "name": "甘南藏族自治州",
+    "pinyin": "gannanzangzuzizhizhou"
+  },
+  {
+    "cityId": 440100,
+    "id": 87,
+    "lastUseTime": 0,
+    "name": "广州",
+    "pinyin": "guangzhoushi"
+  },
+  {
+    "cityId": 450800,
+    "id": 88,
+    "lastUseTime": 0,
+    "name": "贵港",
+    "pinyin": "guigangshi"
+  },
+  {
+    "cityId": 510800,
+    "id": 89,
+    "lastUseTime": 0,
+    "name": "广元",
+    "pinyin": "guangyuanshi"
+  },
+  {
+    "cityId": 450300,
+    "id": 90,
+    "lastUseTime": 0,
+    "name": "桂林",
+    "pinyin": "guilinshi"
+  },
+  {
+    "cityId": 520100,
+    "id": 91,
+    "lastUseTime": 0,
+    "name": "贵阳",
+    "pinyin": "guiyangshi"
+  },
+  {
+    "cityId": 710500,
+    "id": 92,
+    "lastUseTime": 0,
+    "name": "高雄",
+    "pinyin": "gaoxiongshi"
+  },
+  {
+    "cityId": 632600,
+    "id": 93,
+    "lastUseTime": 0,
+    "name": "果洛藏族自治州",
+    "pinyin": "guoluozangzuzizhizhou"
+  },
+  {
+    "cityId": 640400,
+    "id": 94,
+    "lastUseTime": 0,
+    "name": "固原",
+    "pinyin": "guyuanshi"
+  },
+  {
+    "cityId": 230100,
+    "id": 95,
+    "lastUseTime": 0,
+    "name": "哈尔滨",
+    "pinyin": "haerbinshi"
+  },
+  {
+    "cityId": 632200,
+    "id": 96,
+    "lastUseTime": 0,
+    "name": "海北藏族自治州",
+    "pinyin": "haibeizangzuzizhizhou"
+  },
+  {
+    "cityId": 632100,
+    "id": 97,
+    "lastUseTime": 0,
+    "name": "海东",
+    "pinyin": "haidongshi"
+  },
+  {
+    "cityId": 460100,
+    "id": 98,
+    "lastUseTime": 0,
+    "name": "海口",
+    "pinyin": "haikoushi"
+  },
+  {
+    "cityId": 130400,
+    "id": 99,
+    "lastUseTime": 0,
+    "name": "邯郸",
+    "pinyin": "handanshi"
+  },
+  {
+    "cityId": 632800,
+    "id": 100,
+    "lastUseTime": 0,
+    "name": "海西蒙古族藏族自治州",
+    "pinyin": "haiximengguzuzangzuzizhizhou"
+  },
+  {
+    "cityId": 652200,
+    "id": 101,
+    "lastUseTime": 0,
+    "name": "哈密地区",
+    "pinyin": "hamidiqu"
+  },
+  {
+    "cityId": 632500,
+    "id": 102,
+    "lastUseTime": 0,
+    "name": "海南藏族自治州",
+    "pinyin": "hainanzangzuzizhizhou"
+  },
+  {
+    "cityId": 330100,
+    "id": 103,
+    "lastUseTime": 0,
+    "name": "杭州",
+    "pinyin": "hangzhoushi"
+  },
+  {
+    "cityId": 610700,
+    "id": 104,
+    "lastUseTime": 0,
+    "name": "汉中",
+    "pinyin": "hanzhongshi"
+  },
+  {
+    "cityId": 410600,
+    "id": 105,
+    "lastUseTime": 0,
+    "name": "鹤壁",
+    "pinyin": "hebishi"
+  },
+  {
+    "cityId": 451200,
+    "id": 106,
+    "lastUseTime": 0,
+    "name": "河池",
+    "pinyin": "hechishi"
+  },
+  {
+    "cityId": 340100,
+    "id": 107,
+    "lastUseTime": 0,
+    "name": "合肥",
+    "pinyin": "hefeishi"
+  },
+  {
+    "cityId": 230400,
+    "id": 108,
+    "lastUseTime": 0,
+    "name": "鹤岗",
+    "pinyin": "hegangshi"
+  },
+  {
+    "cityId": 231100,
+    "id": 109,
+    "lastUseTime": 0,
+    "name": "黑河",
+    "pinyin": "heiheshi"
+  },
+  {
+    "cityId": 131100,
+    "id": 110,
+    "lastUseTime": 0,
+    "name": "衡水",
+    "pinyin": "hengshuishi"
+  },
+  {
+    "cityId": 430400,
+    "id": 111,
+    "lastUseTime": 0,
+    "name": "衡阳",
+    "pinyin": "hengyangshi"
+  },
+  {
+    "cityId": 653200,
+    "id": 112,
+    "lastUseTime": 0,
+    "name": "和田地区",
+    "pinyin": "hetiandiqu"
+  },
+  {
+    "cityId": 371700,
+    "id": 113,
+    "lastUseTime": 0,
+    "name": "菏泽",
+    "pinyin": "hezeshi"
+  },
+  {
+    "cityId": 441600,
+    "id": 114,
+    "lastUseTime": 0,
+    "name": "河源",
+    "pinyin": "heyuanshi"
+  },
+  {
+    "cityId": 532500,
+    "id": 115,
+    "lastUseTime": 0,
+    "name": "红河哈尼族彝族自治州",
+    "pinyin": "honghehanizuyizuzizhizhou"
+  },
+  {
+    "cityId": 320800,
+    "id": 116,
+    "lastUseTime": 0,
+    "name": "淮安",
+    "pinyin": "huaianshi"
+  },
+  {
+    "cityId": 340600,
+    "id": 117,
+    "lastUseTime": 0,
+    "name": "淮北",
+    "pinyin": "huaibeishi"
+  },
+  {
+    "cityId": 451100,
+    "id": 118,
+    "lastUseTime": 0,
+    "name": "贺州",
+    "pinyin": "hezhoushi"
+  },
+  {
+    "cityId": 340400,
+    "id": 119,
+    "lastUseTime": 0,
+    "name": "淮南",
+    "pinyin": "huainanshi"
+  },
+  {
+    "cityId": 431200,
+    "id": 120,
+    "lastUseTime": 0,
+    "name": "怀化",
+    "pinyin": "huaihuashi"
+  },
+  {
+    "cityId": 711200,
+    "id": 121,
+    "lastUseTime": 0,
+    "name": "花莲县",
+    "pinyin": "hualianxian"
+  },
+  {
+    "cityId": 421100,
+    "id": 122,
+    "lastUseTime": 0,
+    "name": "黄冈",
+    "pinyin": "huanggangshi"
+  },
+  {
+    "cityId": 420200,
+    "id": 123,
+    "lastUseTime": 0,
+    "name": "黄石",
+    "pinyin": "huangshishi"
+  },
+  {
+    "cityId": 441300,
+    "id": 124,
+    "lastUseTime": 0,
+    "name": "惠州",
+    "pinyin": "huizhoushi"
+  },
+  {
+    "cityId": 632300,
+    "id": 125,
+    "lastUseTime": 0,
+    "name": "黄南藏族自治州",
+    "pinyin": "huangnanzangzuzizhizhou"
+  },
+  {
+    "cityId": 150100,
+    "id": 126,
+    "lastUseTime": 0,
+    "name": "呼和浩特",
+    "pinyin": "huhehaoteshi"
+  },
+  {
+    "cityId": 341000,
+    "id": 127,
+    "lastUseTime": 0,
+    "name": "黄山",
+    "pinyin": "huangshanshi"
+  },
+  {
+    "cityId": 150700,
+    "id": 128,
+    "lastUseTime": 0,
+    "name": "呼伦贝尔",
+    "pinyin": "hulunbeiershi"
+  },
+  {
+    "cityId": 330500,
+    "id": 129,
+    "lastUseTime": 0,
+    "name": "湖州",
+    "pinyin": "huzhoushi"
+  },
+  {
+    "cityId": 230800,
+    "id": 130,
+    "lastUseTime": 0,
+    "name": "佳木斯",
+    "pinyin": "jiamusishi"
+  },
+  {
+    "cityId": 440700,
+    "id": 131,
+    "lastUseTime": 0,
+    "name": "江门",
+    "pinyin": "jiangmenshi"
+  },
+  {
+    "cityId": 211400,
+    "id": 132,
+    "lastUseTime": 0,
+    "name": "葫芦岛",
+    "pinyin": "huludaoshi"
+  },
+  {
+    "cityId": 360800,
+    "id": 133,
+    "lastUseTime": 0,
+    "name": "吉安",
+    "pinyin": "jianshi"
+  },
+  {
+    "cityId": 410800,
+    "id": 134,
+    "lastUseTime": 0,
+    "name": "焦作",
+    "pinyin": "jiaozuoshi"
+  },
+  {
+    "cityId": 330400,
+    "id": 135,
+    "lastUseTime": 0,
+    "name": "嘉兴",
+    "pinyin": "jiaxingshi"
+  },
+  {
+    "cityId": 712000,
+    "id": 136,
+    "lastUseTime": 0,
+    "name": "嘉义",
+    "pinyin": "jiayishi"
+  },
+  {
+    "cityId": 712100,
+    "id": 137,
+    "lastUseTime": 0,
+    "name": "嘉义县",
+    "pinyin": "jiayixian"
+  },
+  {
+    "cityId": 620200,
+    "id": 138,
+    "lastUseTime": 0,
+    "name": "嘉峪关",
+    "pinyin": "jiayuguanshi"
+  },
+  {
+    "cityId": 445200,
+    "id": 139,
+    "lastUseTime": 0,
+    "name": "揭阳",
+    "pinyin": "jieyangshi"
+  },
+  {
+    "cityId": 220200,
+    "id": 140,
+    "lastUseTime": 0,
+    "name": "吉林",
+    "pinyin": "jilinshi"
+  },
+  {
+    "cityId": 711600,
+    "id": 141,
+    "lastUseTime": 0,
+    "name": "基隆",
+    "pinyin": "jilongshi"
+  },
+  {
+    "cityId": 370100,
+    "id": 142,
+    "lastUseTime": 0,
+    "name": "济南",
+    "pinyin": "jinanshi"
+  },
+  {
+    "cityId": 620300,
+    "id": 143,
+    "lastUseTime": 0,
+    "name": "金昌",
+    "pinyin": "jinchangshi"
+  },
+  {
+    "cityId": 140500,
+    "id": 144,
+    "lastUseTime": 0,
+    "name": "晋城",
+    "pinyin": "jinchengshi"
+  },
+  {
+    "cityId": 360200,
+    "id": 145,
+    "lastUseTime": 0,
+    "name": "景德镇",
+    "pinyin": "jingdezhenshi"
+  },
+  {
+    "cityId": 420800,
+    "id": 146,
+    "lastUseTime": 0,
+    "name": "荆门",
+    "pinyin": "jingmenshi"
+  },
+  {
+    "cityId": 421000,
+    "id": 147,
+    "lastUseTime": 0,
+    "name": "荆州",
+    "pinyin": "jingzhoushi"
+  },
+  {
+    "cityId": 330700,
+    "id": 148,
+    "lastUseTime": 0,
+    "name": "金华",
+    "pinyin": "jinhuashi"
+  },
+  {
+    "cityId": 370800,
+    "id": 149,
+    "lastUseTime": 0,
+    "name": "济宁",
+    "pinyin": "jiningshi"
+  },
+  {
+    "cityId": 140700,
+    "id": 150,
+    "lastUseTime": 0,
+    "name": "晋中",
+    "pinyin": "jinzhongshi"
+  },
+  {
+    "cityId": 713000,
+    "id": 151,
+    "lastUseTime": 0,
+    "name": "金门县",
+    "pinyin": "jinmenxian"
+  },
+  {
+    "cityId": 210700,
+    "id": 152,
+    "lastUseTime": 0,
+    "name": "锦州",
+    "pinyin": "jinzhoushi"
+  },
+  {
+    "cityId": 360400,
+    "id": 153,
+    "lastUseTime": 0,
+    "name": "九江",
+    "pinyin": "jiujiangshi"
+  },
+  {
+    "cityId": 620900,
+    "id": 154,
+    "lastUseTime": 0,
+    "name": "酒泉",
+    "pinyin": "jiuquanshi"
+  },
+  {
+    "cityId": 230300,
+    "id": 155,
+    "lastUseTime": 0,
+    "name": "鸡西",
+    "pinyin": "jixishi"
+  },
+  {
+    "cityId": 410200,
+    "id": 156,
+    "lastUseTime": 0,
+    "name": "开封",
+    "pinyin": "kaifengshi"
+  },
+  {
+    "cityId": 4190011,
+    "id": 157,
+    "lastUseTime": 0,
+    "name": "济源",
+    "pinyin": "jiyuanshi"
+  },
+  {
+    "cityId": 653100,
+    "id": 158,
+    "lastUseTime": 0,
+    "name": "喀什地区",
+    "pinyin": "kashidiqu"
+  },
+  {
+    "cityId": 650200,
+    "id": 159,
+    "lastUseTime": 0,
+    "name": "克拉玛依",
+    "pinyin": "kelamayishi"
+  },
+  {
+    "cityId": 653000,
+    "id": 160,
+    "lastUseTime": 0,
+    "name": "克孜勒苏柯尔克孜自治州",
+    "pinyin": "kezilesukeerkezizizhizhou"
+  },
+  {
+    "cityId": 530100,
+    "id": 161,
+    "lastUseTime": 0,
+    "name": "昆明",
+    "pinyin": "kunmingshi"
+  },
+  {
+    "cityId": 451300,
+    "id": 162,
+    "lastUseTime": 0,
+    "name": "来宾",
+    "pinyin": "laibinshi"
+  },
+  {
+    "cityId": 131000,
+    "id": 163,
+    "lastUseTime": 0,
+    "name": "廊坊",
+    "pinyin": "langfangshi"
+  },
+  {
+    "cityId": 371200,
+    "id": 164,
+    "lastUseTime": 0,
+    "name": "莱芜",
+    "pinyin": "laiwushi"
+  },
+  {
+    "cityId": 540100,
+    "id": 165,
+    "lastUseTime": 0,
+    "name": "拉萨",
+    "pinyin": "lasashi"
+  },
+  {
+    "cityId": 620100,
+    "id": 166,
+    "lastUseTime": 0,
+    "name": "兰州",
+    "pinyin": "lanzhoushi"
+  },
+  {
+    "cityId": 4690271,
+    "id": 167,
+    "lastUseTime": 0,
+    "name": "乐东黎族自治县",
+    "pinyin": "ledonglizuzizhixian"
+  },
+  {
+    "cityId": 513400,
+    "id": 168,
+    "lastUseTime": 0,
+    "name": "凉山彝族自治州",
+    "pinyin": "liangshanyizuzizhizhou"
+  },
+  {
+    "cityId": 511100,
+    "id": 169,
+    "lastUseTime": 0,
+    "name": "乐山",
+    "pinyin": "leshanshi"
+  },
+  {
+    "cityId": 713100,
+    "id": 170,
+    "lastUseTime": 0,
+    "name": "连江县",
+    "pinyin": "lianjiangxian"
+  },
+  {
+    "cityId": 320700,
+    "id": 171,
+    "lastUseTime": 0,
+    "name": "连云港",
+    "pinyin": "lianyungangshi"
+  },
+  {
+    "cityId": 371500,
+    "id": 172,
+    "lastUseTime": 0,
+    "name": "聊城",
+    "pinyin": "liaochengshi"
+  },
+  {
+    "cityId": 220400,
+    "id": 173,
+    "lastUseTime": 0,
+    "name": "辽源",
+    "pinyin": "liaoyuanshi"
+  },
+  {
+    "cityId": 211000,
+    "id": 174,
+    "lastUseTime": 0,
+    "name": "辽阳",
+    "pinyin": "liaoyangshi"
+  },
+  {
+    "cityId": 530700,
+    "id": 175,
+    "lastUseTime": 0,
+    "name": "丽江",
+    "pinyin": "lijiangshi"
+  },
+  {
+    "cityId": 530900,
+    "id": 176,
+    "lastUseTime": 0,
+    "name": "临沧",
+    "pinyin": "lincangshi"
+  },
+  {
+    "cityId": 4690241,
+    "id": 177,
+    "lastUseTime": 0,
+    "name": "临高县",
+    "pinyin": "lingaoxian"
+  },
+  {
+    "cityId": 141000,
+    "id": 178,
+    "lastUseTime": 0,
+    "name": "临汾",
+    "pinyin": "linfenshi"
+  },
+  {
+    "cityId": 4690281,
+    "id": 179,
+    "lastUseTime": 0,
+    "name": "陵水黎族自治县",
+    "pinyin": "lingshuilizuzizhixian"
+  },
+  {
+    "cityId": 622900,
+    "id": 180,
+    "lastUseTime": 0,
+    "name": "临夏回族自治州",
+    "pinyin": "linxiahuizuzizhizhou"
+  },
+  {
+    "cityId": 371300,
+    "id": 181,
+    "lastUseTime": 0,
+    "name": "临沂",
+    "pinyin": "linyishi"
+  },
+  {
+    "cityId": 341500,
+    "id": 182,
+    "lastUseTime": 0,
+    "name": "六安",
+    "pinyin": "liuanshi"
+  },
+  {
+    "cityId": 542600,
+    "id": 183,
+    "lastUseTime": 0,
+    "name": "林芝",
+    "pinyin": "linzhishi"
+  },
+  {
+    "cityId": 520200,
+    "id": 184,
+    "lastUseTime": 0,
+    "name": "六盘水",
+    "pinyin": "liupanshuishi"
+  },
+  {
+    "cityId": 331100,
+    "id": 185,
+    "lastUseTime": 0,
+    "name": "丽水",
+    "pinyin": "lishuishi"
+  },
+  {
+    "cityId": 621200,
+    "id": 186,
+    "lastUseTime": 0,
+    "name": "陇南",
+    "pinyin": "longnanshi"
+  },
+  {
+    "cityId": 350800,
+    "id": 187,
+    "lastUseTime": 0,
+    "name": "龙岩",
+    "pinyin": "longyanshi"
+  },
+  {
+    "cityId": 450200,
+    "id": 188,
+    "lastUseTime": 0,
+    "name": "柳州",
+    "pinyin": "liuzhoushi"
+  },
+  {
+    "cityId": 431300,
+    "id": 189,
+    "lastUseTime": 0,
+    "name": "娄底",
+    "pinyin": "loudishi"
+  },
+  {
+    "cityId": 141100,
+    "id": 190,
+    "lastUseTime": 0,
+    "name": "吕梁",
+    "pinyin": "lu:liangshi"
+  },
+  {
+    "cityId": 410300,
+    "id": 191,
+    "lastUseTime": 0,
+    "name": "洛阳",
+    "pinyin": "luoyangshi"
+  },
+  {
+    "cityId": 411100,
+    "id": 192,
+    "lastUseTime": 0,
+    "name": "漯河",
+    "pinyin": "luoheshi"
+  },
+  {
+    "cityId": 510500,
+    "id": 193,
+    "lastUseTime": 0,
+    "name": "泸州",
+    "pinyin": "luzhoushi"
+  },
+  {
+    "cityId": 340500,
+    "id": 194,
+    "lastUseTime": 0,
+    "name": "马鞍山",
+    "pinyin": "maanshanshi"
+  },
+  {
+    "cityId": 440900,
+    "id": 195,
+    "lastUseTime": 0,
+    "name": "茂名",
+    "pinyin": "maomingshi"
+  },
+  {
+    "cityId": 441400,
+    "id": 196,
+    "lastUseTime": 0,
+    "name": "梅州",
+    "pinyin": "meizhoushi"
+  },
+  {
+    "cityId": 511400,
+    "id": 197,
+    "lastUseTime": 0,
+    "name": "眉山",
+    "pinyin": "meishanshi"
+  },
+  {
+    "cityId": 510700,
+    "id": 198,
+    "lastUseTime": 0,
+    "name": "绵阳",
+    "pinyin": "mianyangshi"
+  },
+  {
+    "cityId": 360100,
+    "id": 199,
+    "lastUseTime": 0,
+    "name": "南昌",
+    "pinyin": "nanchangshi"
+  },
+  {
+    "cityId": 711500,
+    "id": 200,
+    "lastUseTime": 0,
+    "name": "苗栗县",
+    "pinyin": "miaolixian"
+  },
+  {
+    "cityId": 231000,
+    "id": 201,
+    "lastUseTime": 0,
+    "name": "牡丹江",
+    "pinyin": "mudanjiangshi"
+  },
+  {
+    "cityId": 511300,
+    "id": 202,
+    "lastUseTime": 0,
+    "name": "南充",
+    "pinyin": "nanchongshi"
+  },
+  {
+    "cityId": 320100,
+    "id": 203,
+    "lastUseTime": 0,
+    "name": "南京",
+    "pinyin": "nanjingshi"
+  },
+  {
+    "cityId": 320600,
+    "id": 204,
+    "lastUseTime": 0,
+    "name": "南通",
+    "pinyin": "nantongshi"
+  },
+  {
+    "cityId": 450100,
+    "id": 205,
+    "lastUseTime": 0,
+    "name": "南宁",
+    "pinyin": "nanningshi"
+  },
+  {
+    "cityId": 350700,
+    "id": 206,
+    "lastUseTime": 0,
+    "name": "南平",
+    "pinyin": "nanpingshi"
+  },
+  {
+    "cityId": 711300,
+    "id": 207,
+    "lastUseTime": 0,
+    "name": "南投县",
+    "pinyin": "nantouxian"
+  },
+  {
+    "cityId": 10000004,
+    "id": 208,
+    "lastUseTime": 0,
+    "name": "南极洲",
+    "pinyin": "nanjizhou"
+  },
+  {
+    "cityId": 411300,
+    "id": 209,
+    "lastUseTime": 0,
+    "name": "南阳",
+    "pinyin": "nanyangshi"
+  },
+  {
+    "cityId": 511000,
+    "id": 210,
+    "lastUseTime": 0,
+    "name": "内江",
+    "pinyin": "neijiangshi"
+  },
+  {
+    "cityId": 542400,
+    "id": 211,
+    "lastUseTime": 0,
+    "name": "那曲地区",
+    "pinyin": "naqudiqu"
+  },
+  {
+    "cityId": 330200,
+    "id": 212,
+    "lastUseTime": 0,
+    "name": "宁波",
+    "pinyin": "ningboshi"
+  },
+  {
+    "cityId": 350900,
+    "id": 213,
+    "lastUseTime": 0,
+    "name": "宁德",
+    "pinyin": "ningdeshi"
+  },
+  {
+    "cityId": 533300,
+    "id": 214,
+    "lastUseTime": 0,
+    "name": "怒江傈僳族自治州",
+    "pinyin": "nujianglisuzuzizhizhou"
+  },
+  {
+    "cityId": 211100,
+    "id": 215,
+    "lastUseTime": 0,
+    "name": "盘锦",
+    "pinyin": "panjinshi"
+  },
+  {
+    "cityId": 510400,
+    "id": 216,
+    "lastUseTime": 0,
+    "name": "攀枝花",
+    "pinyin": "panzhihuashi"
+  },
+  {
+    "cityId": 712300,
+    "id": 217,
+    "lastUseTime": 0,
+    "name": "澎湖县",
+    "pinyin": "penghuxian"
+  },
+  {
+    "cityId": 410400,
+    "id": 218,
+    "lastUseTime": 0,
+    "name": "平顶山",
+    "pinyin": "pingdingshanshi"
+  },
+  {
+    "cityId": 711400,
+    "id": 219,
+    "lastUseTime": 0,
+    "name": "屏东县",
+    "pinyin": "pingdongxian"
+  },
+  {
+    "cityId": 620800,
+    "id": 220,
+    "lastUseTime": 0,
+    "name": "平凉",
+    "pinyin": "pingliangshi"
+  },
+  {
+    "cityId": 530800,
+    "id": 221,
+    "lastUseTime": 0,
+    "name": "普洱",
+    "pinyin": "puershi"
+  },
+  {
+    "cityId": 360300,
+    "id": 222,
+    "lastUseTime": 0,
+    "name": "萍乡",
+    "pinyin": "pingxiangshi"
+  },
+  {
+    "cityId": 4290051,
+    "id": 223,
+    "lastUseTime": 0,
+    "name": "潜江",
+    "pinyin": "qianjiangshi"
+  },
+  {
+    "cityId": 522600,
+    "id": 224,
+    "lastUseTime": 0,
+    "name": "黔东南苗族侗族自治州",
+    "pinyin": "qiandongnanmiaozudongzuzizhizhou"
+  },
+  {
+    "cityId": 522700,
+    "id": 225,
+    "lastUseTime": 0,
+    "name": "黔南布依族苗族自治州",
+    "pinyin": "qiannanbuyizumiaozuzizhizhou"
+  },
+  {
+    "cityId": 410900,
+    "id": 226,
+    "lastUseTime": 0,
+    "name": "濮阳",
+    "pinyin": "puyangshi"
+  },
+  {
+    "cityId": 350300,
+    "id": 227,
+    "lastUseTime": 0,
+    "name": "莆田",
+    "pinyin": "putianshi"
+  },
+  {
+    "cityId": 621000,
+    "id": 228,
+    "lastUseTime": 0,
+    "name": "庆阳",
+    "pinyin": "qingyangshi"
+  },
+  {
+    "cityId": 522300,
+    "id": 229,
+    "lastUseTime": 0,
+    "name": "黔西南布依族苗族自治州",
+    "pinyin": "qianxinanbuyizumiaozuzizhizhou"
+  },
+  {
+    "cityId": 441800,
+    "id": 230,
+    "lastUseTime": 0,
+    "name": "清远",
+    "pinyin": "qingyuanshi"
+  },
+  {
+    "cityId": 130300,
+    "id": 231,
+    "lastUseTime": 0,
+    "name": "秦皇岛",
+    "pinyin": "qinhuangdaoshi"
+  },
+  {
+    "cityId": 370200,
+    "id": 232,
+    "lastUseTime": 0,
+    "name": "青岛",
+    "pinyin": "qingdaoshi"
+  },
+  {
+    "cityId": 4690021,
+    "id": 233,
+    "lastUseTime": 0,
+    "name": "琼海",
+    "pinyin": "qionghaishi"
+  },
+  {
+    "cityId": 4690301,
+    "id": 234,
+    "lastUseTime": 0,
+    "name": "琼中黎族苗族自治县",
+    "pinyin": "qiongzhonglizumiaozuzizhixian"
+  },
+  {
+    "cityId": 450700,
+    "id": 235,
+    "lastUseTime": 0,
+    "name": "钦州",
+    "pinyin": "qinzhoushi"
+  },
+  {
+    "cityId": 230200,
+    "id": 236,
+    "lastUseTime": 0,
+    "name": "齐齐哈尔",
+    "pinyin": "qiqihaershi"
+  },
+  {
+    "cityId": 230900,
+    "id": 237,
+    "lastUseTime": 0,
+    "name": "七台河",
+    "pinyin": "qitaiheshi"
+  },
+  {
+    "cityId": 350500,
+    "id": 238,
+    "lastUseTime": 0,
+    "name": "泉州",
+    "pinyin": "quanzhoushi"
+  },
+  {
+    "cityId": 530300,
+    "id": 239,
+    "lastUseTime": 0,
+    "name": "曲靖",
+    "pinyin": "qujingshi"
+  },
+  {
+    "cityId": 330800,
+    "id": 240,
+    "lastUseTime": 0,
+    "name": "衢州",
+    "pinyin": "quzhoushi"
+  },
+  {
+    "cityId": 371100,
+    "id": 241,
+    "lastUseTime": 0,
+    "name": "日照",
+    "pinyin": "rizhaoshi"
+  },
+  {
+    "cityId": 350400,
+    "id": 242,
+    "lastUseTime": 0,
+    "name": "三明",
+    "pinyin": "sanmingshi"
+  },
+  {
+    "cityId": 460300,
+    "id": 243,
+    "lastUseTime": 0,
+    "name": "三沙",
+    "pinyin": "sanshashi"
+  },
+  {
+    "cityId": 411200,
+    "id": 244,
+    "lastUseTime": 0,
+    "name": "三门峡",
+    "pinyin": "sanmenxiashi"
+  },
+  {
+    "cityId": 542300,
+    "id": 245,
+    "lastUseTime": 0,
+    "name": "日喀则",
+    "pinyin": "rikazeshi"
+  },
+  {
+    "cityId": 460200,
+    "id": 246,
+    "lastUseTime": 0,
+    "name": "三亚",
+    "pinyin": "sanyashi"
+  },
+  {
+    "cityId": 350200,
+    "id": 247,
+    "lastUseTime": 0,
+    "name": "厦门",
+    "pinyin": "shamenshi"
+  },
+  {
+    "cityId": 310100,
+    "id": 248,
+    "lastUseTime": 0,
+    "name": "上海",
+    "pinyin": "shanghaishi"
+  },
+  {
+    "cityId": 611000,
+    "id": 249,
+    "lastUseTime": 0,
+    "name": "商洛",
+    "pinyin": "shangluoshi"
+  },
+  {
+    "cityId": 411400,
+    "id": 250,
+    "lastUseTime": 0,
+    "name": "商丘",
+    "pinyin": "shangqiushi"
+  },
+  {
+    "cityId": 361100,
+    "id": 251,
+    "lastUseTime": 0,
+    "name": "上饶",
+    "pinyin": "shangraoshi"
+  },
+  {
+    "cityId": 542200,
+    "id": 252,
+    "lastUseTime": 0,
+    "name": "山南地区",
+    "pinyin": "shannandiqu"
+  },
+  {
+    "cityId": 440500,
+    "id": 253,
+    "lastUseTime": 0,
+    "name": "汕头",
+    "pinyin": "shantoushi"
+  },
+  {
+    "cityId": 440200,
+    "id": 254,
+    "lastUseTime": 0,
+    "name": "韶关",
+    "pinyin": "shaoguanshi"
+  },
+  {
+    "cityId": 441500,
+    "id": 255,
+    "lastUseTime": 0,
+    "name": "汕尾",
+    "pinyin": "shanweishi"
+  },
+  {
+    "cityId": 330600,
+    "id": 256,
+    "lastUseTime": 0,
+    "name": "绍兴",
+    "pinyin": "shaoxingshi"
+  },
+  {
+    "cityId": 430500,
+    "id": 257,
+    "lastUseTime": 0,
+    "name": "邵阳",
+    "pinyin": "shaoyangshi"
+  },
+  {
+    "cityId": 4290211,
+    "id": 258,
+    "lastUseTime": 0,
+    "name": "神农架林区",
+    "pinyin": "shennongjialinqu"
+  },
+  {
+    "cityId": 440300,
+    "id": 259,
+    "lastUseTime": 0,
+    "name": "深圳",
+    "pinyin": "shenzhenshi"
+  },
+  {
+    "cityId": 210100,
+    "id": 260,
+    "lastUseTime": 0,
+    "name": "沈阳",
+    "pinyin": "shenyangshi"
+  },
+  {
+    "cityId": 6590011,
+    "id": 261,
+    "lastUseTime": 0,
+    "name": "石河子",
+    "pinyin": "shihezishi"
+  },
+  {
+    "cityId": 130100,
+    "id": 262,
+    "lastUseTime": 0,
+    "name": "石家庄",
+    "pinyin": "shijiazhuangshi"
+  },
+  {
+    "cityId": 420300,
+    "id": 263,
+    "lastUseTime": 0,
+    "name": "十堰",
+    "pinyin": "shiyanshi"
+  },
+  {
+    "cityId": 640200,
+    "id": 264,
+    "lastUseTime": 0,
+    "name": "石嘴山",
+    "pinyin": "shizuishanshi"
+  },
+  {
+    "cityId": 230500,
+    "id": 265,
+    "lastUseTime": 0,
+    "name": "双鸭山",
+    "pinyin": "shuangyashanshi"
+  },
+  {
+    "cityId": 140600,
+    "id": 266,
+    "lastUseTime": 0,
+    "name": "朔州",
+    "pinyin": "shuozhoushi"
+  },
+  {
+    "cityId": 220700,
+    "id": 267,
+    "lastUseTime": 0,
+    "name": "松原",
+    "pinyin": "songyuanshi"
+  },
+  {
+    "cityId": 231200,
+    "id": 268,
+    "lastUseTime": 0,
+    "name": "绥化",
+    "pinyin": "suihuashi"
+  },
+  {
+    "cityId": 220300,
+    "id": 269,
+    "lastUseTime": 0,
+    "name": "四平",
+    "pinyin": "sipingshi"
+  },
+  {
+    "cityId": 510900,
+    "id": 270,
+    "lastUseTime": 0,
+    "name": "遂宁",
+    "pinyin": "suiningshi"
+  },
+  {
+    "cityId": 321300,
+    "id": 271,
+    "lastUseTime": 0,
+    "name": "宿迁",
+    "pinyin": "suqianshi"
+  },
+  {
+    "cityId": 341300,
+    "id": 272,
+    "lastUseTime": 0,
+    "name": "宿州",
+    "pinyin": "suzhoushi"
+  },
+  {
+    "cityId": 320500,
+    "id": 273,
+    "lastUseTime": 0,
+    "name": "苏州",
+    "pinyin": "suzhoushi"
+  },
+  {
+    "cityId": 421300,
+    "id": 274,
+    "lastUseTime": 0,
+    "name": "随州",
+    "pinyin": "suizhoushi"
+  },
+  {
+    "cityId": 654200,
+    "id": 275,
+    "lastUseTime": 0,
+    "name": "塔城地区",
+    "pinyin": "tachengdiqu"
+  },
+  {
+    "cityId": 370900,
+    "id": 276,
+    "lastUseTime": 0,
+    "name": "泰安",
+    "pinyin": "taianshi"
+  },
+  {
+    "cityId": 710100,
+    "id": 277,
+    "lastUseTime": 0,
+    "name": "台北",
+    "pinyin": "taibeishi"
+  },
+  {
+    "cityId": 711000,
+    "id": 278,
+    "lastUseTime": 0,
+    "name": "台东县",
+    "pinyin": "taidongxian"
+  },
+  {
+    "cityId": 710400,
+    "id": 279,
+    "lastUseTime": 0,
+    "name": "台南",
+    "pinyin": "tainanshi"
+  },
+  {
+    "cityId": 140100,
+    "id": 280,
+    "lastUseTime": 0,
+    "name": "太原",
+    "pinyin": "taiyuanshi"
+  },
+  {
+    "cityId": 710300,
+    "id": 281,
+    "lastUseTime": 0,
+    "name": "台中",
+    "pinyin": "taizhongshi"
+  },
+  {
+    "cityId": 331000,
+    "id": 282,
+    "lastUseTime": 0,
+    "name": "台州",
+    "pinyin": "taizhoushi"
+  },
+  {
+    "cityId": 321200,
+    "id": 283,
+    "lastUseTime": 0,
+    "name": "泰州",
+    "pinyin": "taizhoushi"
+  },
+  {
+    "cityId": 130200,
+    "id": 284,
+    "lastUseTime": 0,
+    "name": "唐山",
+    "pinyin": "tangshanshi"
+  },
+  {
+    "cityId": 710600,
+    "id": 285,
+    "lastUseTime": 0,
+    "name": "桃园",
+    "pinyin": "taoyuanshi"
+  },
+  {
+    "cityId": 120100,
+    "id": 286,
+    "lastUseTime": 0,
+    "name": "天津",
+    "pinyin": "tianjinshi"
+  },
+  {
+    "cityId": 4290061,
+    "id": 287,
+    "lastUseTime": 0,
+    "name": "天门",
+    "pinyin": "tianmenshi"
+  },
+  {
+    "cityId": 620500,
+    "id": 288,
+    "lastUseTime": 0,
+    "name": "天水",
+    "pinyin": "tianshuishi"
+  },
+  {
+    "cityId": 211200,
+    "id": 289,
+    "lastUseTime": 0,
+    "name": "铁岭",
+    "pinyin": "tielingshi"
+  },
+  {
+    "cityId": 6590061,
+    "id": 290,
+    "lastUseTime": 0,
+    "name": "铁门关",
+    "pinyin": "tiemenguanshi"
+  },
+  {
+    "cityId": 220500,
+    "id": 291,
+    "lastUseTime": 0,
+    "name": "通化",
+    "pinyin": "tonghuashi"
+  },
+  {
+    "cityId": 610200,
+    "id": 292,
+    "lastUseTime": 0,
+    "name": "铜川",
+    "pinyin": "tongchuanshi"
+  },
+  {
+    "cityId": 150500,
+    "id": 293,
+    "lastUseTime": 0,
+    "name": "通辽",
+    "pinyin": "tongliaoshi"
+  },
+  {
+    "cityId": 340700,
+    "id": 294,
+    "lastUseTime": 0,
+    "name": "铜陵",
+    "pinyin": "tonglingshi"
+  },
+  {
+    "cityId": 520600,
+    "id": 295,
+    "lastUseTime": 0,
+    "name": "铜仁",
+    "pinyin": "tongrenshi"
+  },
+  {
+    "cityId": 652100,
+    "id": 296,
+    "lastUseTime": 0,
+    "name": "吐鲁番",
+    "pinyin": "tulufanshi"
+  },
+  {
+    "cityId": 6590031,
+    "id": 297,
+    "lastUseTime": 0,
+    "name": "图木舒克",
+    "pinyin": "tumushukeshi"
+  },
+  {
+    "cityId": 4690221,
+    "id": 298,
+    "lastUseTime": 0,
+    "name": "屯昌县",
+    "pinyin": "tunchangxian"
+  },
+  {
+    "cityId": 4690061,
+    "id": 299,
+    "lastUseTime": 0,
+    "name": "万宁",
+    "pinyin": "wanningshi"
+  },
+  {
+    "cityId": 370700,
+    "id": 300,
+    "lastUseTime": 0,
+    "name": "潍坊",
+    "pinyin": "weifangshi"
+  },
+  {
+    "cityId": 371000,
+    "id": 301,
+    "lastUseTime": 0,
+    "name": "威海",
+    "pinyin": "weihaishi"
+  },
+  {
+    "cityId": 610500,
+    "id": 302,
+    "lastUseTime": 0,
+    "name": "渭南",
+    "pinyin": "weinanshi"
+  },
+  {
+    "cityId": 4690051,
+    "id": 303,
+    "lastUseTime": 0,
+    "name": "文昌",
+    "pinyin": "wenchangshi"
+  },
+  {
+    "cityId": 532600,
+    "id": 304,
+    "lastUseTime": 0,
+    "name": "文山壮族苗族自治州",
+    "pinyin": "wenshanzhuangzumiaozuzizhizhou"
+  },
+  {
+    "cityId": 330300,
+    "id": 305,
+    "lastUseTime": 0,
+    "name": "温州",
+    "pinyin": "wenzhoushi"
+  },
+  {
+    "cityId": 150300,
+    "id": 306,
+    "lastUseTime": 0,
+    "name": "乌海",
+    "pinyin": "wuhaishi"
+  },
+  {
+    "cityId": 340200,
+    "id": 307,
+    "lastUseTime": 0,
+    "name": "芜湖",
+    "pinyin": "wuhushi"
+  },
+  {
+    "cityId": 6590041,
+    "id": 308,
+    "lastUseTime": 0,
+    "name": "五家渠",
+    "pinyin": "wujiaqushi"
+  },
+  {
+    "cityId": 150900,
+    "id": 309,
+    "lastUseTime": 0,
+    "name": "乌兰察布",
+    "pinyin": "wulanchabushi"
+  },
+  {
+    "cityId": 420100,
+    "id": 310,
+    "lastUseTime": 0,
+    "name": "武汉",
+    "pinyin": "wuhanshi"
+  },
+  {
+    "cityId": 650100,
+    "id": 311,
+    "lastUseTime": 0,
+    "name": "乌鲁木齐",
+    "pinyin": "wulumuqishi"
+  },
+  {
+    "cityId": 620600,
+    "id": 312,
+    "lastUseTime": 0,
+    "name": "武威",
+    "pinyin": "wuweishi"
+  },
+  {
+    "cityId": 320200,
+    "id": 313,
+    "lastUseTime": 0,
+    "name": "无锡",
+    "pinyin": "wuxishi"
+  },
+  {
+    "cityId": 4690011,
+    "id": 314,
+    "lastUseTime": 0,
+    "name": "五指山",
+    "pinyin": "wuzhishanshi"
+  },
+  {
+    "cityId": 640300,
+    "id": 315,
+    "lastUseTime": 0,
+    "name": "吴忠",
+    "pinyin": "wuzhongshi"
+  },
+  {
+    "cityId": 450400,
+    "id": 316,
+    "lastUseTime": 0,
+    "name": "梧州",
+    "pinyin": "wuzhoushi"
+  },
+  {
+    "cityId": 810001,
+    "id": 317,
+    "lastUseTime": 0,
+    "name": "香港",
+    "pinyin": "xianggang"
+  },
+  {
+    "cityId": 430300,
+    "id": 318,
+    "lastUseTime": 0,
+    "name": "湘潭",
+    "pinyin": "xiangtanshi"
+  },
+  {
+    "cityId": 433100,
+    "id": 319,
+    "lastUseTime": 0,
+    "name": "湘西土家族苗族自治州",
+    "pinyin": "xiangxitujiazumiaozuzizhizhou"
+  },
+  {
+    "cityId": 421200,
+    "id": 320,
+    "lastUseTime": 0,
+    "name": "咸宁",
+    "pinyin": "xianningshi"
+  },
+  {
+    "cityId": 420600,
+    "id": 321,
+    "lastUseTime": 0,
+    "name": "襄阳",
+    "pinyin": "xiangyangshi"
+  },
+  {
+    "cityId": 610100,
+    "id": 322,
+    "lastUseTime": 0,
+    "name": "西安",
+    "pinyin": "xianshi"
+  },
+  {
+    "cityId": 610400,
+    "id": 323,
+    "lastUseTime": 0,
+    "name": "咸阳",
+    "pinyin": "xianyangshi"
+  },
+  {
+    "cityId": 4290041,
+    "id": 324,
+    "lastUseTime": 0,
+    "name": "仙桃",
+    "pinyin": "xiantaoshi"
+  },
+  {
+    "cityId": 420900,
+    "id": 325,
+    "lastUseTime": 0,
+    "name": "孝感",
+    "pinyin": "xiaoganshi"
+  },
+  {
+    "cityId": 152500,
+    "id": 326,
+    "lastUseTime": 0,
+    "name": "锡林郭勒盟",
+    "pinyin": "xilinguolemeng"
+  },
+  {
+    "cityId": 710200,
+    "id": 327,
+    "lastUseTime": 0,
+    "name": "新北",
+    "pinyin": "xinbeishi"
+  },
+  {
+    "cityId": 152200,
+    "id": 328,
+    "lastUseTime": 0,
+    "name": "兴安盟",
+    "pinyin": "xinganmeng"
+  },
+  {
+    "cityId": 630100,
+    "id": 329,
+    "lastUseTime": 0,
+    "name": "西宁",
+    "pinyin": "xiningshi"
+  },
+  {
+    "cityId": 130500,
+    "id": 330,
+    "lastUseTime": 0,
+    "name": "邢台",
+    "pinyin": "xingtaishi"
+  },
+  {
+    "cityId": 411500,
+    "id": 331,
+    "lastUseTime": 0,
+    "name": "信阳",
+    "pinyin": "xinyangshi"
+  },
+  {
+    "cityId": 711800,
+    "id": 332,
+    "lastUseTime": 0,
+    "name": "新竹",
+    "pinyin": "xinzhushi"
+  },
+  {
+    "cityId": 140900,
+    "id": 333,
+    "lastUseTime": 0,
+    "name": "忻州",
+    "pinyin": "xinzhoushi"
+  },
+  {
+    "cityId": 360500,
+    "id": 334,
+    "lastUseTime": 0,
+    "name": "新余",
+    "pinyin": "xinyushi"
+  },
+  {
+    "cityId": 410700,
+    "id": 335,
+    "lastUseTime": 0,
+    "name": "新乡",
+    "pinyin": "xinxiangshi"
+  },
+  {
+    "cityId": 711900,
+    "id": 336,
+    "lastUseTime": 0,
+    "name": "新竹县",
+    "pinyin": "xinzhuxian"
+  },
+  {
+    "cityId": 532800,
+    "id": 337,
+    "lastUseTime": 0,
+    "name": "西双版纳傣族自治州",
+    "pinyin": "xishuangbannadaizuzizhizhou"
+  },
+  {
+    "cityId": 341800,
+    "id": 338,
+    "lastUseTime": 0,
+    "name": "宣城",
+    "pinyin": "xuanchengshi"
+  },
+  {
+    "cityId": 411000,
+    "id": 339,
+    "lastUseTime": 0,
+    "name": "许昌",
+    "pinyin": "xuchangshi"
+  },
+  {
+    "cityId": 320300,
+    "id": 340,
+    "lastUseTime": 0,
+    "name": "徐州",
+    "pinyin": "xuzhoushi"
+  },
+  {
+    "cityId": 511800,
+    "id": 341,
+    "lastUseTime": 0,
+    "name": "雅安",
+    "pinyin": "yaanshi"
+  },
+  {
+    "cityId": 222400,
+    "id": 342,
+    "lastUseTime": 0,
+    "name": "延边朝鲜族自治州",
+    "pinyin": "yanbianchaoxianzuzizhizhou"
+  },
+  {
+    "cityId": 610600,
+    "id": 343,
+    "lastUseTime": 0,
+    "name": "延安",
+    "pinyin": "yananshi"
+  },
+  {
+    "cityId": 320900,
+    "id": 344,
+    "lastUseTime": 0,
+    "name": "盐城",
+    "pinyin": "yanchengshi"
+  },
+  {
+    "cityId": 441700,
+    "id": 345,
+    "lastUseTime": 0,
+    "name": "阳江",
+    "pinyin": "yangjiangshi"
+  },
+  {
+    "cityId": 140300,
+    "id": 346,
+    "lastUseTime": 0,
+    "name": "阳泉",
+    "pinyin": "yangquanshi"
+  },
+  {
+    "cityId": 321000,
+    "id": 347,
+    "lastUseTime": 0,
+    "name": "扬州",
+    "pinyin": "yangzhoushi"
+  },
+  {
+    "cityId": 511500,
+    "id": 348,
+    "lastUseTime": 0,
+    "name": "宜宾",
+    "pinyin": "yibinshi"
+  },
+  {
+    "cityId": 370600,
+    "id": 349,
+    "lastUseTime": 0,
+    "name": "烟台",
+    "pinyin": "yantaishi"
+  },
+  {
+    "cityId": 420500,
+    "id": 350,
+    "lastUseTime": 0,
+    "name": "宜昌",
+    "pinyin": "yichangshi"
+  },
+  {
+    "cityId": 230700,
+    "id": 351,
+    "lastUseTime": 0,
+    "name": "伊春",
+    "pinyin": "yichunshi"
+  },
+  {
+    "cityId": 360900,
+    "id": 352,
+    "lastUseTime": 0,
+    "name": "宜春",
+    "pinyin": "yichunshi"
+  },
+  {
+    "cityId": 711100,
+    "id": 353,
+    "lastUseTime": 0,
+    "name": "宜兰县",
+    "pinyin": "yilanxian"
+  },
+  {
+    "cityId": 654000,
+    "id": 354,
+    "lastUseTime": 0,
+    "name": "伊犁哈萨克自治州",
+    "pinyin": "yilihasakezizhizhou"
+  },
+  {
+    "cityId": 431100,
+    "id": 355,
+    "lastUseTime": 0,
+    "name": "永州",
+    "pinyin": "yongzhoushi"
+  },
+  {
+    "cityId": 430900,
+    "id": 356,
+    "lastUseTime": 0,
+    "name": "益阳",
+    "pinyin": "yiyangshi"
+  },
+  {
+    "cityId": 360600,
+    "id": 357,
+    "lastUseTime": 0,
+    "name": "鹰潭",
+    "pinyin": "yingtanshi"
+  },
+  {
+    "cityId": 430600,
+    "id": 358,
+    "lastUseTime": 0,
+    "name": "岳阳",
+    "pinyin": "yueyangshi"
+  },
+  {
+    "cityId": 640100,
+    "id": 359,
+    "lastUseTime": 0,
+    "name": "银川",
+    "pinyin": "yinchuanshi"
+  },
+  {
+    "cityId": 450900,
+    "id": 360,
+    "lastUseTime": 0,
+    "name": "玉林",
+    "pinyin": "yulinshi"
+  },
+  {
+    "cityId": 610800,
+    "id": 361,
+    "lastUseTime": 0,
+    "name": "榆林",
+    "pinyin": "yulinshi"
+  },
+  {
+    "cityId": 210800,
+    "id": 362,
+    "lastUseTime": 0,
+    "name": "营口",
+    "pinyin": "yingkoushi"
+  },
+  {
+    "cityId": 140800,
+    "id": 363,
+    "lastUseTime": 0,
+    "name": "运城",
+    "pinyin": "yunchengshi"
+  },
+  {
+    "cityId": 711700,
+    "id": 364,
+    "lastUseTime": 0,
+    "name": "云林县",
+    "pinyin": "yunlinxian"
+  },
+  {
+    "cityId": 632700,
+    "id": 365,
+    "lastUseTime": 0,
+    "name": "玉树藏族自治州",
+    "pinyin": "yushuzangzuzizhizhou"
+  },
+  {
+    "cityId": 530400,
+    "id": 366,
+    "lastUseTime": 0,
+    "name": "玉溪",
+    "pinyin": "yuxishi"
+  },
+  {
+    "cityId": 370400,
+    "id": 367,
+    "lastUseTime": 0,
+    "name": "枣庄",
+    "pinyin": "zaozhuangshi"
+  },
+  {
+    "cityId": 712200,
+    "id": 368,
+    "lastUseTime": 0,
+    "name": "彰化县",
+    "pinyin": "zhanghuaxian"
+  },
+  {
+    "cityId": 430800,
+    "id": 369,
+    "lastUseTime": 0,
+    "name": "张家界",
+    "pinyin": "zhangjiajieshi"
+  },
+  {
+    "cityId": 445300,
+    "id": 370,
+    "lastUseTime": 0,
+    "name": "云浮",
+    "pinyin": "yunfushi"
+  },
+  {
+    "cityId": 350600,
+    "id": 371,
+    "lastUseTime": 0,
+    "name": "漳州",
+    "pinyin": "zhangzhoushi"
+  },
+  {
+    "cityId": 441200,
+    "id": 372,
+    "lastUseTime": 0,
+    "name": "肇庆",
+    "pinyin": "zhaoqingshi"
+  },
+  {
+    "cityId": 620700,
+    "id": 373,
+    "lastUseTime": 0,
+    "name": "张掖",
+    "pinyin": "zhangyeshi"
+  },
+  {
+    "cityId": 440800,
+    "id": 374,
+    "lastUseTime": 0,
+    "name": "湛江",
+    "pinyin": "zhanjiangshi"
+  },
+  {
+    "cityId": 130700,
+    "id": 375,
+    "lastUseTime": 0,
+    "name": "张家口",
+    "pinyin": "zhangjiakoushi"
+  },
+  {
+    "cityId": 530600,
+    "id": 376,
+    "lastUseTime": 0,
+    "name": "昭通",
+    "pinyin": "zhaotongshi"
+  },
+  {
+    "cityId": 410100,
+    "id": 377,
+    "lastUseTime": 0,
+    "name": "郑州",
+    "pinyin": "zhengzhoushi"
+  },
+  {
+    "cityId": 321100,
+    "id": 378,
+    "lastUseTime": 0,
+    "name": "镇江",
+    "pinyin": "zhenjiangshi"
+  },
+  {
+    "cityId": 440400,
+    "id": 379,
+    "lastUseTime": 0,
+    "name": "珠海",
+    "pinyin": "zhuhaishi"
+  },
+  {
+    "cityId": 411600,
+    "id": 380,
+    "lastUseTime": 0,
+    "name": "周口",
+    "pinyin": "zhoukoushi"
+  },
+  {
+    "cityId": 330900,
+    "id": 381,
+    "lastUseTime": 0,
+    "name": "舟山",
+    "pinyin": "zhoushanshi"
+  },
+  {
+    "cityId": 442000,
+    "id": 382,
+    "lastUseTime": 0,
+    "name": "中山",
+    "pinyin": "zhongshanshi"
+  },
+  {
+    "cityId": 640500,
+    "id": 383,
+    "lastUseTime": 0,
+    "name": "中卫",
+    "pinyin": "zhongweishi"
+  },
+  {
+    "cityId": 411700,
+    "id": 384,
+    "lastUseTime": 0,
+    "name": "驻马店",
+    "pinyin": "zhumadianshi"
+  },
+  {
+    "cityId": 430200,
+    "id": 385,
+    "lastUseTime": 0,
+    "name": "株洲",
+    "pinyin": "zhuzhoushi"
+  },
+  {
+    "cityId": 370300,
+    "id": 386,
+    "lastUseTime": 0,
+    "name": "淄博",
+    "pinyin": "ziboshi"
+  },
+  {
+    "cityId": 510300,
+    "id": 387,
+    "lastUseTime": 0,
+    "name": "自贡",
+    "pinyin": "zigongshi"
+  },
+  {
+    "cityId": 512000,
+    "id": 388,
+    "lastUseTime": 0,
+    "name": "资阳",
+    "pinyin": "ziyangshi"
+  },
+  {
+    "cityId": 520300,
+    "id": 389,
+    "lastUseTime": 0,
+    "name": "遵义",
+    "pinyin": "zunyishi"
+  }
+]

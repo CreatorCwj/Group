@@ -2,6 +2,8 @@ package com.dao.inter;
 
 import java.util.List;
 
+import de.greenrobot.dao.query.QueryBuilder;
+
 /**
  * Created by cwj on 16/2/17.
  * GreenDao同步方法
@@ -52,6 +54,11 @@ public interface SyncDBInterface<T, K> {
      * 查找全部数据
      */
     List<T> findAll();
+
+    /**
+     * 自定义查找
+     */
+    List<T> findByQuery(QueryBuilder<T> queryBuilder);
 
     /**
      * 获取数据总量

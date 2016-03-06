@@ -16,6 +16,7 @@ public class Activity extends BaseModel {
     public static final String DESCRIBE = "describe";
     public static final String WEB_URL = "webUrl";
     public static final String IMAGE = "image";
+    public static final String CITY_ID = "cityId";
 
     public void setTitle(String title) {
         put(TITLE, title);
@@ -39,6 +40,14 @@ public class Activity extends BaseModel {
 
     public String getWebUrl() {
         return getString(WEB_URL);
+    }
+
+    public void setCityId(int cityId) {
+        put(CITY_ID, cityId);
+    }
+
+    public int getCityId() {
+        return getInt(CITY_ID);
     }
 
     public void setImage(AVFile image) {

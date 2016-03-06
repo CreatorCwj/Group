@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CancelableEditView">
+        <attr name="editTextSize" format="dimension" />
+        <attr name="hintColor" format="color" />
+        <attr name="editColor" format="color" />
+        <attr name="hintText" format="string" />
+        <attr name="hintIcon" format="reference" />
+        <attr name="cancelIcon" format="reference" />
+    </declare-styleable>
+</resources>
