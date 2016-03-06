@@ -12,13 +12,13 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/divider_height"
         android:background="@color/dividerColor" />
 
     <com.widget.radio.RadioLayout
         android:id="@+id/main_radioLayout"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
+        android:layout_height="@dimen/main_bottom_height"
         android:orientation="horizontal">
 
         <com.widget.radio.RadioView

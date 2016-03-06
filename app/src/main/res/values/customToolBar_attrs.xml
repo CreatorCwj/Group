@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomToolBar">
+        <attr name="backVisibility" format="boolean" />
+        <attr name="textVisibility" format="boolean" />
+        <attr name="textIconVisibility" format="boolean" />
+        <attr name="searchVisibility" format="boolean" />
+        <attr name="titleText" format="string" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+    </declare-styleable>
+</resources>

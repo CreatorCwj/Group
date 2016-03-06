@@ -30,6 +30,7 @@ import com.model.RewardPoint;
 import com.model.RewardPointRecord;
 import com.model.User;
 import com.model.Voucher;
+import com.util.AppSetting;
 import com.volley.Network;
 
 /**
@@ -45,6 +46,8 @@ public class GroupApplication extends Application {
         AVOSCloud.initialize(this, getResources().getString(R.string.app_id), getResources().getString(R.string.app_key));
         initPush();//初始化推送(做到时再写)
 
+        //AppSetting
+        AppSetting.init(getApplicationContext());
         //地图
         SDKInitializer.initialize(getApplicationContext());
         //定位

@@ -46,6 +46,6 @@ public class Generator {
         note.addIntProperty("cityId").notNull();
         note.addStringProperty("name").notNull();
         note.addStringProperty("pinyin").notNull();
-        note.addLongProperty("lastUseTime");
+        note.addLongProperty("lastUseTime").notNull();
     }
 }

@@ -75,7 +75,7 @@ public class SelectDialog extends BaseDialog {
     protected void onViewCreated(View view) {
         listView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         listView.setDivider(context.getResources().getDrawable(R.color.dividerColor, null));
-        listView.setDividerHeight(UIUtils.dp2px(context, 1));
+        listView.setDividerHeight(context.getResources().getDimensionPixelSize(R.dimen.divider_height));
         listView.setVerticalScrollBarEnabled(false);
         listView.setSelector(new ColorDrawable(Color.TRANSPARENT));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

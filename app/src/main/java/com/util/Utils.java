@@ -8,6 +8,11 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
  * Created by cwj on 15/12/3.
  * 工具类
@@ -55,6 +60,46 @@ public class Utils {
         } catch (Exception e) {
         }
         return false;
+    }
+
+    /**
+     * raw文件读取内容
+     */
+    public static String readRawFile(Context context, int id) {
+        StringBuilder sb = new StringBuilder("");
+        InputStream inputStream = null;
+        BufferedReader bufferedReader = null;
+        try {
+            inputStream = context.getResources().openRawResource(
+                    id);
+            bufferedReader = new BufferedReader(new InputStreamReader(
+                    inputStream, "utf-8"));
+            String tmp;
+            while ((tmp = bufferedReader.readLine()) != null) {
+                sb.append(tmp);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (inputStream != null)
+                    inputStream.close();
+                if (bufferedReader != null)
+                    bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 获取数据库中的name
+     */
+    public static String getRealCityName(String name) {
+        if (name.charAt(name.length() - 1) == '市')//XXX市的省略市
+            name = name.substring(0, name.length() - 1);
+        return name;
     }
 
 }

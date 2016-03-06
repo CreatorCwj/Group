@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/home_custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightIcon="@drawable/scanner_icon"
+        app:searchVisibility="true"
+        app:textIconVisibility="true"
+        app:titleText="定位中" />
+
+    <com.widget.SafeScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.widget.rlrView.view.RLRView
+                android:id="@+id/home_model_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:enabled="false"
+                app:canLoadMore="false"
+                app:columnCount="4"
+                app:layoutType="grid" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/dividerColor" />
+        </LinearLayout>
+
+    </com.widget.SafeScrollView>
+
+</LinearLayout>

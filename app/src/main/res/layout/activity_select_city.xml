@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/select_city_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:titleText="城市选择" />
+
+    <com.widget.CancelableEditView
+        android:id="@+id/select_city_searchView"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        app:cancelIcon="@drawable/close_gray"
+        app:editTextColor="@color/black"
+        app:editTextSize="17sp"
+        app:hintColor="@color/gray"
+        app:hintIcon="@drawable/search_gray"
+        app:hintText="@string/search_city_hint_text" />
+
+    <com.widget.indexableListView.IndexableListView
+        android:id="@+id/select_city_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent" />
+
+</LinearLayout>

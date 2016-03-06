@@ -3,14 +3,19 @@ package com.widget.rlrView.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.LinearLayout;
 
 import com.group.R;
 import com.util.UIUtils;
@@ -479,5 +484,41 @@ public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.On
      */
     public int getSkipCount() {
         return page.getSkipCount();
+    }
+
+    /**
+     * 嵌套在垂直滚动的ScrollView里时需要重置高度(认为父布局是线性的,每个item是一样高的)
+     */
+    public void resetHeight() {
+        if (getParent() == null || !(getParent() instanceof LinearLayout))
+            return;
+        loadMoreRecyclerView.setNestedScrollingEnabled(false);//禁止滚动
+        int total = 0;
+        RecyclerView.LayoutManager manager = loadMoreRecyclerView.getLayoutManager();
+        int count = manager.getItemCount();
+        if (manager instanceof GridLayoutManager) {//计算每行第一个
+            for (int i = 0; i < count; i += ((GridLayoutManager) manager).getSpanCount()) {
+                total += measure(i);
+            }
+        } else if (manager instanceof LinearLayoutManager) {//每行都算
+            count = manager.getItemCount();
+            for (int i = 0; i < count; i++) {
+                total += measure(i);
+            }
+        }
+        setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, total));
+    }
+
+    private int measure(int index) {
+        int total = 0;
+        View view = loadMoreRecyclerView.getAdapter().onCreateViewHolder(loadMoreRecyclerView, loadMoreRecyclerView.getAdapter().getItemViewType(index)).itemView;
+        if (view != null) {
+            view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+            total += view.getMeasuredHeight();
+            Rect out = new Rect();
+            loadMoreRecyclerView.getLayoutManager().calculateItemDecorationsForChild(view, out);
+            total += out.bottom - out.top;
+        }
+        return total;
     }
 }

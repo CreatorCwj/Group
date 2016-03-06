@@ -27,7 +27,7 @@ public class CityDao extends AbstractDao<City, Long> {
         public final static Property CityId = new Property(1, int.class, "cityId", false, "CITY_ID");
         public final static Property Name = new Property(2, String.class, "name", false, "NAME");
         public final static Property Pinyin = new Property(3, String.class, "pinyin", false, "PINYIN");
-        public final static Property LastUseTime = new Property(4, Long.class, "lastUseTime", false, "LAST_USE_TIME");
+        public final static Property LastUseTime = new Property(4, long.class, "lastUseTime", false, "LAST_USE_TIME");
     };
 
 
@@ -47,7 +47,7 @@ public class CityDao extends AbstractDao<City, Long> {
                 "\"CITY_ID\" INTEGER NOT NULL ," + // 1: cityId
                 "\"NAME\" TEXT NOT NULL ," + // 2: name
                 "\"PINYIN\" TEXT NOT NULL ," + // 3: pinyin
-                "\"LAST_USE_TIME\" INTEGER);"); // 4: lastUseTime
+                "\"LAST_USE_TIME\" INTEGER NOT NULL );"); // 4: lastUseTime
     }
 
     /** Drops the underlying database table. */
@@ -68,11 +68,7 @@ public class CityDao extends AbstractDao<City, Long> {
         stmt.bindLong(2, entity.getCityId());
         stmt.bindString(3, entity.getName());
         stmt.bindString(4, entity.getPinyin());
- 
-        Long lastUseTime = entity.getLastUseTime();
-        if (lastUseTime != null) {
-            stmt.bindLong(5, lastUseTime);
-        }
+        stmt.bindLong(5, entity.getLastUseTime());
     }
 
     /** @inheritdoc */
@@ -89,7 +85,7 @@ public class CityDao extends AbstractDao<City, Long> {
             cursor.getInt(offset + 1), // cityId
             cursor.getString(offset + 2), // name
             cursor.getString(offset + 3), // pinyin
-            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4) // lastUseTime
+            cursor.getLong(offset + 4) // lastUseTime
         );
         return entity;
     }
@@ -101,7 +97,7 @@ public class CityDao extends AbstractDao<City, Long> {
         entity.setCityId(cursor.getInt(offset + 1));
         entity.setName(cursor.getString(offset + 2));
         entity.setPinyin(cursor.getString(offset + 3));
-        entity.setLastUseTime(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
+        entity.setLastUseTime(cursor.getLong(offset + 4));
      }
     
     /** @inheritdoc */

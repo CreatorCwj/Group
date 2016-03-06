@@ -3,6 +3,7 @@ package com.widget.radio;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -32,6 +33,7 @@ public class RadioView extends RelativeLayout {
 
     private String radioText;
     private int radioTextSize;
+    private int radioTextColor;
 
     private int imageWidth;
     private int imageHeight;
@@ -41,6 +43,9 @@ public class RadioView extends RelativeLayout {
     private TextView textView;
 
     private boolean radioChecked;
+    private boolean canChecked;//决定该view是否是单选类型的按钮还是普通view,默认是
+
+    private OnClickListener customListener;
 
     public RadioView(Context context) {
         this(context, null);
@@ -71,7 +76,9 @@ public class RadioView extends RelativeLayout {
             imageHeight = typedArray.getDimensionPixelSize(R.styleable.RadioView_imageHeight, ViewGroup.LayoutParams.WRAP_CONTENT);
             radioText = typedArray.getString(R.styleable.RadioView_radioText);
             radioTextSize = typedArray.getDimensionPixelSize(R.styleable.RadioView_radioTextSize, UIUtils.sp2px(getContext(), 13));
+            radioTextColor = typedArray.getColor(R.styleable.RadioView_radioTextColor, Color.WHITE);
             radioChecked = typedArray.getBoolean(R.styleable.RadioView_radioChecked, false);
+            canChecked = typedArray.getBoolean(R.styleable.RadioView_canChecked, true);
             imageBottom = typedArray.getDimensionPixelSize(R.styleable.RadioView_imageBottom, UIUtils.dp2px(getContext(), 3));
             typedArray.recycle();
         }
@@ -95,6 +102,7 @@ public class RadioView extends RelativeLayout {
         textView = new TextView(getContext());
         if (textBackground != null)
             textView.setTextColor(textBackground);
+        else textView.setTextColor(radioTextColor);
         textView.setText(radioText);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, radioTextSize);
         textView.setSingleLine(true);
@@ -108,7 +116,7 @@ public class RadioView extends RelativeLayout {
         this.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (isRadioChecked())//已经选择则不做任何处理
+                if (canChecked && isRadioChecked())//单选情况下,已经选择则不做任何处理
                     return false;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
@@ -126,10 +134,16 @@ public class RadioView extends RelativeLayout {
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isRadioChecked())//已经选择则不做任何处理
-                    return;
-                setRadioChecked(true);
-                press(false);//此时先设置checked为true,再取消之前的press状态,则不会闪,因为已经改变成checked的background了
+                if (canChecked) {
+                    if (isRadioChecked())//已经选择则不再设置checked
+                        return;
+                    setRadioChecked(true);
+                    press(false);//此时先设置checked为true,再取消之前的press状态,则不会闪,因为已经改变成checked的background了
+                } else {//就是正常点击事件,可自行设置点击监听器
+                    if (customListener != null)
+                        customListener.onClick(RadioView.this);
+                    press(false);
+                }
             }
         });
     }
@@ -161,6 +175,13 @@ public class RadioView extends RelativeLayout {
         if (getParent() != null && getParent() instanceof RadioLayout) {
             ((RadioLayout) getParent()).checkChanged(RadioView.this);
         }
+    }
+
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        if (!hasOnClickListeners())//第一次是该view自己设置的
+            super.setOnClickListener(l);
+        else customListener = l;//之后的是自定义的
     }
 
     public void setImageBackground(Drawable imageBackground) {
