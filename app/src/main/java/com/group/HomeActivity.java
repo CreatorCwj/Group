@@ -9,6 +9,7 @@ import com.avos.avoscloud.AVQuery;
 import com.dao.dbHelpers.AreaHelper;
 import com.dao.dbHelpers.CategoryHelper;
 import com.fragment.HomeFragment;
+import com.fragment.MerchantFragment;
 import com.fragment.TestFragment;
 import com.google.inject.Inject;
 import com.group.base.BaseFragmentActivity;
@@ -45,7 +46,8 @@ public class HomeActivity extends BaseFragmentActivity {
         //添加界面
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
-        for (int i = 1; i < 4; i++) {
+        fragments.add(new MerchantFragment());
+        for (int i = 2; i < 4; i++) {
             fragments.add(TestFragment.getInstance("pos:" + i));
         }
         new SlideFragmentAdapter<>(this, fragments, radioLayout, R.id.main_content, false);

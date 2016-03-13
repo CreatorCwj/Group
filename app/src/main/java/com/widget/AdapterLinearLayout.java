@@ -89,7 +89,7 @@ public class AdapterLinearLayout<T> extends LinearLayout {
     }
 
     public void notifyRefresh() {
-        if (adapter == null || adapter.getDataCount() <= 0)
+        if (adapter == null)
             return;
         //循环复用
         for (int i = 0; i < adapter.getDataCount(); i++) {

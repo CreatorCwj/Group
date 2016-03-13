@@ -190,11 +190,15 @@ public abstract class RecyclerViewAdapter<T> extends BaseRecyclerViewAdapter<T> 
         return b == null ? false : b;
     }
 
-    public void setSelected(int position, boolean isSelected) {
+    public void setSelected(int position, boolean isSelected, boolean isRefresh) {
         selected.put(position, isSelected);
+        if (isRefresh)
+            notifyDataSetChanged();
     }
 
-    public void clearSelected() {
+    public void clearSelected(boolean isRefresh) {
         selected.clear();
+        if (isRefresh)
+            notifyDataSetChanged();
     }
 }

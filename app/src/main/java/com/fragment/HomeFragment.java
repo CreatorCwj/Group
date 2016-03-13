@@ -206,13 +206,13 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         Location.requestLocation(getActivity(), new OnLocationListener() {
             @Override
             public void onPreExecute() {
-                bdLocation = null;//定位前重置
+                //不用重置
             }
 
             @Override
             public void onSuccess(BDLocation location) {
                 bdLocation = location;//定位成功赋值
-                if (!TextUtils.isEmpty(location.getCity())) {
+                if (!TextUtils.isEmpty(location.getCity())) {//缓存经纬度不可用
                     final City newCity = cityHelper.getByName(Utils.getRealCityName(location.getCity()));
                     //不相同时提示切换
                     if (newCity != null && (city == null || newCity.getCityId() != city.getCityId())) {
@@ -230,12 +230,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                         });
                         dialog.show();
                     }
-                }
+                } else onFailed();
             }
 
             @Override
             public void onFailed() {
-
+                bdLocation = null;//定位失败重置
             }
 
             @Override
@@ -250,12 +250,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         resetLoadedFlag();//加载中变量重置
         //获取城市
         city = AppSetting.getCity();
-        //title
-        if (city != null)
-            toolBar.setTitleText(city.getName());
-        //根据城市获取商圈信息
+        //title,根据城市获取商圈信息
         if (city != null) {
+            toolBar.setTitleText(city.getName());
             loadArea();
+        } else {
+            toolBar.setTitleText("请选择城市");
         }
         //加载推荐活动
         loadActivities();

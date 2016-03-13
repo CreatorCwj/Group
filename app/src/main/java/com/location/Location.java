@@ -23,6 +23,7 @@ public class Location {
         option.setCoorType("bd09ll");//可在地图上完美显示的坐标类型
         option.setScanSpan(0);//每次只获取一次
         option.setIsNeedAddress(true);//获取位置信息
+        option.disableCache(true);//禁止使用缓存定位
         locationClient.setLocOption(option);
     }
 
@@ -40,7 +41,6 @@ public class Location {
             public void onReceiveLocation(BDLocation bdLocation) {
                 if (locationListener != null && context != null && context instanceof Activity && !((Activity) context).isFinishing()) {
                     switch (bdLocation.getLocType()) {
-                        case BDLocation.TypeCacheLocation://缓存定位(经纬度有,其他信息没有)
                         case BDLocation.TypeNetWorkLocation://网络基站定位
                         case BDLocation.TypeGpsLocation://GPS定位
                         case BDLocation.TypeOffLineLocation://离线定位

@@ -352,9 +352,9 @@ public class LoadMoreRecyclerView extends RecyclerView {
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) getAdapter();
         if (adapter != null) {
             if (clearOtherSelected) {//清除其它选中项
-                clearSelected();
+                clearSelected(false);//稍后手动刷新
             }
-            adapter.setSelected(position, isSelected);//设置选中项
+            adapter.setSelected(position, isSelected, false);//设置选中项
             if (scrollTo) {//置顶该项
                 scrollTo(position);
             }
@@ -365,10 +365,10 @@ public class LoadMoreRecyclerView extends RecyclerView {
     /**
      * 清除选中项
      */
-    public void clearSelected() {
+    public void clearSelected(boolean isRefresh) {
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) getAdapter();
         if (adapter != null) {
-            adapter.clearSelected();
+            adapter.clearSelected(isRefresh);
         }
     }
 
@@ -412,8 +412,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
     public void resetData(List dataList) {
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) getAdapter();
         if (adapter != null) {
+            adapter.clearSelected(false);
             adapter.resetData(dataList);
-            adapter.clearSelected();
         }
     }
 
@@ -423,8 +423,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
     public void clearData() {
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) getAdapter();
         if (adapter != null) {
+            adapter.clearSelected(false);
             adapter.clearData();
-            adapter.clearSelected();
         }
     }
 

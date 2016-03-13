@@ -246,7 +246,7 @@ public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.
         //重置页数
         page.reset();
         //否则可以调用刷新,记住要恢复加载状态
-        resetCanLoadState();
+//        resetCanLoadState();//不用重置,每次更新数据时判断即可
         if (onRefreshListener != null) {
             onRefreshListener.onRefresh();
         }
@@ -328,8 +328,15 @@ public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.
      * @param dataList
      */
     private void judgeCanLoadMore(List dataList) {
-        if (dataList != null && dataList.size() < page.getPageSize()) {
+        if (dataList == null)
+            return;
+        if (dataList.size() < page.getPageSize()) {
             setCanLoadMore(false);
+        } else {//还可以加载更多(!!!如果初始时是允许加载的时候)
+            Boolean b = loadMoreRecyclerView.getCanLoadMoreInit();
+            if (b == null || b) {
+                setCanLoadMore(true);
+            }
         }
     }
 
@@ -397,7 +404,7 @@ public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.
      * 清除选中项
      */
     public void clearSelected() {
-        loadMoreRecyclerView.clearSelected();
+        loadMoreRecyclerView.clearSelected(true);
     }
 
     /**
@@ -459,7 +466,7 @@ public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.
         setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, total));
     }
 
-    private int measure(int index) {
+    public int measure(int index) {
         int total = 0;
         View view = loadMoreRecyclerView.getAdapter().onCreateViewHolder(loadMoreRecyclerView, loadMoreRecyclerView.getAdapter().getItemViewType(index)).itemView;
         if (view != null) {

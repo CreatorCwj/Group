@@ -35,7 +35,7 @@ public class SelectDialog extends BaseDialog {
 
     public SelectDialog(Context context, List<String> items) {
         super(context);
-        this.items = items;
+        this.items = items;//items可能动态改变,所以最后不要传参时用Arrays.asList方法生成list
     }
 
     public SelectDialog(Context context, int themeResId, List<String> items) {

@@ -11,7 +11,7 @@
         app:rightIcon="@drawable/scanner_icon"
         app:searchVisibility="true"
         app:textIconVisibility="true"
-        app:titleText="定位中" />
+        app:titleText="请选择城市" />
 
     <com.widget.rlrView.view.AutoRefreshSwipeView
         android:id="@+id/home_refresh_view"

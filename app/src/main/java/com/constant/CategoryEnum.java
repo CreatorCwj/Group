@@ -1,5 +1,7 @@
 package com.constant;
 
+import com.dao.generate.Category;
+
 /**
  * Created by cwj on 16/3/9.
  */
@@ -29,5 +31,13 @@ public enum CategoryEnum {
 
     public String getName() {
         return name;
+    }
+
+    public static CategoryEnum getEnumMap(Category category) {
+        for (CategoryEnum categoryEnum : CategoryEnum.values()) {
+            if (categoryEnum.getId() == category.getCategoryId())
+                return categoryEnum;
+        }
+        return null;
     }
 }
