@@ -1,16 +1,14 @@
 package com.model;
 
-import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
-import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by cwj on 16/3/4.
  */
+@SuppressWarnings("unchecked")
 public class User extends AVUser {
 
     public static final String DISPLAY_NAME = "displayName";
@@ -28,24 +26,12 @@ public class User extends AVUser {
         return getString(DISPLAY_NAME);
     }
 
-    public void addLikesById(List<String> categoryIds) {
-        List<Category> categories = new ArrayList<>();
-        for (String id : categoryIds) {
-            try {
-                categories.add(AVObject.createWithoutData(Category.class, id));
-            } catch (AVException e) {
-                e.printStackTrace();
-            }
-        }
-        addLikes(categories);
+    public void addLikes(List<Integer> categoryIds) {
+        addAllUnique(LIKES, categoryIds);
     }
 
-    public void addLikes(List<Category> categories) {
-        addAllUnique(LIKES, categories);
-    }
-
-    public List<Category> getLikes() {
-        return getList(LIKES, Category.class);
+    public List<Integer> getLikes() {
+        return getList(LIKES);
     }
 
     public void setImage(AVFile image) {

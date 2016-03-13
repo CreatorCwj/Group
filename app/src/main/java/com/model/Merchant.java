@@ -33,6 +33,7 @@ public class Merchant extends BaseModel {
     public static final String SUB_CATEGORY = "subCategory";
     public static final String AREA = "area";
     public static final String SUB_AREA = "subArea";
+    public static final String CITY_ID = "cityId";
 
     public void setName(String name) {
         put(NAME, name);
@@ -42,12 +43,12 @@ public class Merchant extends BaseModel {
         return getString(NAME);
     }
 
-    public void setAverage(String average) {
+    public void setAverage(int average) {
         put(AVERAGE, average);
     }
 
-    public String getAverage() {
-        return getString(AVERAGE);
+    public int getAverage() {
+        return getInt(AVERAGE);
     }
 
     public void setLocation(AVGeoPoint location) {
@@ -190,4 +191,11 @@ public class Merchant extends BaseModel {
         return null;
     }
 
+    public void setCityId(int cityId) {
+        put(CITY_ID, cityId);
+    }
+
+    public int getCityId() {
+        return getInt(CITY_ID);
+    }
 }

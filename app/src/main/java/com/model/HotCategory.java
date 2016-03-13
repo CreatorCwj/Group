@@ -7,15 +7,15 @@ import com.model.base.BaseModel;
 /**
  * Created by cwj on 16/3/4.
  */
-@AVClassName("Activity")
-public class Activity extends BaseModel {
+@AVClassName("HotCategory")
+public class HotCategory extends BaseModel {
 
-    public static final String CLASS_NAME = "Activity";
+    public static final String CLASS_NAME = "HotCategory";
 
     public static final String TITLE = "title";
     public static final String DESCRIBE = "describe";
-    public static final String WEB_URL = "webUrl";
     public static final String IMAGE = "image";
+    public static final String CATEGORY_ID = "categoryId";
     public static final String CITY_ID = "cityId";
 
     public void setTitle(String title) {
@@ -34,12 +34,12 @@ public class Activity extends BaseModel {
         return getString(DESCRIBE);
     }
 
-    public void setWebUrl(String webUrl) {
-        put(WEB_URL, webUrl);
+    public void setCategoryId(int categoryId) {
+        put(CATEGORY_ID, categoryId);
     }
 
-    public String getWebUrl() {
-        return getString(WEB_URL);
+    public int getCategoryId() {
+        return getInt(CATEGORY_ID);
     }
 
     public void setCityId(int cityId) {

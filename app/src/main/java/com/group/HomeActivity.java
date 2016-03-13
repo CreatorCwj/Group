@@ -48,7 +48,29 @@ public class HomeActivity extends BaseFragmentActivity {
         for (int i = 1; i < 4; i++) {
             fragments.add(TestFragment.getInstance("pos:" + i));
         }
-        new SlideFragmentAdapter<>(this, fragments, radioLayout, R.id.main_content);
+        new SlideFragmentAdapter<>(this, fragments, radioLayout, R.id.main_content, false);
+    }
+
+    private void loadCategory() {
+        if (!categoryHelper.isEmpty())
+            return;
+        AVQuery<Category> query = AVQuery.getQuery(Category.class);
+        query.setLimit(1000);
+        query.findInBackground(new SafeFindCallback<Category>(this) {
+
+            @Override
+            public void findResult(List<Category> objects, AVException e) {
+                if (e == null) {
+                    //转成本地类
+                    List<com.dao.generate.Category> categories = new ArrayList<>();
+                    for (Category category : objects) {
+                        categories.add(new com.dao.generate.Category(category.getCategoryId(), category.getName(), category.getParentId()));
+                    }
+                    //放入数据库
+                    categoryHelper.insertData(categories);
+                }
+            }
+        });
     }
 
     private void loadCategory() {

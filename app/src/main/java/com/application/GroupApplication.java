@@ -18,6 +18,7 @@ import com.model.Category;
 import com.model.CinemaHall;
 import com.model.City;
 import com.model.Collection;
+import com.model.HotCategory;
 import com.model.Merchant;
 import com.model.Movie;
 import com.model.MoviePlay;
@@ -55,7 +56,7 @@ public class GroupApplication extends Application {
         //Volley网络
         Network.initNetwork(getApplicationContext());
         //ImageLoader图片加载
-        ImageLoader.initConfig(getApplicationContext(), new ColorDrawable(Color.GRAY));
+        ImageLoader.initConfig(getApplicationContext(), new ColorDrawable(getResources().getColor(R.color.dividerColor)));
         //GreenDao本地数据库
         DaoManager.initGreenDao(getApplicationContext());
     }
@@ -79,6 +80,7 @@ public class GroupApplication extends Application {
         AVObject.registerSubclass(RewardLotteryRecord.class);
         AVObject.registerSubclass(Remark.class);
         AVObject.registerSubclass(Order.class);
+        AVObject.registerSubclass(HotCategory.class);
     }
 
     private void initPush() {

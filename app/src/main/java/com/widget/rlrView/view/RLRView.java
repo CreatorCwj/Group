@@ -18,12 +18,10 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import com.group.R;
-import com.util.UIUtils;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 import com.widget.rlrView.other.Page;
 import com.widget.rlrView.viewHolder.HeaderViewHolder;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -34,9 +32,8 @@ import java.util.List;
  * 支持置顶item的方法
  * 与{@link LoadMoreRecyclerView}联合使用
  */
-public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.OnRefreshListener, LoadMoreRecyclerView.OnLoadListener {
+public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.OnRefreshListener, LoadMoreRecyclerView.OnLoadListener {
 
-    private boolean autoRefresh = true;
     private LoadMoreRecyclerView loadMoreRecyclerView;
     private Page page;
     private Drawable emptyDrawable;
@@ -76,8 +73,6 @@ public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.On
     private void initAttrs(Context context, AttributeSet attrs) {
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RLRView);
-            //是否自动刷新
-            autoRefresh = typedArray.getBoolean(R.styleable.RLRView_autoRefresh, true);
             //empty显示
             int id = typedArray.getResourceId(R.styleable.RLRView_emptyView, -1);
             setEmptyView(id);
@@ -135,24 +130,14 @@ public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.On
     private void initProps() {
         this.setOnRefreshListener(this);
         loadMoreRecyclerView.setOnLoadListener(this);
-        //加载圈颜色,可在外部自己设置
-        this.setColorSchemeResources(
-                android.R.color.holo_red_light, android.R.color.holo_blue_light,
-                android.R.color.holo_orange_light);
-        //一定要设置offset,否则调用setRefreshing(true)时没有效果
-        this.setProgressViewOffset(false, -UIUtils.dp2px(getContext(), 24), UIUtils.dp2px(getContext(), 24));
-        //onResume回调后view会回调此方法来监听layout的改变
-        this.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                //可以允许刷新且自动刷新且没有在加载的时候调用刷新
-                if (isEnabled() && isAutoRefresh() && !isLoading()) {
-                    invokeRefresh();
-                }
-                //防止后续调用,调用一次后即可取消
-                RLRView.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
+    }
+
+    @Override
+    public void onViewCreated() {
+        //可以允许刷新且自动刷新且没有在加载的时候调用刷新
+        if (isEnabled() && isAutoRefresh() && !isLoading()) {
+            invokeRefresh();
+        }
     }
 
     /**
@@ -163,23 +148,6 @@ public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.On
      */
     public void setLayoutType(int layoutType, int columnCount, int orientation) {
         loadMoreRecyclerView.setLayoutType(layoutType, columnCount, orientation);
-    }
-
-    //通过反射拿到listener
-    private void invokeRefresh() {
-        try {
-            Field field = SwipeRefreshLayout.class.getDeclaredField("mListener");
-            field.setAccessible(true);
-            Object obj = field.get(this);
-            if (obj != null && obj instanceof SwipeRefreshLayout.OnRefreshListener) {
-                setRefreshing(true);
-                ((SwipeRefreshLayout.OnRefreshListener) obj).onRefresh();
-            }
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -208,25 +176,6 @@ public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.On
         if (!isEnabled())
             return;
         invokeRefresh();
-    }
-
-    /**
-     * 是否自动刷新
-     *
-     * @return
-     */
-    public boolean isAutoRefresh() {
-        return autoRefresh;
-    }
-
-    /**
-     * 设置是否允许第一次自动刷新
-     * 默认为允许自动刷新
-     *
-     * @param autoRefresh
-     */
-    public void setAutoRefresh(boolean autoRefresh) {
-        this.autoRefresh = autoRefresh;
     }
 
     /**
@@ -405,8 +354,9 @@ public class RLRView extends SwipeRefreshLayout implements SwipeRefreshLayout.On
         loadMoreRecyclerView.setCanLoadMore(canLoadMore);
     }
 
-    private void stopRefresh() {
-        setRefreshing(false);
+    @Override
+    public void stopRefresh() {
+        super.stopRefresh();
         //根据数据数量看是否显示空数据界面(0数据时显示),header也隐藏
         //空数据界面可以传入也可以在layout指定
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) loadMoreRecyclerView.getAdapter();
