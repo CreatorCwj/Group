@@ -73,26 +73,4 @@ public class HomeActivity extends BaseFragmentActivity {
         });
     }
 
-    private void loadCategory() {
-        if (!categoryHelper.isEmpty())
-            return;
-        AVQuery<Category> query = AVQuery.getQuery(Category.class);
-        query.setLimit(1000);
-        query.findInBackground(new SafeFindCallback<Category>(this) {
-
-            @Override
-            public void findResult(List<Category> objects, AVException e) {
-                if (e == null) {
-                    //转成本地类
-                    List<com.dao.generate.Category> categories = new ArrayList<>();
-                    for (Category category : objects) {
-                        categories.add(new com.dao.generate.Category(category.getCategoryId(), category.getName(), category.getParentId()));
-                    }
-                    //放入数据库
-                    categoryHelper.insertData(categories);
-                }
-            }
-        });
-    }
-
 }
