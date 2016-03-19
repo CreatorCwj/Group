@@ -3,6 +3,7 @@
     <dimen name="main_bottom_height">51dp</dimen>
     <dimen name="custom_toolbar_height">50dp</dimen>
     <dimen name="divider_height">0.5dp</dimen>
+    <dimen name="function_button_height">48dp</dimen>
 
 
     <!-- Default screen margins, per the Android Design guidelines. -->

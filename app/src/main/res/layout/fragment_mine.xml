@@ -1,0 +1,242 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="false"
+        app:searchVisibility="false"
+        app:textIconVisibility="false"
+        app:titleText="我的" />
+
+    <com.widget.SafeScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/mine_info_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="12dp">
+
+                    <com.widget.RoundImageView
+                        android:id="@+id/mine_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/no_user_icon"
+                        app:imageType="circle"
+                        app:strokeColor="#86DFD7"
+                        app:strokeWidth="2dp" />
+
+                    <TextView
+                        android:id="@+id/mine_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:layout_toRightOf="@id/mine_iv"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="一世红蓝魂"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/mine_lv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/mine_name"
+                        android:background="@drawable/lv_back"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="1.5dp"
+                        android:singleLine="true"
+                        android:text="Lv3"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/arrow_right_white" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/mine_group_voucher_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/alpha_back"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/mine_group_voucher_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="团购券"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/divider_height"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent" />
+
+                    <LinearLayout
+                        android:id="@+id/mine_point_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/alpha_back"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/mine_point_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="180"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="积分"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/divider_height"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent" />
+
+                    <LinearLayout
+                        android:id="@+id/mine_lottery_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/alpha_back"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/mine_lottery_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="3"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="抵用券"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.widget.FunctionButton
+                android:id="@+id/mine_my_order_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIcon="@drawable/order_icon"
+                app:functionName="我的订单" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/mine_my_collection_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIcon="@drawable/collection_icon"
+                app:functionName="我的收藏" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/mine_my_remark_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIcon="@drawable/remark_icon"
+                app:functionName="我的评论" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/mine_my_like_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionDescribe="个性化设置"
+                app:functionIcon="@drawable/mylike_icon"
+                app:functionName="我的最爱" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/mine_my_setting_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIcon="@drawable/setting_icon"
+                app:functionName="个人设置" />
+        </LinearLayout>
+    </com.widget.SafeScrollView>
+</LinearLayout>

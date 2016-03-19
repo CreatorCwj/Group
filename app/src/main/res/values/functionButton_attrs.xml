@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FunctionButton">
+        <attr name="functionIcon" format="reference" />
+        <attr name="functionIconVisibility" format="boolean" />
+        <attr name="functionName" format="string" />
+        <attr name="functionDescribe" format="string" />
+        <attr name="nextIconVisibility" format="boolean" />
+    </declare-styleable>
+</resources>
