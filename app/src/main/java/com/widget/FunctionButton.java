@@ -8,13 +8,16 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.group.R;
 import com.util.DrawableUtils;
+import com.util.DrawableUtils.LayerStateDrawable;
 import com.util.UIUtils;
 
 /**
@@ -67,26 +70,57 @@ public class FunctionButton extends LinearLayout {
     private void initView() {
         setOrientation(HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL);
-        int padding = UIUtils.dp2px(getContext(), 12);
-        setPadding(padding, 0, padding, 0);
+        int rlPadding = UIUtils.dp2px(getContext(), 12);
+        int tbPadding = UIUtils.dp2px(getContext(), 10);
+        setPadding(rlPadding, tbPadding, rlPadding, tbPadding);
         setBackground(getBackDrawable());
         addIconIv();
         addNameTv();
-        addDescribeTv();
-        addNextIcon();
+        View view = onCreateCustomView();
+        if (view == null) {//右边如果是自定义view的话就不加默认的了
+            addDescribeTv();
+            addNextIcon();
+        } else {//加入自定义的view
+            addCustomView(view);
+        }
+    }
+
+    private void addCustomView(View view) {
+        //由于要靠右,所以要先加入container
+        RelativeLayout container = new RelativeLayout(getContext());
+        addView(container, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        //customView
+        RelativeLayout.LayoutParams params;
+        if (view.getLayoutParams() != null) {
+            params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+        } else {
+            params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        }
+        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        params.addRule(RelativeLayout.CENTER_VERTICAL);
+        container.addView(view, params);
+        onCustomViewCreated(view);
+    }
+
+    protected void onCustomViewCreated(View view) {
+
+    }
+
+    protected View onCreateCustomView() {
+        return null;
     }
 
     private Drawable getBackDrawable() {
         int strokeWidth = getContext().getResources().getDimensionPixelSize(R.dimen.divider_height);
         int strokeColor = getContext().getResources().getColor(R.color.dividerColor);
-        Drawable drawable = DrawableUtils.getStateDrawable(new DrawableUtils.LayerStateDrawable(new int[]{DrawableUtils.STATE_PRESSED}, getContext().getResources().getColor(R.color.iconPressed), 0, strokeWidth, 0, strokeWidth, strokeColor)
-                , new DrawableUtils.LayerStateDrawable(new int[]{}, Color.WHITE, 0, strokeWidth, 0, strokeWidth, strokeColor));
-        return drawable;
+        return DrawableUtils.getStateDrawable(new LayerStateDrawable(new int[]{DrawableUtils.STATE_PRESSED}, getContext().getResources().getColor(R.color.iconPressed), 0, strokeWidth, 0, strokeWidth, strokeColor)
+                , new LayerStateDrawable(new int[]{}, Color.WHITE, 0, strokeWidth, 0, strokeWidth, strokeColor));
     }
 
     private void addNextIcon() {
         nextIv = new ImageView(getContext());
         LayoutParams params = new LayoutParams(UIUtils.dp2px(getContext(), 10), UIUtils.dp2px(getContext(), 10));
+        params.leftMargin = UIUtils.dp2px(getContext(), 12);
         nextIv.setImageResource(R.drawable.arrow_right);
         if (nextVisibility) {
             nextIv.setVisibility(VISIBLE);
@@ -100,7 +134,6 @@ public class FunctionButton extends LinearLayout {
         describeTv = new TextView(getContext());
         LayoutParams params = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.weight = 1;
-        params.rightMargin = UIUtils.dp2px(getContext(), 12);
         describeTv.setSingleLine(true);
         describeTv.setEllipsize(TextUtils.TruncateAt.END);
         describeTv.setGravity(Gravity.END);

@@ -369,11 +369,11 @@ public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.
         RecyclerViewAdapter adapter = (RecyclerViewAdapter) loadMoreRecyclerView.getAdapter();
         if (adapter != null && emptyDrawable != null) {
             if (adapter.getDataCount() == 0) {
-                setBackground(emptyDrawable);
+                loadMoreRecyclerView.setBackground(emptyDrawable);
                 if (loadMoreRecyclerView.getHeader() != null && loadMoreRecyclerView.getHeader().itemView.getVisibility() == VISIBLE)
                     loadMoreRecyclerView.getHeader().itemView.setVisibility(View.GONE);
             } else {
-                setBackground(null);
+                loadMoreRecyclerView.setBackground(null);
                 if (loadMoreRecyclerView.getHeader() != null && loadMoreRecyclerView.getHeader().itemView.getVisibility() == GONE)
                     loadMoreRecyclerView.getHeader().itemView.setVisibility(View.VISIBLE);
             }

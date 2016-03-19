@@ -101,7 +101,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
         <LinearLayout
             android:id="@+id/merchant_fragment_location_layout"
@@ -134,11 +135,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/merchant_fragment_location_layout"
-            android:background="@android:color/white"
             app:autoRefresh="true"
             app:canLoadMore="true"
             app:dividerColor="@color/dividerColor"
-            app:dividerHeight="@dimen/divider_height" />
+            app:dividerHeight="@dimen/divider_height"
+            app:emptyView="@layout/empty_data_view" />
 
         <FrameLayout
             android:id="@+id/filter_sort_content"

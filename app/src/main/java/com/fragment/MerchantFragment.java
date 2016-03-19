@@ -193,14 +193,12 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
         filterFragment = new FilterFragment();
         filterFragment.setControlView(filterTv);
         childFragments = Arrays.asList(categoryFragment, areaFragment, sortFragment, filterFragment);
-        //设置更新回调
+        //设置更新回调(点击都刷新,不判断是否改变了,方便)
         categoryFragment.setOnSelectListener(new BaseSortFilterFragment.OnSelectListener<Category>() {
             @Override
             public void onSelect(Category obj) {
-                if (category != null && !obj.equalFilter(category)) {//改变了则刷新
-                    category = obj;
-                    rlrView.refresh();
-                } else category = obj;
+                category = obj;
+                rlrView.refresh();
                 if (categoryFragment.getControlView() != null) {
                     categoryFragment.getControlView().setText(category.getName());
                 }
@@ -209,10 +207,8 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
         areaFragment.setOnSelectListener(new BaseSortFilterFragment.OnSelectListener<Area>() {
             @Override
             public void onSelect(Area obj) {
-                if (area != null && !obj.equalFilter(area)) {//改变了则刷新
-                    area = obj;
-                    rlrView.refresh();
-                } else area = obj;
+                area = obj;
+                rlrView.refresh();
                 if (areaFragment.getControlView() != null)
                     areaFragment.getControlView().setText(area.getName());
             }
@@ -220,10 +216,8 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
         sortFragment.setOnSelectListener(new BaseSortFilterFragment.OnSelectListener<SortEnum>() {
             @Override
             public void onSelect(SortEnum obj) {
-                if (sortEnum != null && !obj.equalFilter(sortEnum)) {//改变了则刷新
-                    sortEnum = obj;
-                    rlrView.refresh();
-                } else sortEnum = obj;
+                sortEnum = obj;
+                rlrView.refresh();
                 if (sortFragment.getControlView() != null)
                     sortFragment.getControlView().setText(sortEnum.getName());
             }
@@ -231,36 +225,11 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
         filterFragment.setOnMultiSelectListener(new BaseSortFilterFragment.OnMultiSelectListener<TagEnum>() {
             @Override
             public void onMultiSelect(List<TagEnum> obj) {
-                //改变了则刷新
-                if (tagChanged(obj)) {//改变了
-                    tagEnums = obj;
-                    rlrView.refresh();
-                } else {//没变
-                    tagEnums = obj;
-                }
+                tagEnums = obj;
+                rlrView.refresh();
                 //不改变textView的内容
             }
         });
-    }
-
-    private boolean tagChanged(List<TagEnum> selected) {
-        if ((tagEnums == null || tagEnums.size() <= 0) && selected.size() <= 0)//都空,未改变
-            return false;
-        if (tagEnums != null && tagEnums.size() == selected.size()) {//都有,但是全一样,未改变
-            for (TagEnum select : selected) {
-                boolean hasSame = false;
-                for (TagEnum tar : tagEnums) {
-                    if (select.equalFilter(tar)) {
-                        hasSame = true;
-                        break;
-                    }
-                }
-                if (!hasSame)
-                    return true;
-            }
-            return false;
-        }
-        return true;
     }
 
     @SuppressWarnings("unchecked")

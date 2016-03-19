@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="false"
+        app:searchVisibility="false"
+        app:textIconVisibility="false"
+        app:titleText="更多" />
+
+    <com.widget.SafeScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp">
+
+            <com.widget.SwitchFunctionButton
+                android:id="@+id/more_wifi_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIconVisibility="false"
+                app:functionName="非wifi下使用省流量模式" />
+
+            <com.widget.SwitchFunctionButton
+                android:id="@+id/more_push_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIconVisibility="false"
+                app:functionName="是否接收推送" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/more_cache_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionDescribe="2218K"
+                app:functionIconVisibility="false"
+                app:functionName="清除缓存"
+                app:nextIconVisibility="false" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/more_scanner_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIconVisibility="false"
+                app:functionName="扫一扫" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/more_update_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionDescribe="当前已是最新版本"
+                app:functionIconVisibility="false"
+                app:functionName="检查更新"
+                app:nextIconVisibility="false" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/more_advice_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionIconVisibility="false"
+                app:functionName="意见反馈" />
+
+            <com.widget.FunctionButton
+                android:id="@+id/more_about_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                app:functionIconVisibility="false"
+                app:functionName="关于APP" />
+
+        </LinearLayout>
+    </com.widget.SafeScrollView>
+</LinearLayout>

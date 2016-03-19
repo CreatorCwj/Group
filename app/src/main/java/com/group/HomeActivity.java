@@ -11,7 +11,7 @@ import com.dao.dbHelpers.CategoryHelper;
 import com.fragment.HomeFragment;
 import com.fragment.MerchantFragment;
 import com.fragment.MineFragment;
-import com.fragment.TestFragment;
+import com.fragment.MoreFragment;
 import com.google.inject.Inject;
 import com.group.base.BaseFragmentActivity;
 import com.leancloud.SafeFindCallback;
@@ -49,9 +49,7 @@ public class HomeActivity extends BaseFragmentActivity {
         fragments.add(new HomeFragment());
         fragments.add(new MerchantFragment());
         fragments.add(new MineFragment());
-        for (int i = 3; i < 4; i++) {
-            fragments.add(TestFragment.getInstance("pos:" + i));
-        }
+        fragments.add(new MoreFragment());
         new SlideFragmentAdapter<>(this, fragments, radioLayout, R.id.main_content, false);
     }
 
