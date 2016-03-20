@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -25,12 +27,21 @@ import com.util.UIUtils;
  */
 public class CancelableEditView extends LinearLayout {
 
+    private static final int DEFAULT = 0;
+    private static final int NUMBER = 1;
+    private static final int PASSWORD = 2;
+
+    private static final int NO_LENGTH_LIMIT = -1;
+
     private Drawable hintIcon;
     private Drawable cancelIcon;
 
     private int editTextSize;
     private int hintColor;
     private int editTextColor;
+
+    private int maxLength;
+    private int inputType;
 
     private String hintText;
 
@@ -65,6 +76,14 @@ public class CancelableEditView extends LinearLayout {
 
     public void setOnEditTextChangedListener(OnEditTextChangedListener listener) {
         this.listener = listener;
+    }
+
+    public String getText() {
+        return editText.getText().toString();
+    }
+
+    public void setText(String text) {
+        editText.setText(text);
     }
 
     private void manage() {
@@ -103,6 +122,8 @@ public class CancelableEditView extends LinearLayout {
         if (attrs != null) {
             TypedArray typedArray = getContext().obtainStyledAttributes(attrs,
                     R.styleable.CancelableEditView);
+            maxLength = typedArray.getInt(R.styleable.CancelableEditView_maximumLength, NO_LENGTH_LIMIT);
+            inputType = typedArray.getInt(R.styleable.CancelableEditView_textType, DEFAULT);
             hintIcon = typedArray.getDrawable(R.styleable.CancelableEditView_hintIcon);
             cancelIcon = typedArray.getDrawable(R.styleable.CancelableEditView_cancelIcon);
             editTextSize = typedArray.getDimensionPixelSize(R.styleable.CancelableEditView_editTextSize, UIUtils.sp2px(getContext(), 17));
@@ -116,8 +137,6 @@ public class CancelableEditView extends LinearLayout {
     private void initView() {
         setOrientation(HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL);
-        int padding = UIUtils.dp2px(getContext(), 5);
-        setPadding(padding, padding, padding, padding);
     }
 
     private void addChild() {
@@ -129,10 +148,12 @@ public class CancelableEditView extends LinearLayout {
     private void addHintIcon() {
         ImageView imageView = new ImageView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 2.5f);
-        params.rightMargin = UIUtils.dp2px(getContext(), 5);
+        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 7.5f);
+        params.rightMargin = params.leftMargin = UIUtils.dp2px(getContext(), 10);
         imageView.setAdjustViewBounds(true);
         imageView.setImageDrawable(hintIcon);
+        if (hintIcon == null)
+            imageView.setVisibility(GONE);
         addView(imageView, params);
     }
 
@@ -148,13 +169,35 @@ public class CancelableEditView extends LinearLayout {
         editText.setHintTextColor(hintColor);
         editText.setTextColor(editTextColor);
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, editTextSize);
+        setType();
+        setMaxLength();
         addView(editText, params);
+    }
+
+    private void setMaxLength() {
+        if (maxLength != NO_LENGTH_LIMIT) {
+            editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+        }
+    }
+
+    private void setType() {
+        switch (inputType) {
+            case DEFAULT:
+                break;
+            case NUMBER:
+                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                break;
+            case PASSWORD:
+                editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                break;
+        }
     }
 
     private void addCancelIcon() {
         cancelIv = new ImageView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 2.5f);
+        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 7.5f);
+        params.leftMargin = params.rightMargin = UIUtils.dp2px(getContext(), 10);
         cancelIv.setAdjustViewBounds(true);
         cancelIv.setImageDrawable(cancelIcon);
         cancelIv.setVisibility(INVISIBLE);

@@ -7,5 +7,10 @@
         <attr name="hintText" format="string" />
         <attr name="hintIcon" format="reference" />
         <attr name="cancelIcon" format="reference" />
+        <attr name="maximumLength" format="integer" />
+        <attr name="textType" format="enum">
+            <enum name="number" value="1" />
+            <enum name="password" value="2" />
+        </attr>
     </declare-styleable>
 </resources>

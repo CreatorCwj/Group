@@ -71,19 +71,37 @@
             android:paddingRight="8dp"
             android:scaleType="fitCenter" />
 
-        <ImageView
-            android:id="@+id/custom_toolbar_right_iv"
+        <RelativeLayout
+            android:id="@+id/custom_toolbar_right_layout"
             android:layout_width="45dp"
             android:layout_height="match_parent"
-            android:background="@drawable/icon_press"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:scaleType="fitCenter" />
+            android:background="@drawable/icon_press">
+
+            <TextView
+                android:id="@+id/custom_toolbar_right_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/custom_toolbar_right_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:scaleType="fitCenter" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.66dp"
-        android:background="#28AC9E"/>
+        android:background="#28AC9E" />
 </LinearLayout>

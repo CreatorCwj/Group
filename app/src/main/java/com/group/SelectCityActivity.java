@@ -28,9 +28,6 @@ public class SelectCityActivity extends BaseActivity {
     public static final String SELECT_CITY_KEY = "selectCity";
     public static final String FIRST_COME_KEY = "firstCome";
 
-    @InjectView(R.id.select_city_toolbar)
-    private CustomToolBar toolBar;
-
     @InjectView(R.id.select_city_lv)
     private IndexableListView listView;
 
@@ -67,19 +64,9 @@ public class SelectCityActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firstCome = getIntent().getBooleanExtra(FIRST_COME_KEY, false);
-        setToolbar();
         setListView();
         setSearch();
         setAllData();
-    }
-
-    private void setToolbar() {
-        toolBar.setBackClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     private void setSearch() {

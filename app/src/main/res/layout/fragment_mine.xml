@@ -41,7 +41,7 @@
                         android:layout_height="60dp"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="12dp"
-                        android:src="@drawable/no_user_icon"
+                        android:scaleType="centerCrop"
                         app:imageType="circle"
                         app:strokeColor="#86DFD7"
                         app:strokeWidth="2dp" />
@@ -56,7 +56,6 @@
                         android:ellipsize="end"
                         android:gravity="center"
                         android:singleLine="true"
-                        android:text="一世红蓝魂"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
 
@@ -71,7 +70,6 @@
                         android:gravity="center"
                         android:padding="1.5dp"
                         android:singleLine="true"
-                        android:text="Lv3"
                         android:textColor="@android:color/white"
                         android:textSize="12sp" />
 
@@ -105,7 +103,6 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:singleLine="true"
-                            android:text="0"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
 
@@ -142,7 +139,6 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:singleLine="true"
-                            android:text="180"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
 
@@ -179,7 +175,6 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:singleLine="true"
-                            android:text="3"
                             android:textColor="@android:color/white"
                             android:textSize="15sp" />
 

@@ -14,6 +14,8 @@ public class User extends AVUser {
     public static final String DISPLAY_NAME = "displayName";
     public static final String LIKES = "likes";
     public static final String IMAGE = "image";
+    public static final String GROWTH_VALUE = "growthValue";
+    public static final String POINT = "point";
 
     //做推送时候再说
     public static final String INSTALLATION_ID = "installationId";
@@ -47,5 +49,21 @@ public class User extends AVUser {
         if (image != null)
             return image.getUrl();
         return null;
+    }
+
+    public void setGrowthValue(int growthValue) {
+        put(GROWTH_VALUE, growthValue);
+    }
+
+    public int getGrowthValue() {
+        return getInt(GROWTH_VALUE);
+    }
+
+    public void setPoint(int point) {
+        put(POINT, point);
+    }
+
+    public int getPoint() {
+        return getInt(POINT);
     }
 }

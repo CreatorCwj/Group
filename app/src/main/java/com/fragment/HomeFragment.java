@@ -270,7 +270,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
     private void loadMyLike() {
-        //user的likes在登陆和更新(设置完我的喜爱)刷后新,此处用时不用再次fetch了
+        //user的likes在登录和更新(设置完我的喜爱)刷后新,此处用时不用再次fetch了
         List<Integer> likes = null;
         User user = AVUser.getCurrentUser(User.class);
         if (user != null) {

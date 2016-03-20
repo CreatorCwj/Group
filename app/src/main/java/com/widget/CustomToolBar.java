@@ -1,5 +1,6 @@
 package com.widget;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.group.R;
@@ -25,6 +27,8 @@ public class CustomToolBar extends FrameLayout {
     private TextView searchTextView;
     private ImageView leftIconIv;
     private ImageView rightIconIv;
+    private TextView rightTv;
+    private RelativeLayout rightLayout;
 
     private boolean backVisibility;
     private boolean textVisibility;
@@ -33,6 +37,7 @@ public class CustomToolBar extends FrameLayout {
     private String titleText;
     private Drawable leftIcon;
     private Drawable rightIcon;
+    private String rightText;
 
     public CustomToolBar(Context context) {
         this(context, null);
@@ -64,6 +69,7 @@ public class CustomToolBar extends FrameLayout {
             titleText = typedArray.getString(R.styleable.CustomToolBar_titleText);
             leftIcon = typedArray.getDrawable(R.styleable.CustomToolBar_leftIcon);
             rightIcon = typedArray.getDrawable(R.styleable.CustomToolBar_rightIcon);
+            rightText = typedArray.getString(R.styleable.CustomToolBar_rightText);
             typedArray.recycle();
         }
     }
@@ -75,6 +81,8 @@ public class CustomToolBar extends FrameLayout {
         searchTextView = (TextView) view.findViewById(R.id.custom_toolbar_search_tv);
         leftIconIv = (ImageView) view.findViewById(R.id.custom_toolbar_left_iv);
         rightIconIv = (ImageView) view.findViewById(R.id.custom_toolbar_right_iv);
+        rightTv = (TextView) view.findViewById(R.id.custom_toolbar_right_tv);
+        rightLayout = (RelativeLayout) view.findViewById(R.id.custom_toolbar_right_layout);
     }
 
     private void setView() {
@@ -84,6 +92,7 @@ public class CustomToolBar extends FrameLayout {
         setVisible(searchTextView, searchVisibility);
         setVisible(leftIconIv, false);
         setVisible(rightIconIv, false);
+        setVisible(rightTv, false);
         //TextView限长
         setTextView();
         //setIcon
@@ -91,13 +100,26 @@ public class CustomToolBar extends FrameLayout {
     }
 
     private void setIcon() {
+        //返回默认点击监听(关闭界面)
+        setBackClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getContext() instanceof Activity)
+                    ((Activity) getContext()).finish();
+            }
+        });
+        //左部功能按钮
         if (leftIcon != null) {
             leftIconIv.setImageDrawable(leftIcon);
             leftIconIv.setVisibility(VISIBLE);
         }
+        //右部功能图片优先,如果没有图片有文字则用文字
         if (rightIcon != null) {
             rightIconIv.setImageDrawable(rightIcon);
             rightIconIv.setVisibility(VISIBLE);
+        } else if (!TextUtils.isEmpty(rightText)) {
+            rightTv.setText(rightText);
+            rightTv.setVisibility(VISIBLE);
         }
     }
 
@@ -145,7 +167,7 @@ public class CustomToolBar extends FrameLayout {
     }
 
     /**
-     * 返回监听
+     * 返回监听(覆盖默认监听)
      */
     public void setBackClickListener(View.OnClickListener listener) {
         backIv.setOnClickListener(listener);
@@ -166,10 +188,10 @@ public class CustomToolBar extends FrameLayout {
     }
 
     /**
-     * 右边功能按钮点击监听
+     * 右边功能按钮点击监听(layout监听,包括图片和文字的情况)
      */
     public void setRightIconClickListener(View.OnClickListener listener) {
-        rightIconIv.setOnClickListener(listener);
+        rightLayout.setOnClickListener(listener);
     }
 
     /**

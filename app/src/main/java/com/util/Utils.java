@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -100,6 +101,13 @@ public class Utils {
         if (name.charAt(name.length() - 1) == '市')//XXX市的省略市
             name = name.substring(0, name.length() - 1);
         return name;
+    }
+
+    /**
+     * 检验手机号是否正确
+     */
+    public static boolean isCorrectPhone(String phone) {
+        return !TextUtils.isEmpty(phone) && phone.matches("^1(3|4|5|7|8)\\d{9}");
     }
 
 }

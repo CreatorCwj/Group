@@ -17,6 +17,7 @@ public class RewardLotteryRecord extends BaseModel {
     public static final String VOUCHER = "voucher";
     public static final String USER = "user";
     public static final String REWARD_LOTTERY = "rewardLottery";
+    public static final String STATUS = "status";
 
     public void setVoucher(String voucherId) {
         try {
@@ -74,5 +75,13 @@ public class RewardLotteryRecord extends BaseModel {
 
     public User getUser() {
         return getAVUser(USER, User.class);
+    }
+
+    public void setStatus(int status) {
+        put(STATUS, status);
+    }
+
+    public int getStatus() {
+        return getInt(STATUS);
     }
 }

@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/login_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:searchVisibility="false"
+        app:textIconVisibility="false"
+        app:titleText="注册" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginTop="16dp"
+        android:background="@color/dividerColor" />
+
+    <com.widget.CancelableEditView
+        android:id="@+id/sign_up_username_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:background="@android:color/white"
+        android:paddingLeft="16dp"
+        app:cancelIcon="@drawable/close_gray"
+        app:editTextColor="@color/black"
+        app:editTextSize="15sp"
+        app:hintColor="@color/gray"
+        app:hintText="手机号"
+        app:maximumLength="11"
+        app:textType="number" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.widget.CancelableEditView
+            android:id="@+id/sign_up_code_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/function_button_height"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            app:cancelIcon="@drawable/close_gray"
+            app:editTextColor="@color/black"
+            app:editTextSize="15sp"
+            app:hintColor="@color/gray"
+            app:hintText="6位数字验证码"
+            app:maximumLength="6"
+            app:textType="number" />
+
+        <TextView
+            android:id="@+id/sign_up_code_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="发送验证码"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <com.widget.CancelableEditView
+        android:id="@+id/sign_up_pwd_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:background="@android:color/white"
+        android:paddingLeft="16dp"
+        app:cancelIcon="@drawable/close_gray"
+        app:editTextColor="@color/black"
+        app:editTextSize="15sp"
+        app:hintColor="@color/gray"
+        app:hintText="密码"
+        app:textType="password" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="注册"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+</LinearLayout>

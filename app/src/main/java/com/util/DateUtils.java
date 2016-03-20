@@ -87,6 +87,16 @@ public class DateUtils {
     }
 
     /**
+     * 获取某天的几天以后的日期
+     *
+     * @param dates
+     * @return
+     */
+    public static Date getFutureDate(Date date, int dates) {
+        return getDate(date, dates);
+    }
+
+    /**
      * 获取几天以前的日期
      *
      * @param dates
@@ -94,6 +104,16 @@ public class DateUtils {
      */
     public static Date getPreviousDate(int dates) {
         return getDate(-dates);
+    }
+
+    /**
+     * 获取某天的几天以前的日期
+     *
+     * @param dates
+     * @return
+     */
+    public static Date getPreviousDate(Date date, int dates) {
+        return getDate(date, -dates);
     }
 
     /**
@@ -126,9 +146,13 @@ public class DateUtils {
 
     //获取前后某一天的日期
     private static Date getDate(int dates) {
-        Date today = getDate();
+        return getDate(getDate(), dates);
+    }
+
+    //日期某一天的前后某一天的日期
+    private static Date getDate(Date date, int dates) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
+        calendar.setTime(date);
         calendar.add(Calendar.DATE, dates);
         return calendar.getTime();
     }
