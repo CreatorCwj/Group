@@ -41,6 +41,9 @@ import roboguice.inject.InjectView;
 
 public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
 
+    public static final String NEED_BACK_KEY = "needBack";
+    public static final String INIT_CATEGORY_KEY = "initCategory";
+
     @InjectView(R.id.merchant_custom_toolbar)
     private CustomToolBar toolBar;
 
@@ -100,6 +103,21 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
         setLocation();
         //设置加载view
         setRLRView();
+        //接收init参数并更新
+        initArguments();
+    }
+
+    private void initArguments() {
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            toolBar.setBackVisibility(bundle.getBoolean(NEED_BACK_KEY, false));//是否需要返回
+            Category initCat = (Category) bundle.getSerializable(INIT_CATEGORY_KEY);
+            if (initCat != null) {//为null不用管
+                category = initCat;//init
+                categoryFilterTv.setText(category.getName());//changeText
+                categoryFragment.setFirstInit(category);
+            }
+        }
     }
 
     private void setRLRView() {
@@ -251,7 +269,7 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
                     filterFragment.initSelect((T) t);//每次点开后保留上次选择
                 }
             }
-        } else {
+        } else {//首次打开也可能要初始化
             getChildFragmentManager().beginTransaction()
                     .add(R.id.filter_sort_content, filterFragment).commitAllowingStateLoss();
         }

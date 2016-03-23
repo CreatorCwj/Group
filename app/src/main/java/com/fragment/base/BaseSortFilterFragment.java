@@ -46,6 +46,8 @@ public abstract class BaseSortFilterFragment<T extends BaseSortFilterModelInter>
     private BaseFilterRecyclerAdapter<T> firstAdapter;
     private BaseFilterRecyclerAdapter<T> subAdapter;
 
+    private T firstInit;//初次创建时的选中项
+
     private TextView controlView;//控制其开关的view
 
     private OnSelectListener<T> selectListener;
@@ -84,6 +86,17 @@ public abstract class BaseSortFilterFragment<T extends BaseSortFilterModelInter>
         setCheckable();//多选设置
         setRLRView();//设置rlrView数据
         updRLRView();//更新rlrView高度,个数
+        setFirstInit();//初次创建时的选中项
+    }
+
+    private void setFirstInit() {
+        if (!isCheckable() && firstInit != null) {//单选
+            initSelect(firstInit);
+        }
+    }
+
+    public void setFirstInit(T firstInit) {
+        this.firstInit = firstInit;
     }
 
     private void setCheckable() {

@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.LogInCallback;
 import com.group.base.BaseActivity;
+import com.leancloud.SafeLogInCallback;
 import com.model.User;
 import com.util.Utils;
 import com.widget.CancelableEditView;
@@ -93,9 +93,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
         //登录
         showLoadingDialog("登录中...");
-        AVUser.loginByMobilePhoneNumberInBackground(username, pwd, new LogInCallback<User>() {
+        AVUser.loginByMobilePhoneNumberInBackground(username, pwd, new SafeLogInCallback<User>(this) {
+
             @Override
-            public void done(User avUser, AVException e) {
+            public void logIn(User user, AVException e) {
                 if (e == null && AVUser.getCurrentUser(User.class) != null) {
                     Utils.showToast(LoginActivity.this, "登录成功");
                     finish();

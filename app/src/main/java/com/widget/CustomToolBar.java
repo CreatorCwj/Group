@@ -152,6 +152,13 @@ public class CustomToolBar extends FrameLayout {
     }
 
     /**
+     * 设置后退可见否
+     */
+    public void setBackVisibility(boolean visibility) {
+        setVisible(backIv, visibility);
+    }
+
+    /**
      * 设置文本
      */
     public void setTitleText(String titleText) {

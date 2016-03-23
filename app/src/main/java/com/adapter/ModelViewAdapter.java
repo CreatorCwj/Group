@@ -1,6 +1,7 @@
 package com.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 import com.constant.CategoryEnum;
 import com.dao.dbHelpers.CategoryHelper;
 import com.dao.generate.Category;
+import com.fragment.MerchantFragment;
 import com.google.inject.Inject;
+import com.group.MerchantActivity;
 import com.group.R;
 import com.util.Utils;
 import com.widget.radio.RadioView;
@@ -40,9 +43,10 @@ public class ModelViewAdapter extends RecyclerViewAdapter<CategoryEnum> {
                 @Override
                 public void onClick(View v) {
                     Category category = categoryHelper.findById(getDataItem(position).getId());
-                    if (category != null)
-                        Utils.showToast(context, category.getName());
-                    //打开搜索界面,传入相应的品类,null就为全部也要传过去
+                    //打开商家搜索界面,传入相应的品类,null就为全部也要传过去
+                    Intent intent = new Intent(context, MerchantActivity.class);
+                    intent.putExtra(MerchantFragment.INIT_CATEGORY_KEY, category);
+                    context.startActivity(intent);
                 }
             });
         }

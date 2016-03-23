@@ -11,8 +11,8 @@ import com.fragment.base.BaseFragment;
 import com.group.R;
 import com.group.ScannerActivity;
 import com.util.Utils;
-import com.widget.FunctionButton;
-import com.widget.SwitchFunctionButton;
+import com.widget.functionButton.FunctionButton;
+import com.widget.functionButton.SwitchFunctionButton;
 
 import roboguice.inject.InjectView;
 

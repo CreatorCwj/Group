@@ -23,7 +23,7 @@
             android:paddingBottom="12dp"
             android:paddingTop="12dp">
 
-            <com.widget.SwitchFunctionButton
+            <com.widget.functionButton.SwitchFunctionButton
                 android:id="@+id/more_wifi_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -31,7 +31,7 @@
                 app:functionIconVisibility="false"
                 app:functionName="非wifi下使用省流量模式" />
 
-            <com.widget.SwitchFunctionButton
+            <com.widget.functionButton.SwitchFunctionButton
                 android:id="@+id/more_push_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -39,7 +39,7 @@
                 app:functionIconVisibility="false"
                 app:functionName="是否接收推送" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/more_cache_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -49,7 +49,7 @@
                 app:functionName="清除缓存"
                 app:nextIconVisibility="false" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/more_scanner_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -57,7 +57,7 @@
                 app:functionIconVisibility="false"
                 app:functionName="扫一扫" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/more_update_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -67,7 +67,7 @@
                 app:functionName="检查更新"
                 app:nextIconVisibility="false" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/more_advice_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -75,7 +75,7 @@
                 app:functionIconVisibility="false"
                 app:functionName="意见反馈" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/more_about_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"

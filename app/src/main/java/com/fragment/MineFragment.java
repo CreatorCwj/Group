@@ -29,7 +29,7 @@ import com.model.RewardLottery;
 import com.model.RewardLotteryRecord;
 import com.model.User;
 import com.util.DateUtils;
-import com.widget.FunctionButton;
+import com.widget.functionButton.FunctionButton;
 import com.widget.RoundImageView;
 
 import java.util.Date;

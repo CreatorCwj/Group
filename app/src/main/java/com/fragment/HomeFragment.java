@@ -28,6 +28,8 @@ import com.dao.generate.Category;
 import com.dao.generate.City;
 import com.fragment.base.BaseFragment;
 import com.google.inject.Inject;
+import com.group.H5Activity;
+import com.group.MerchantActivity;
 import com.group.R;
 import com.group.ScannerActivity;
 import com.group.SelectCityActivity;
@@ -355,8 +357,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                         @Override
                         public void onClick(View v) {
                             Category category = categoryHelper.findById(hotCategory.getCategoryId());
-                            if (category != null)
-                                Utils.showToast(getActivity(), category.getName());
+                            //打开商家搜索界面,传入相应的品类,null就为全部也要传过去
+                            Intent intent = new Intent(getActivity(), MerchantActivity.class);
+                            intent.putExtra(MerchantFragment.INIT_CATEGORY_KEY, category);
+                            startActivity(intent);
                         }
                     });
                 }
@@ -396,7 +400,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                     itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Utils.showToast(getActivity(), activity.getWebUrl());
+                            Intent intent = new Intent(getActivity(), H5Activity.class);
+                            intent.putExtra(H5Activity.TITLE_KEY, activity.getTitle());
+                            intent.putExtra(H5Activity.URL_KEY, activity.getWebUrl());
+                            startActivity(intent);
                         }
                     });
                 }

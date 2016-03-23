@@ -192,7 +192,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/mine_my_order_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -200,7 +200,7 @@
                 app:functionIcon="@drawable/order_icon"
                 app:functionName="我的订单" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/mine_my_collection_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -208,7 +208,7 @@
                 app:functionIcon="@drawable/collection_icon"
                 app:functionName="我的收藏" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/mine_my_remark_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -216,7 +216,7 @@
                 app:functionIcon="@drawable/remark_icon"
                 app:functionName="我的评论" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/mine_my_like_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"
@@ -225,7 +225,7 @@
                 app:functionIcon="@drawable/mylike_icon"
                 app:functionName="我的最爱" />
 
-            <com.widget.FunctionButton
+            <com.widget.functionButton.FunctionButton
                 android:id="@+id/mine_my_setting_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/function_button_height"

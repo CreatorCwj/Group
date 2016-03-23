@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.LogInCallback;
-import com.avos.avoscloud.RequestMobileCodeCallback;
 import com.group.base.BaseActivity;
+import com.leancloud.SafeLogInCallback;
+import com.leancloud.SafeRequestMobileCodeCallback;
 import com.leancloud.SafeSaveCallback;
 import com.model.User;
 import com.util.DrawableUtils;
@@ -103,9 +103,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             return;
         }
         showLoadingDialog("正在注册...");
-        AVUser.signUpOrLoginByMobilePhoneInBackground(phone, code, User.class, new LogInCallback<User>() {
+        AVUser.signUpOrLoginByMobilePhoneInBackground(phone, code, User.class, new SafeLogInCallback<User>(this) {
+
             @Override
-            public void done(User user, AVException e) {
+            public void logIn(User user, AVException e) {
                 if (AVUser.getCurrentUser() != null)//***注册时不自动登录
                     AVUser.logOut();
                 if (e == null) {
@@ -147,9 +148,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         changeCodeState(false);
         //发送
         showLoadingDialog("正在发送验证码...");
-        AVOSCloud.requestSMSCodeInBackground(phone, new RequestMobileCodeCallback() {
+        AVOSCloud.requestSMSCodeInBackground(phone, new SafeRequestMobileCodeCallback(this) {
+
             @Override
-            public void done(AVException e) {
+            public void sendResult(AVException e) {
                 if (e == null) {
                     Utils.showToast(SignUpActivity.this, "验证码发送成功");
                     //发送成功,开始倒计时

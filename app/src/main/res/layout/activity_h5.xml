@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/h5_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:searchVisibility="false"
+        app:textIconVisibility="false"
+        app:titleText="title" />
+
+    <ProgressBar
+        android:id="@+id/h5_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/horizontal_bar_back" />
+
+    <com.widget.AdvancedWebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+</LinearLayout>
