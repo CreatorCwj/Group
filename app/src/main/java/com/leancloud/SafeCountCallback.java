@@ -38,4 +38,8 @@ public abstract class SafeCountCallback extends CountCallback {
     public void cancel() {
         this.canceled = true;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

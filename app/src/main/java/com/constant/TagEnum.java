@@ -2,6 +2,7 @@ package com.constant;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.widget.TextView;
 
@@ -16,11 +17,11 @@ import com.util.UIUtils;
 public enum TagEnum implements BaseSortFilterModelInter<TagEnum> {
 
     GROUP(0, Color.parseColor("#3FBAB0"), "团", "只看团购券"),//团购券
-    LOTTERY(1, Color.parseColor("#F3746C"), "满", "只看满减券"),//满减券
+    LOTTERY(1, Color.parseColor("#F3746C"), "券", "只看代金券"),//代金券
     NO_WAIT(2, Color.parseColor("#24C0AD"), "免", "免预订"),//免预订(美食,酒店)
     SEAT(3, Color.parseColor("#E75700"), "座", "可选座"),//选座(电影)
     SEND_POINT(4, Color.parseColor("#FD6A64"), "分", "送积分"),//送积分
-    SEND_LOTTERY(5, Color.parseColor("#FEA100"), "券", "送满减券");//送满减券
+    SEND_LOTTERY(5, Color.parseColor("#FEA100"), "满", "送满减券");//送满减券
 
 
     private int id;
@@ -70,6 +71,20 @@ public enum TagEnum implements BaseSortFilterModelInter<TagEnum> {
         textView.setText(tag.getName());
         textView.setBackground(DrawableUtils.getDrawable(UIUtils.dp2px(context, 3), tag.getColor()));
         return textView;
+    }
+
+    public static Drawable getTagBack(Context context, int tagId) {
+        TagEnum tag = TagEnum.getTagById(tagId);
+        if (tag == null)
+            return null;
+        return DrawableUtils.getDrawable(UIUtils.dp2px(context, 3), tag.getColor());
+    }
+
+    public static String getTagText(int tagId) {
+        TagEnum tag = TagEnum.getTagById(tagId);
+        if (tag == null)
+            return null;
+        return tag.getName();
     }
 
     @Override

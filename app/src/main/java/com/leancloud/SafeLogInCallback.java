@@ -37,4 +37,8 @@ public abstract class SafeLogInCallback<T extends AVUser> extends LogInCallback<
     public void cancel() {
         this.canceled = true;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

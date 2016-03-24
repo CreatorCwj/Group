@@ -52,6 +52,10 @@ public class SelectDialog extends BaseDialog {
         this.items.addAll(items);
     }
 
+    public List<String> getItems() {
+        return items;
+    }
+
     public ListView getListView() {
         return listView;
     }

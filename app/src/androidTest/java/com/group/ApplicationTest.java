@@ -3,6 +3,8 @@ package com.group;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
+import com.model.Remark;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +17,9 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void test() {
-        String[] strings = new String[]{"","",""};
-        List<String> list = Arrays.asList(strings);
-        list.add("1");
+        Remark remark = new Remark();
+        remark.setPoint(4);
+        remark.setVoucher("56f65d416be3ff005ceca37f");
+        remark.saveInBackground();
     }
 }

@@ -37,4 +37,8 @@ public abstract class SafeRequestMobileCodeCallback extends RequestMobileCodeCal
     public void cancel() {
         this.canceled = true;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

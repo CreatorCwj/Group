@@ -49,7 +49,6 @@ import com.widget.AdapterLinearLayout;
 import com.widget.CustomToolBar;
 import com.widget.HotCategoryItemView;
 import com.widget.dialog.MessageDialog;
-import com.widget.rlrView.adapter.RecyclerViewAdapter;
 import com.widget.rlrView.view.AutoRefreshSwipeView;
 import com.widget.rlrView.view.RLRView;
 
@@ -164,8 +163,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         allGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //跳转到全部团购查询界面
-                Utils.showToast(getActivity(), "查看全部团购");
+                //打开商家搜索界面,传入null,相当于查询全部
+                Intent intent = new Intent(getActivity(), MerchantActivity.class);
+                intent.putExtra(MerchantFragment.INIT_CATEGORY_KEY, (Category) null);
+                startActivity(intent);
             }
         });
     }
@@ -173,13 +174,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private void setMyLike() {
         merchantAdapter = new MerchantAdapter(getActivity());
         myLikeView.setAdapter(merchantAdapter);
-        myLikeView.setOnItemClickListener(new AdapterLinearLayout.OnItemClickListener() {
-            @Override
-            public void onItemClick(RecyclerViewAdapter adapter, int pos) {
-                Merchant merchant = merchantAdapter.getDataItem(pos);
-                Utils.showToast(getActivity(), merchant.getName());
-            }
-        });
+        myLikeView.setOnItemClickListener(merchantAdapter);
     }
 
     private void setHotCategory() {
@@ -318,9 +313,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 }
                 //reset到adapter里
                 myLikeView.resetData(objects);
-                for (int i = 0; i < 10; i++) {//mock10个
-                    myLikeView.addData(objects);
-                }
             }
         });
     }

@@ -123,6 +123,7 @@ public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshL
     private void setRLRView() {
         adapter = new MerchantAdapter(getActivity());
         rlrView.setAdapter(adapter);
+        rlrView.setOnItemClickListener(adapter);
         rlrView.setOnRefreshListener(this);
         rlrView.setOnLoadListener(this);
     }

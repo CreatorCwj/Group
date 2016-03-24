@@ -41,4 +41,8 @@ public abstract class SafeFindCallback<T extends AVObject> extends FindCallback<
     public void cancel() {
         this.canceled = true;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

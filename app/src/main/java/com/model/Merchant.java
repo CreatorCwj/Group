@@ -20,6 +20,7 @@ public class Merchant extends BaseModel {
     public static final String NAME = "name";
     public static final String AVERAGE = "average";
     public static final String LOCATION = "location";
+    public static final String ADDRESS = "address";
 
     public static final String POINT = "point";
     public static final String REMARK_NUM = "remarkNum";
@@ -43,6 +44,14 @@ public class Merchant extends BaseModel {
         return getString(NAME);
     }
 
+    public void setAddress(String address) {
+        put(ADDRESS, address);
+    }
+
+    public String getAddress() {
+        return getString(ADDRESS);
+    }
+
     public void setAverage(int average) {
         put(AVERAGE, average);
     }
@@ -59,12 +68,12 @@ public class Merchant extends BaseModel {
         return getAVGeoPoint(LOCATION);
     }
 
-    public void setPoint(int point) {
+    public void setPoint(double point) {
         put(POINT, point);
     }
 
-    public int getPoint() {
-        return getInt(POINT);
+    public double getPoint() {
+        return getDouble(POINT);
     }
 
     public void setRemarkNum(int remarkNum) {

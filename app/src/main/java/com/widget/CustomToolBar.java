@@ -3,6 +3,7 @@ package com.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -14,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.group.R;
+import com.util.DrawableUtils;
 import com.util.UIUtils;
 
 /**
@@ -75,6 +77,7 @@ public class CustomToolBar extends FrameLayout {
     }
 
     private void initView() {
+        setBackground(DrawableUtils.getLayerDrawable(getContext().getResources().getColor(R.color.colorPrimary), 0, 0, 0, UIUtils.dp2px(getContext(), 0.66f), Color.parseColor("#28AC9E")));
         View view = LayoutInflater.from(getContext()).inflate(R.layout.custom_toolbar, this);
         backIv = (ImageView) view.findViewById(R.id.custom_toolbar_back_iv);
         textView = (TextView) view.findViewById(R.id.custom_toolbar_tv);
@@ -206,6 +209,13 @@ public class CustomToolBar extends FrameLayout {
      */
     public void setTextClickListener(View.OnClickListener listener) {
         textView.setOnClickListener(listener);
+    }
+
+    /**
+     * 得到title的textView
+     */
+    public TextView getTitleTextView() {
+        return textView;
     }
 
 }

@@ -5,9 +5,12 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.model.base.BaseModel;
 
+import java.util.List;
+
 /**
  * Created by cwj on 16/3/4.
  */
+@SuppressWarnings("unchecked")
 @AVClassName("Voucher")
 public class Voucher extends BaseModel {
 
@@ -18,6 +21,11 @@ public class Voucher extends BaseModel {
     public static final String DESCRIBE = "describe";
     public static final String SELL_NUM = "sellNum";
     public static final String LIMIT_NUM = "limitNum";
+    public static final String IMAGES = "images";
+    public static final String TAG = "tag";
+
+    public static final String POINT = "point";
+    public static final String REMARK_NUM = "remarkNum";
 
     public static final String CURRENT_PRICE = "currentPrice";
     public static final String ORIGIN_PRICE = "originPrice";
@@ -81,6 +89,38 @@ public class Voucher extends BaseModel {
 
     public double getCurrentPrice() {
         return getDouble(CURRENT_PRICE);
+    }
+
+    public void setImages(List<String> images) {
+        put(IMAGES, images);
+    }
+
+    public List<String> getImages() {
+        return getList(IMAGES);
+    }
+
+    public void setTag(int tag) {
+        put(TAG, tag);
+    }
+
+    public int getTag() {
+        return getInt(TAG);
+    }
+
+    public void setPoint(double point) {
+        put(POINT, point);
+    }
+
+    public double getPoint() {
+        return getDouble(POINT);
+    }
+
+    public void setRemarkNum(int remarkNum) {
+        put(REMARK_NUM, remarkNum);
+    }
+
+    public int getRemarkNum() {
+        return getInt(REMARK_NUM);
     }
 
     public void setMerchant(String merchantId) {

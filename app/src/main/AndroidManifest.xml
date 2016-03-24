@@ -94,6 +94,10 @@
             android:name=".MerchantActivity"
             android:label="@string/title_activity_merchant" >
         </activity>
+        <activity
+            android:name=".MerchantDetailActivity"
+            android:label="@string/title_activity_merchant_detail" >
+        </activity>
     </application>
 
 </manifest>

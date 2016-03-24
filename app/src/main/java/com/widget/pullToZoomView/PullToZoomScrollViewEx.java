@@ -185,6 +185,9 @@ public class PullToZoomScrollViewEx extends PullToZoomBase<ScrollView> {
             mContentView = mLayoutInflater.inflate(contentViewResId, null, false);
         }
 
+        int headerWidth = a.getDimensionPixelSize(R.styleable.PullToZoomView_headerWidth, ViewGroup.LayoutParams.MATCH_PARENT);
+        int headerHeight = a.getDimensionPixelSize(R.styleable.PullToZoomView_headerHeight, ViewGroup.LayoutParams.WRAP_CONTENT);
+        setHeaderViewSize(headerWidth, headerHeight);
         mRootContainer.addView(mHeaderContainer);
         if (mContentView != null) {
             mRootContainer.addView(mContentView);

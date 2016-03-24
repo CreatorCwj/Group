@@ -5,7 +5,10 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.SaveCallback;
+import com.leancloud.SafeSaveCallback;
 import com.model.base.BaseModel;
+import com.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +57,37 @@ public class Remark extends BaseModel {
             }
         }
         return images;
+    }
+
+    /**
+     * 先存图片后保存数据(一定要用这个方法)
+     *
+     * @param callback:一定是SafeSaveCallback类型的
+     */
+    public void saveInBackground(final SafeSaveCallback callback) {
+        List<AVFile> files = getList(IMAGES);
+        if (files == null || files.size() <= 0) {//无图片直接保存
+            super.saveInBackground(callback);
+        } else {//先保存图片(已有的也没事,不会改变)
+            try {
+                saveFileBeforeSave(files, false, new SafeSaveCallback(callback.getContext()) {
+                    @Override
+                    public void save(AVException e) {
+                        if (e != null) {//失败
+                            Utils.showToast(this.getContext(), "上传图片失败");
+                            callback.save(e);//报错
+                        } else {//成功,后续保存
+                            Remark.this.saveInBackground((SaveCallback) callback);
+                        }
+                    }
+                });
+            } catch (AVException e) {
+                e.printStackTrace();
+                //异常出错
+                Utils.showToast(callback.getContext(), "上传图片失败");
+                callback.save(e);//报错
+            }
+        }
     }
 
     public void setVoucher(String voucherId) {

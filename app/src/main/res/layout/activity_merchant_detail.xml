@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.widget.pullToZoomView.PullToZoomScrollViewEx
+        android:id="@+id/merchant_detail_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:contentView="@layout/merchant_detail_content"
+        app:headerHeight="185dp"
+        app:headerView="@layout/merchant_detail_header"
+        app:zoomView="@layout/merchant_detail_zoom" />
+
+    <com.widget.CustomToolBar
+        android:id="@+id/merchant_detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:leftIcon="@drawable/share_icon"
+        app:rightIcon="@drawable/collect_icon"
+        app:searchVisibility="false"
+        app:textIconVisibility="false" />
+
+</RelativeLayout>

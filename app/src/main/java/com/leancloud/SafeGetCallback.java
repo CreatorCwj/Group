@@ -39,4 +39,8 @@ public abstract class SafeGetCallback<T extends AVObject> extends GetCallback<T>
     public void cancel() {
         this.canceled = true;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

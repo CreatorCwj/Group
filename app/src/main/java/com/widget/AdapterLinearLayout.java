@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.group.R;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
+import com.widget.rlrView.view.LoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +31,7 @@ public class AdapterLinearLayout<T> extends LinearLayout {
     private int dividerHeight;
     private int dividerColor;
 
-    private OnItemClickListener listener;
-
-    public interface OnItemClickListener {
-        void onItemClick(RecyclerViewAdapter adapter, int pos);
-    }
+    private LoadMoreRecyclerView.OnItemClickListener listener;
 
     public AdapterLinearLayout(Context context) {
         this(context, null);
@@ -127,7 +124,7 @@ public class AdapterLinearLayout<T> extends LinearLayout {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onItemClick(adapter, i);
+                    listener.onItemClick(i);
                 }
             }
         });
@@ -140,7 +137,7 @@ public class AdapterLinearLayout<T> extends LinearLayout {
         return view;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
+    public void setOnItemClickListener(LoadMoreRecyclerView.OnItemClickListener listener) {
         this.listener = listener;
     }
 }

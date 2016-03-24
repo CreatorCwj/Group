@@ -5,6 +5,8 @@
         <attr name="contentView" format="reference" />
         <attr name="zoomView" format="reference" />
         <attr name="isHeaderParallax" format="boolean" />
+        <attr name="headerWidth" format="dimension"/>
+        <attr name="headerHeight" format="dimension"/>
     </declare-styleable>
     <item name="scrollview" type="id"/>
 </resources>

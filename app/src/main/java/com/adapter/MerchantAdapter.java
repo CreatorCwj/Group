@@ -1,6 +1,7 @@
 package com.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
@@ -15,20 +16,24 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
 import com.constant.TagEnum;
 import com.dao.generate.City;
+import com.group.MerchantDetailActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
 import com.model.Category;
 import com.model.Merchant;
 import com.util.AppSetting;
 import com.util.UIUtils;
+import com.util.Utils;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
+import com.widget.rlrView.view.LoadMoreRecyclerView;
 
 import java.util.List;
 
 /**
  * Created by cwj on 16/3/11.
+ * 商家列表adapter
  */
-public class MerchantAdapter extends RecyclerViewAdapter<Merchant> {
+public class MerchantAdapter extends RecyclerViewAdapter<Merchant> implements LoadMoreRecyclerView.OnItemClickListener {
 
     private BDLocation bdLocation;
 
@@ -49,7 +54,7 @@ public class MerchantAdapter extends RecyclerViewAdapter<Merchant> {
             viewHolder.categoryTv.setText(getCategoryName(merchant));
             viewHolder.areaTv.setText(getAreaName(merchant));
             viewHolder.distanceTv.setText(getDistance(merchant));
-            viewHolder.ratingBar.setRating(merchant.getPoint());
+            viewHolder.ratingBar.setRating((float) merchant.getPoint());
             setTags(viewHolder.tagsLayout, merchant.getTags());//添加tag
             if (merchant.getImages() != null && merchant.getImages().size() > 0)
                 ImageLoader.displayImage(viewHolder.imageView, merchant.getImages().get(0));//加载第一张图片
@@ -116,6 +121,14 @@ public class MerchantAdapter extends RecyclerViewAdapter<Merchant> {
     @Override
     public RecyclerView.ViewHolder onCreateHolder(ViewGroup parent, int viewType) {
         return new MerchantViewHolder(layoutInflater.inflate(R.layout.merchant_item, parent, false));
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        //跳转到详情页
+        Intent intent = new Intent(context, MerchantDetailActivity.class);
+        intent.putExtra(MerchantDetailActivity.MERCHANT_KEY, getDataItem(position));
+        context.startActivity(intent);
     }
 
     public class MerchantViewHolder extends RecyclerView.ViewHolder {

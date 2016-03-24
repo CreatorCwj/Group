@@ -17,4 +17,5 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_h5">H5Activity</string>
     <string name="title_activity_merchant">MerchantActivity</string>
+    <string name="title_activity_merchant_detail">MerchantDetailActivity</string>
 </resources>

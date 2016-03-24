@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Created by cwj on 15/12/3.
@@ -108,6 +109,21 @@ public class Utils {
      */
     public static boolean isCorrectPhone(String phone) {
         return !TextUtils.isEmpty(phone) && phone.matches("^1(3|4|5|7|8)\\d{9}");
+    }
+
+    /**
+     * 将list集合组成string
+     */
+    public static String getListStr(List<String> list, String space) {
+        if (list == null || list.size() <= 0)
+            return "";
+        StringBuilder sb = new StringBuilder("");
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
+            if (i != list.size() - 1)//末尾不加space
+                sb.append(space);
+        }
+        return sb.toString();
     }
 
 }

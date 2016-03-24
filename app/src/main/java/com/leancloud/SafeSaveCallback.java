@@ -38,4 +38,8 @@ public abstract class SafeSaveCallback extends SaveCallback {
     public void cancel() {
         this.canceled = true;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }
