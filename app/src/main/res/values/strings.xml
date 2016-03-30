@@ -18,4 +18,5 @@
     <string name="title_activity_h5">H5Activity</string>
     <string name="title_activity_merchant">MerchantActivity</string>
     <string name="title_activity_merchant_detail">MerchantDetailActivity</string>
+    <string name="title_activity_voucher_detail">VoucherDetailActivity</string>
 </resources>

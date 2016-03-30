@@ -98,6 +98,10 @@
             android:name=".MerchantDetailActivity"
             android:label="@string/title_activity_merchant_detail" >
         </activity>
+        <activity
+            android:name=".VoucherDetailActivity"
+            android:label="@string/title_activity_voucher_detail" >
+        </activity>
     </application>
 
 </manifest>

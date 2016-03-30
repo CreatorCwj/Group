@@ -17,9 +17,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void test() {
-        Remark remark = new Remark();
-        remark.setPoint(4);
-        remark.setVoucher("56f65d416be3ff005ceca37f");
-        remark.saveInBackground();
+        String str = "a:";
+        String s1 = str.substring(str.indexOf(":")+1);
     }
 }

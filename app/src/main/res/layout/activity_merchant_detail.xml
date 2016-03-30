@@ -11,7 +11,7 @@
         app:contentView="@layout/merchant_detail_content"
         app:headerHeight="185dp"
         app:headerView="@layout/merchant_detail_header"
-        app:zoomView="@layout/merchant_detail_zoom" />
+        app:zoomView="@layout/detail_zoom" />
 
     <com.widget.CustomToolBar
         android:id="@+id/merchant_detail_toolbar"

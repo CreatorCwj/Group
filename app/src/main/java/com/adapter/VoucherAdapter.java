@@ -1,6 +1,7 @@
 package com.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
@@ -11,10 +12,12 @@ import android.widget.TextView;
 
 import com.constant.TagEnum;
 import com.group.R;
+import com.group.VoucherDetailActivity;
 import com.imageLoader.ImageLoader;
 import com.model.Voucher;
 import com.util.UIUtils;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
+import com.widget.rlrView.view.LoadMoreRecyclerView;
 
 import java.util.List;
 
@@ -22,7 +25,7 @@ import java.util.List;
  * Created by cwj on 16/3/26.
  * 优惠券adapter
  */
-public class VoucherAdapter extends RecyclerViewAdapter<Voucher> {
+public class VoucherAdapter extends RecyclerViewAdapter<Voucher> implements LoadMoreRecyclerView.OnItemClickListener {
 
     public VoucherAdapter(Context context) {
         super(context);
@@ -90,6 +93,14 @@ public class VoucherAdapter extends RecyclerViewAdapter<Voucher> {
     @Override
     public RecyclerView.ViewHolder onCreateHolder(ViewGroup parent, int viewType) {
         return new VoucherViewHolder(layoutInflater.inflate(R.layout.voucher_item, parent, false));
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        //跳转到voucher详情页
+        Intent intent = new Intent(context, VoucherDetailActivity.class);
+        intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, getDataItem(position));
+        context.startActivity(intent);
     }
 
     public class VoucherViewHolder extends RecyclerView.ViewHolder {

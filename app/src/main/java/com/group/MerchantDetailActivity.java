@@ -17,6 +17,7 @@ import com.adapter.RemarkAdapter;
 import com.adapter.VoucherAdapter;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
+import com.dao.generate.City;
 import com.group.base.BaseActivity;
 import com.imageLoader.ImageLoader;
 import com.leancloud.SafeCountCallback;
@@ -25,6 +26,7 @@ import com.leancloud.SafeGetCallback;
 import com.model.Merchant;
 import com.model.Remark;
 import com.model.Voucher;
+import com.util.AppSetting;
 import com.util.Utils;
 import com.widget.AdapterLinearLayout;
 import com.widget.CustomToolBar;
@@ -49,7 +51,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     @InjectView(R.id.merchant_detail_scrollView)
     private PullToZoomScrollViewEx scrollView;
 
-    @InjectView(R.id.merchant_detail_iv)
+    @InjectView(R.id.detail_iv)
     private ImageView imageView;
 
     @InjectView(R.id.merchant_detail_pv)
@@ -175,9 +177,11 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
             toolBar.setTitleText(merchant.getName());
             nameTv.setText(merchant.getName());
             //image
-            pointView.setText(merchant.getImages().size() + "张");//imagesNum
-            if (merchant.getImages().size() > 0)//load first img
-                ImageLoader.displayImage(imageView, merchant.getImages().get(0));
+            if (merchant.getImages() != null) {
+                pointView.setText(merchant.getImages().size() + "张");//imagesNum
+                if (merchant.getImages().size() > 0)//load first img
+                    ImageLoader.displayImage(imageView, merchant.getImages().get(0));
+            }
             //point
             ratingBar.setRating((float) merchant.getPoint());
             pointTv.setText(ratingBar.getRating() + "分");
@@ -208,7 +212,12 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
         nearbyView.setOnItemClickListener(merchantAdapter);
         //load
         AVQuery<Merchant> query = AVQuery.getQuery(Merchant.class);
+        City city = AppSetting.getCity();
+        if (city != null)//加上城市筛选更准确
+            query.whereEqualTo(Merchant.CITY_ID, city.getCityId());
         query.whereNear(Merchant.LOCATION, merchant.getLocation());//附近的(排好序的)
+        //取消当前重复的商家
+        query.whereNotEqualTo(Merchant.OBJECT_ID, merchant.getObjectId());
         query.limit(10);
         query.include(Merchant.CATEGORY);
         query.include(Merchant.SUB_CATEGORY);
@@ -222,12 +231,6 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
                     return;
                 }
                 //reset到adapter里
-                for (Merchant tmp : objects) {//取消重复当前的商家(附近肯定包含当前的)
-                    if (tmp.getObjectId().equals(merchant.getObjectId())) {
-                        objects.remove(tmp);
-                        break;
-                    }
-                }
                 nearbyView.resetData(objects);
             }
         });
@@ -240,6 +243,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
         //adapter view
         remarkAdapter = new RemarkAdapter(this);
         remarkView.setAdapter(remarkAdapter);
+        remarkView.setOnItemClickListener(remarkAdapter);
         loadRemark();
     }
 
@@ -256,7 +260,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
             @Override
             public void getResult(Remark object, AVException e) {
                 if (e != null || object == null) {
-                    Utils.showToast(MerchantDetailActivity.this, "获取评论失败");
+                    remarkView.clearData();
                 } else {
                     List<Remark> objs = new ArrayList<>();
                     objs.add(object);
@@ -279,6 +283,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     private void loadVoucher() {
         voucherAdapter = new VoucherAdapter(this);
         voucherView.setAdapter(voucherAdapter);
+        voucherView.setOnItemClickListener(voucherAdapter);
         AVQuery<Voucher> query = AVQuery.getQuery(Voucher.class);
         query.whereEqualTo(Voucher.MERCHANT, merchant);
         query.orderByDescending(Voucher.TAG);//降序排列,满减券在团购券前面
@@ -288,8 +293,8 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
         query.findInBackground(new SafeFindCallback<Voucher>(this) {
             @Override
             public void findResult(List<Voucher> objects, AVException e) {
-                if (e != null || objects == null) {//error
-                    Utils.showToast(MerchantDetailActivity.this, "获取优惠券失败");
+                if (e != null || objects == null || objects.size() <= 0) {//错误或空数据清空
+                    voucherView.clearData();
                 } else {
                     voucherView.resetData(objects);
                 }
@@ -300,7 +305,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.merchant_detail_iv:
+            case R.id.detail_iv:
             case R.id.merchant_detail_pv://打开大图模式
                 openBigBitmap();
                 break;
@@ -334,7 +339,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     }
 
     private void openBigBitmap() {
-        if (merchant == null)
+        if (merchant == null || merchant.getImages() == null || merchant.getImages().size() <= 0)//无图不打开
             return;
         Intent intent = new Intent(MerchantDetailActivity.this, BigBitmapActivity.class);
         ArrayList<String> urls = new ArrayList<>();

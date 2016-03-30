@@ -21,7 +21,6 @@
             android:layout_marginBottom="13dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="彤德莱火锅(大学城店)"
             android:textColor="@color/black"
             android:textSize="17sp" />
 
@@ -49,8 +48,8 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="2.0分"
-                android:textColor="#FD9B00"
+                android:text="0.0分"
+                android:textColor="@color/orange"
                 android:textSize="14sp" />
 
             <TextView
@@ -61,7 +60,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical|start"
                 android:singleLine="true"
-                android:text="人均¥58"
+                android:text="人均¥"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -103,7 +102,6 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical|start"
                 android:singleLine="true"
-                android:text="西青区工一号路与工南交口"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -153,7 +151,7 @@
             android:layout_height="wrap_content"
             android:isIndicator="true"
             android:numStars="5"
-            android:rating="2.3"
+            android:rating="0"
             android:stepSize="0.1" />
 
         <TextView
@@ -164,8 +162,8 @@
             android:ellipsize="end"
             android:gravity="center"
             android:singleLine="true"
-            android:text="2.3分"
-            android:textColor="#FD9B00"
+            android:text="0.0分"
+            android:textColor="@color/orange"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -192,7 +190,7 @@
         android:gravity="center"
         android:padding="13dp"
         android:singleLine="true"
-        android:text="查看全部1045条评论"
+        android:text="查看全部评论"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp" />
 
@@ -225,7 +223,6 @@
         android:lineSpacingExtra="6dp"
         android:padding="13dp"
         android:singleLine="false"
-        android:text="免费wifi  停车场  儿童娱乐区"
         android:textColor="@color/black"
         android:textSize="15sp" />
 

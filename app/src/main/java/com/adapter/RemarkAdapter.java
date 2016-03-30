@@ -17,6 +17,7 @@ import com.model.User;
 import com.util.DateUtils;
 import com.widget.RemarkImagesLayout;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
+import com.widget.rlrView.view.LoadMoreRecyclerView;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ import java.util.List;
  * Created by cwj on 16/3/27.
  * 评论adapter
  */
-public class RemarkAdapter extends RecyclerViewAdapter<Remark> {
+public class RemarkAdapter extends RecyclerViewAdapter<Remark> implements LoadMoreRecyclerView.OnItemClickListener{
 
     public RemarkAdapter(Context context) {
         super(context);
@@ -66,6 +67,11 @@ public class RemarkAdapter extends RecyclerViewAdapter<Remark> {
     @Override
     public RecyclerView.ViewHolder onCreateHolder(ViewGroup parent, int viewType) {
         return new RemarkViewHolder(layoutInflater.inflate(R.layout.remark_item, parent, false));
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 
     public class RemarkViewHolder extends RecyclerView.ViewHolder {
