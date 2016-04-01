@@ -1,0 +1,159 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:searchVisibility="false"
+        app:textIconVisibility="false"
+        app:titleText="提交订单" />
+
+    <com.widget.SafeScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/submit_order_price_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginTop="12dp"
+                app:functionDescribe="¥0"
+                app:functionDescribeColor="@color/black"
+                app:functionDescribeSize="18sp"
+                app:functionIconVisibility="false"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameMaxWidth="220dp"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="false" />
+
+            <com.widget.functionButton.SelectNumFunctionButton
+                android:id="@+id/submit_order_num_fb"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                app:functionBackHaveTop="false"
+                app:functionIconVisibility="false"
+                app:functionName="数量"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="false" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/submit_order_subtotal_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionBackHaveTop="false"
+                app:functionDescribe="¥0"
+                app:functionDescribeColor="@color/red"
+                app:functionDescribeSize="18sp"
+                app:functionIconVisibility="false"
+                app:functionName="小计"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="false" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/submit_order_used_lottery_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                app:functionDescribe="使用抵用券"
+                app:functionDescribeColor="@color/black"
+                app:functionDescribeSize="16sp"
+                app:functionIconVisibility="false"
+                app:functionName="抵用券"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="true" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/submit_order_total_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionBackHaveTop="false"
+                app:functionDescribe="¥0"
+                app:functionDescribeColor="@color/red"
+                app:functionDescribeSize="18sp"
+                app:functionIconVisibility="false"
+                app:functionName="总计"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="false" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/dividerColor" />
+
+            <!-- 联系手机号(username)-->
+            <com.widget.CancelableEditView
+                android:id="@+id/submit_order_phone_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:background="@android:color/white"
+                android:paddingLeft="13dp"
+                app:cancelIcon="@drawable/close_gray"
+                app:editTextSize="16sp"
+                app:hintText="联系人手机号"
+                app:maximumLength="11"
+                app:textType="number" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:layout_marginBottom="12dp"
+                android:background="@color/dividerColor" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/submit_order_send_lottery_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                app:functionDescribe="无"
+                app:functionDescribeColor="@color/green"
+                app:functionDescribeSize="18sp"
+                app:functionIconVisibility="false"
+                app:functionName="送满减券"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="false" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/submit_order_send_point_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionBackHaveTop="false"
+                app:functionDescribe="无"
+                app:functionDescribeColor="@color/green"
+                app:functionDescribeSize="18sp"
+                app:functionIconVisibility="false"
+                app:functionName="送积分"
+                app:functionNameColor="@color/gray_dark"
+                app:functionNameSize="16sp"
+                app:nextIconVisibility="false" />
+        </LinearLayout>
+    </com.widget.SafeScrollView>
+
+    <TextView
+        android:id="@+id/submit_order_submit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="17dp"
+        android:text="提交订单"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+</LinearLayout>

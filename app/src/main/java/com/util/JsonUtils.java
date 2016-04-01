@@ -63,4 +63,16 @@ public class JsonUtils {
         }
         return result;
     }
+
+    /**
+     * 将String类型转成json对象,取出某值
+     */
+    public static String getStrValueOfJsonStr(String jsonStr, String key) {
+        try {
+            JsonElement ele = new JsonParser().parse(jsonStr);
+            return ele.getAsJsonObject().get(key).getAsString();
+        } catch (Exception e) {
+            return "";
+        }
+    }
 }

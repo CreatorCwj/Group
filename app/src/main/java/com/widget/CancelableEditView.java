@@ -196,7 +196,7 @@ public class CancelableEditView extends LinearLayout {
     private void addCancelIcon() {
         cancelIv = new ImageView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 7.5f);
+        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 10);
         params.leftMargin = params.rightMargin = UIUtils.dp2px(getContext(), 10);
         cancelIv.setAdjustViewBounds(true);
         cancelIv.setImageDrawable(cancelIcon);

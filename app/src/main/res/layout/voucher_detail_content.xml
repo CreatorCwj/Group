@@ -120,7 +120,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="#91D200"
+            android:textColor="@color/green"
             android:textSize="15sp"
             android:visibility="gone" />
 
@@ -131,7 +131,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="#91D200"
+            android:textColor="@color/green"
             android:textSize="15sp"
             android:visibility="gone" />
     </LinearLayout>

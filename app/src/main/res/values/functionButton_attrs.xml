@@ -6,5 +6,12 @@
         <attr name="functionName" format="string" />
         <attr name="functionDescribe" format="string" />
         <attr name="nextIconVisibility" format="boolean" />
+        <attr name="functionNameSize" format="dimension"/>
+        <attr name="functionDescribeSize" format="dimension"/>
+        <attr name="functionNameColor" format="color"/>
+        <attr name="functionDescribeColor" format="color"/>
+        <attr name="functionNameMaxWidth" format="dimension"/>
+        <attr name="functionBackHaveTop" format="boolean"/>
+        <attr name="functionBackHaveBottom" format="boolean"/>
     </declare-styleable>
 </resources>

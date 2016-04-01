@@ -27,6 +27,7 @@ public class Remark extends BaseModel {
     public static final String IMAGES = "images";
     public static final String VOUCHER = "voucher";
     public static final String USER = "user";
+    public static final String ORDER = "order";
 
     public void setContent(String content) {
         put(CONTENT, content);
@@ -105,6 +106,27 @@ public class Remark extends BaseModel {
     public Voucher getVoucher() {
         try {
             return getAVObject(VOUCHER, Voucher.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void setOrder(String orderId) {
+        try {
+            put(ORDER, AVObject.createWithoutData(Order.class, orderId));
+        } catch (AVException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setOrder(Order order) {
+        put(ORDER, order);
+    }
+
+    public Order getOrder() {
+        try {
+            return getAVObject(ORDER, Order.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

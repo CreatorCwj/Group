@@ -282,6 +282,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
 
     private void loadVoucher() {
         voucherAdapter = new VoucherAdapter(this);
+        voucherAdapter.setMerchant(merchant);
         voucherView.setAdapter(voucherAdapter);
         voucherView.setOnItemClickListener(voucherAdapter);
         AVQuery<Voucher> query = AVQuery.getQuery(Voucher.class);
@@ -304,6 +305,8 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+        if (merchant == null)
+            return;
         switch (v.getId()) {
             case R.id.detail_iv:
             case R.id.merchant_detail_pv://打开大图模式
@@ -322,7 +325,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     }
 
     private void call() {
-        if (merchant == null || merchant.getPhones() == null || merchant.getPhones().size() <= 0)
+        if (merchant.getPhones() == null || merchant.getPhones().size() <= 0)
             return;
         if (callDialog == null) {
             callDialog = new SelectDialog(this, merchant.getPhones());
@@ -339,7 +342,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     }
 
     private void openBigBitmap() {
-        if (merchant == null || merchant.getImages() == null || merchant.getImages().size() <= 0)//无图不打开
+        if (merchant.getImages() == null || merchant.getImages().size() <= 0)//无图不打开
             return;
         Intent intent = new Intent(MerchantDetailActivity.this, BigBitmapActivity.class);
         ArrayList<String> urls = new ArrayList<>();

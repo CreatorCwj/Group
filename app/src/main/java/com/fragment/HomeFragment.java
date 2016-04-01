@@ -322,6 +322,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         if (city != null)
             query.whereEqualTo(HotCategory.CITY_ID, city.getCityId());
         query.limit(hotCategories.size());
+        query.orderByDescending(HotCategory.UPDATED_AT);
         query.findInBackground(new SafeFindCallback<HotCategory>(getActivity()) {
             @Override
             public void findResult(List<HotCategory> objects, AVException e) {
@@ -365,6 +366,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         if (city != null)
             query.whereEqualTo(com.model.Activity.CITY_ID, city.getCityId());
         query.limit(activities.size());
+        query.orderByDescending(com.model.Activity.UPDATED_AT);
         query.findInBackground(new SafeFindCallback<com.model.Activity>(getActivity()) {
             @Override
             public void findResult(List<com.model.Activity> objects, AVException e) {

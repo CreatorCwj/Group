@@ -23,6 +23,7 @@ public class Voucher extends BaseModel {
     public static final String LIMIT_NUM = "limitNum";
     public static final String IMAGES = "images";
     public static final String TAG = "tag";
+    public static final String SPARE_NUM = "spareNum";
 
     public static final String POINT = "point";
     public static final String REMARK_NUM = "remarkNum";
@@ -65,6 +66,14 @@ public class Voucher extends BaseModel {
 
     public int getSellNum() {
         return getInt(SELL_NUM);
+    }
+
+    public void setSpareNum(int spareNum) {
+        put(SPARE_NUM, spareNum);
+    }
+
+    public int getSpareNum() {
+        return getInt(SPARE_NUM);
     }
 
     public void setLimitNum(int limitNum) {

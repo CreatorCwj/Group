@@ -9,7 +9,8 @@ public enum OrderStateEnum {
     WAIT_PAY(0, "待支付"),
     WAIT_USE(1, "待使用"),
     USED(2, "已使用"),
-    OVERDUE(3, "已过期");
+    REMARKED(3, "已评价"),
+    OVERDUE(4, "已过期");
 
     private int id;
     private String state;

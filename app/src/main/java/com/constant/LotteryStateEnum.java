@@ -7,7 +7,8 @@ package com.constant;
 public enum LotteryStateEnum {
 
     WAIT_USE(0, "待使用"),
-    USED(1, "已使用");
+    USED(1, "已使用"),
+    OVERDUE(2, "已过期");
 
     private int id;
     private String state;

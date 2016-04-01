@@ -23,7 +23,6 @@ import com.model.Category;
 import com.model.Merchant;
 import com.util.AppSetting;
 import com.util.UIUtils;
-import com.util.Utils;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 import com.widget.rlrView.view.LoadMoreRecyclerView;
 

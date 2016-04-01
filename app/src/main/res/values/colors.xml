@@ -10,4 +10,6 @@
     <color name="dividerColor">#D8D8D8</color>
     <color name="iconPressed">#26000000</color>
     <color name="orange">#FD9B00</color>
+    <color name="red">#EA5725</color>
+    <color name="green">#91D200</color>
 </resources>

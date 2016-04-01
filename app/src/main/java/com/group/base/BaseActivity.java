@@ -15,7 +15,7 @@ public abstract class BaseActivity extends RoboActivity {
 
     protected final Object NETWORK_TAG = this;
 
-    private LoadingDialog loadingDialog;
+    protected LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

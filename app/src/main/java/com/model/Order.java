@@ -19,9 +19,8 @@ public class Order extends BaseModel {
     public static final String PHONE = "phone";
     public static final String LIMIT_MINUTE = "limitMinute";
     public static final String STATUS = "status";
+    public static final String USED_LOTTERY = "usedLottery";
 
-    public static final String REWARD_POINT = "rewardPoint";
-    public static final String REWARD_LOTTERY = "rewardLottery";
     public static final String VOUCHER = "voucher";
     public static final String USER = "user";
 
@@ -65,42 +64,21 @@ public class Order extends BaseModel {
         return getInt(STATUS);
     }
 
-    public void setRewardPoint(String rewardPointId) {
+    public void setUsedLottery(String usedLotteryId) {
         try {
-            put(REWARD_POINT, AVObject.createWithoutData(RewardPoint.class, rewardPointId));
+            put(USED_LOTTERY, AVObject.createWithoutData(RewardLotteryRecord.class, usedLotteryId));
         } catch (AVException e) {
             e.printStackTrace();
         }
     }
 
-    public void setRewardPoint(RewardPoint rewardPoint) {
-        put(REWARD_POINT, rewardPoint);
+    public void setUsedLottery(RewardLotteryRecord usedLottery) {
+        put(USED_LOTTERY, usedLottery);
     }
 
-    public RewardPoint getRewardPoint() {
+    public RewardLotteryRecord getUsedLottery() {
         try {
-            return getAVObject(REWARD_POINT, RewardPoint.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void setRewardLottery(String rewardLotteryId) {
-        try {
-            put(REWARD_LOTTERY, AVObject.createWithoutData(RewardLottery.class, rewardLotteryId));
-        } catch (AVException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setRewardLottery(RewardLottery rewardLottery) {
-        put(REWARD_LOTTERY, rewardLottery);
-    }
-
-    public RewardLottery getRewardLottery() {
-        try {
-            return getAVObject(REWARD_LOTTERY, RewardLottery.class);
+            return getAVObject(USED_LOTTERY, RewardLotteryRecord.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

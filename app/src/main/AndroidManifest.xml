@@ -102,6 +102,10 @@
             android:name=".VoucherDetailActivity"
             android:label="@string/title_activity_voucher_detail" >
         </activity>
+        <activity
+            android:name=".SubmitOrderActivity"
+            android:label="@string/title_activity_submit_order" >
+        </activity>
     </application>
 
 </manifest>

@@ -42,6 +42,7 @@ import roboguice.inject.InjectView;
 public class VoucherDetailActivity extends BaseActivity implements View.OnClickListener {
 
     public static final String VOUCHER_KEY = "voucher";
+    public static final String MERCHANT_KEY = "merchant";
 
     @InjectView(R.id.voucher_detail_scrollView)
     private PullToZoomScrollViewEx scrollView;
@@ -126,8 +127,7 @@ public class VoucherDetailActivity extends BaseActivity implements View.OnClickL
 
     private void receiveIntent() {
         voucher = getIntent().getParcelableExtra(VOUCHER_KEY);
-        if (voucher != null)
-            merchant = voucher.getMerchant();//voucher当初获取时肯定include商家了
+        merchant = getIntent().getParcelableExtra(MERCHANT_KEY);
     }
 
     private void setToolbar() {
@@ -334,16 +334,26 @@ public class VoucherDetailActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        if (voucher == null || merchant == null)
+            return;
         switch (v.getId()) {
             case R.id.detail_iv://看图
                 openBigBitmap();
                 break;
             case R.id.voucher_detail_purchase_tv://抢购
             case R.id.voucher_detail_top_purchase_tv:
+                enterToSubmitOrder();
                 break;
             case R.id.voucher_detail_all_remark_tv://全部评论
                 break;
         }
+    }
+
+    private void enterToSubmitOrder() {
+        Intent intent = new Intent(VoucherDetailActivity.this, SubmitOrderActivity.class);
+        intent.putExtra(SubmitOrderActivity.VOUCHER_KEY, voucher);
+        intent.putExtra(SubmitOrderActivity.MERCHANT_KEY, merchant);
+        startActivity(intent);
     }
 
     private void openBigBitmap() {

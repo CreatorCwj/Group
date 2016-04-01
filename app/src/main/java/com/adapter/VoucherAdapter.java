@@ -14,6 +14,7 @@ import com.constant.TagEnum;
 import com.group.R;
 import com.group.VoucherDetailActivity;
 import com.imageLoader.ImageLoader;
+import com.model.Merchant;
 import com.model.Voucher;
 import com.util.UIUtils;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
@@ -26,6 +27,8 @@ import java.util.List;
  * 优惠券adapter
  */
 public class VoucherAdapter extends RecyclerViewAdapter<Voucher> implements LoadMoreRecyclerView.OnItemClickListener {
+
+    private Merchant merchant;
 
     public VoucherAdapter(Context context) {
         super(context);
@@ -100,7 +103,12 @@ public class VoucherAdapter extends RecyclerViewAdapter<Voucher> implements Load
         //跳转到voucher详情页
         Intent intent = new Intent(context, VoucherDetailActivity.class);
         intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, getDataItem(position));
+        intent.putExtra(VoucherDetailActivity.MERCHANT_KEY, merchant);
         context.startActivity(intent);
+    }
+
+    public void setMerchant(Merchant merchant) {
+        this.merchant = merchant;
     }
 
     public class VoucherViewHolder extends RecyclerView.ViewHolder {

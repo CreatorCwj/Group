@@ -32,6 +32,15 @@ public class FunctionButton extends LinearLayout {
     private String describe;
     private boolean nextVisibility;
 
+    private int nameSize;
+    private int describeSize;
+    private int nameColor;
+    private int describeColor;
+
+    private int nameMaxWidth;
+    private boolean haveTop;
+    private boolean haveBottom;
+
     private ImageView iconIv;
     private ImageView nextIv;
     private TextView nameTv;
@@ -63,6 +72,13 @@ public class FunctionButton extends LinearLayout {
             name = typedArray.getString(R.styleable.FunctionButton_functionName);
             describe = typedArray.getString(R.styleable.FunctionButton_functionDescribe);
             nextVisibility = typedArray.getBoolean(R.styleable.FunctionButton_nextIconVisibility, true);
+            nameSize = typedArray.getDimensionPixelSize(R.styleable.FunctionButton_functionNameSize, UIUtils.sp2px(getContext(), 14));
+            describeSize = typedArray.getDimensionPixelSize(R.styleable.FunctionButton_functionDescribeSize, UIUtils.sp2px(getContext(), 13));
+            nameColor = typedArray.getColor(R.styleable.FunctionButton_functionNameColor, getContext().getResources().getColor(R.color.black));
+            describeColor = typedArray.getColor(R.styleable.FunctionButton_functionDescribeColor, getContext().getResources().getColor(R.color.gray));
+            nameMaxWidth = typedArray.getDimensionPixelSize(R.styleable.FunctionButton_functionNameMaxWidth, -1);
+            haveTop = typedArray.getBoolean(R.styleable.FunctionButton_functionBackHaveTop, true);
+            haveBottom = typedArray.getBoolean(R.styleable.FunctionButton_functionBackHaveBottom, true);
             typedArray.recycle();
         }
     }
@@ -113,8 +129,8 @@ public class FunctionButton extends LinearLayout {
     private Drawable getBackDrawable() {
         int strokeWidth = getContext().getResources().getDimensionPixelSize(R.dimen.divider_height);
         int strokeColor = getContext().getResources().getColor(R.color.dividerColor);
-        return DrawableUtils.getStateDrawable(new LayerStateDrawable(new int[]{DrawableUtils.STATE_PRESSED}, getContext().getResources().getColor(R.color.iconPressed), 0, strokeWidth, 0, strokeWidth, strokeColor)
-                , new LayerStateDrawable(new int[]{}, Color.WHITE, 0, strokeWidth, 0, strokeWidth, strokeColor));
+        return DrawableUtils.getStateDrawable(new LayerStateDrawable(new int[]{DrawableUtils.STATE_PRESSED}, getContext().getResources().getColor(R.color.iconPressed), 0, (haveTop ? strokeWidth : 0), 0, (haveBottom ? strokeWidth : 0), strokeColor)
+                , new LayerStateDrawable(new int[]{}, Color.WHITE, 0, (haveTop ? strokeWidth : 0), 0, (haveBottom ? strokeWidth : 0), strokeColor));
     }
 
     private void addNextIcon() {
@@ -137,8 +153,8 @@ public class FunctionButton extends LinearLayout {
         describeTv.setSingleLine(true);
         describeTv.setEllipsize(TextUtils.TruncateAt.END);
         describeTv.setGravity(Gravity.END);
-        describeTv.setTextColor(getContext().getResources().getColor(R.color.gray));
-        describeTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        describeTv.setTextColor(describeColor);
+        describeTv.setTextSize(TypedValue.COMPLEX_UNIT_PX, describeSize);
         addView(describeTv, params);
         describeTv.setText(describe);
     }
@@ -149,8 +165,10 @@ public class FunctionButton extends LinearLayout {
         nameTv.setSingleLine(true);
         nameTv.setEllipsize(TextUtils.TruncateAt.END);
         nameTv.setGravity(Gravity.CENTER_VERTICAL);
-        nameTv.setTextColor(getContext().getResources().getColor(R.color.black));
-        nameTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        nameTv.setTextColor(nameColor);
+        nameTv.setTextSize(TypedValue.COMPLEX_UNIT_PX, nameSize);
+        if (nameMaxWidth != -1)
+            nameTv.setMaxWidth(nameMaxWidth);
         addView(nameTv, params);
         nameTv.setText(name);
     }
@@ -175,5 +193,14 @@ public class FunctionButton extends LinearLayout {
 
     public String getDescribe() {
         return describe;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        nameTv.setText(name);
+    }
+
+    public String getName() {
+        return name;
     }
 }
