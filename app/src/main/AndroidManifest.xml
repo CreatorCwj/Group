@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.group" >
+    package="com.group">
 
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -29,11 +29,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".WelcomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/WelcomeTheme" >
+            android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +52,7 @@
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver" >
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -72,40 +72,35 @@
 
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home" >
-        </activity>
+            android:label="@string/title_activity_home" />
         <activity
             android:name=".SelectCityActivity"
-            android:label="@string/title_activity_select_city" >
-        </activity>
+            android:label="@string/title_activity_select_city" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up" >
-        </activity>
+            android:label="@string/title_activity_sign_up" />
         <activity
             android:name=".H5Activity"
-            android:label="@string/title_activity_h5" >
-        </activity>
+            android:label="@string/title_activity_h5" />
         <activity
             android:name=".MerchantActivity"
-            android:label="@string/title_activity_merchant" >
-        </activity>
+            android:label="@string/title_activity_merchant" />
         <activity
             android:name=".MerchantDetailActivity"
-            android:label="@string/title_activity_merchant_detail" >
-        </activity>
+            android:label="@string/title_activity_merchant_detail" />
         <activity
             android:name=".VoucherDetailActivity"
-            android:label="@string/title_activity_voucher_detail" >
-        </activity>
+            android:label="@string/title_activity_voucher_detail" />
         <activity
             android:name=".SubmitOrderActivity"
-            android:label="@string/title_activity_submit_order" >
-        </activity>
+            android:label="@string/title_activity_submit_order" />
+        <activity android:name=".PointRecordActivity" />
+        <activity android:name=".LotteryRecordActivity" />
+        <activity android:name=".BaseLotteryListActivity" />
+        <activity android:name=".SelectLotteryActivity" />
     </application>
 
 </manifest>

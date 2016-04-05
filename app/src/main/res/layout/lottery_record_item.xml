@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_press"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lottery_record_merchant_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_press"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/lottery_record_category_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/lottery_record_merchant_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="彤德莱火锅(大学城店)"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/arrow_right" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/lottery_record_price_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/lv_back"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="¥"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lottery_record_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="40"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lottery_record_use_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="满50可用"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="支付红包"
+                android:textColor="@color/gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="App下单使用,在线支付专享"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/lottery_record_time_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="获得时间:2016-03-04"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/lottery_record_status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="已过期"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/lottery_record_end_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:singleLine="true"
+            android:text="有效期至:2016-04-16"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</LinearLayout>

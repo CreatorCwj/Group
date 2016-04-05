@@ -17,6 +17,11 @@ public class RewardPointRecord extends BaseModel {
     public static final String VOUCHER = "voucher";
     public static final String USER = "user";
     public static final String REWARD_POINT = "rewardPoint";
+    public static final String NUM = "num";
+
+    public int getNum() {
+        return getInt(NUM);
+    }
 
     public void setVoucher(String voucherId) {
         try {

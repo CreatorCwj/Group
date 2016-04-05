@@ -126,6 +126,17 @@ public class CustomToolBar extends FrameLayout {
         }
     }
 
+    /**
+     * 设置右侧文字按钮
+     */
+    public void setRightText(String rightText) {
+        this.rightText = rightText;
+        rightIconIv.setImageDrawable(null);
+        rightIconIv.setVisibility(GONE);
+        rightTv.setText(rightText);
+        rightTv.setVisibility(VISIBLE);
+    }
+
     private void setTextView() {
         textView.setText(getText(titleText));
         //右边按钮

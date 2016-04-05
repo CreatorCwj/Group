@@ -22,6 +22,7 @@ import com.dao.generate.Category;
 import com.dao.generate.City;
 import com.dao.generate.NearbyArea;
 import com.fragment.base.BaseFragment;
+import com.fragment.base.BaseSlideFragment;
 import com.fragment.base.BaseSortFilterFragment;
 import com.group.R;
 import com.leancloud.SafeFindCallback;
@@ -39,7 +40,7 @@ import java.util.List;
 
 import roboguice.inject.InjectView;
 
-public class MerchantFragment extends BaseFragment implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
+public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
 
     public static final String NEED_BACK_KEY = "needBack";
     public static final String INIT_CATEGORY_KEY = "initCategory";

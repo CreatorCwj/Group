@@ -13,31 +13,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.constant.GradeEnum;
 import com.constant.LotteryStateEnum;
 import com.constant.OrderStateEnum;
-import com.fragment.base.BaseFragment;
+import com.fragment.base.BaseSlideFragment;
 import com.group.LoginActivity;
+import com.group.LotteryRecordActivity;
+import com.group.PointRecordActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
 import com.leancloud.SafeCountCallback;
-import com.leancloud.SafeFindCallback;
+import com.leancloud.SafeGetCallback;
 import com.model.Order;
-import com.model.RewardLottery;
 import com.model.RewardLotteryRecord;
 import com.model.User;
-import com.util.DateUtils;
-import com.widget.functionButton.FunctionButton;
 import com.widget.RoundImageView;
-
-import java.util.Date;
-import java.util.List;
+import com.widget.functionButton.FunctionButton;
+import com.widget.radio.RadioView;
 
 import roboguice.inject.InjectView;
 
-public class MineFragment extends BaseFragment implements View.OnClickListener {
+public class MineFragment extends BaseSlideFragment implements View.OnClickListener {
 
     @InjectView(R.id.mine_info_layout)
     private RelativeLayout infoLayout;
@@ -69,8 +68,17 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     @InjectView(R.id.mine_lottery_tv)
     private TextView lotteryTv;
 
-    @InjectView(R.id.mine_my_order_btn)
-    private FunctionButton myOrderBtn;
+    @InjectView(R.id.wait_pay_rv)
+    private RadioView waitPayRv;
+
+    @InjectView(R.id.wait_use_rv)
+    private RadioView waitUseRv;
+
+    @InjectView(R.id.wait_remark_rv)
+    private RadioView waitRemarkRv;
+
+    @InjectView(R.id.finish_rv)
+    private RadioView finishRv;
 
     @InjectView(R.id.mine_my_collection_btn)
     private FunctionButton myCollectionBtn;
@@ -97,31 +105,48 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        //根据用户登录状态更新显示内容
-        User user = AVUser.getCurrentUser(User.class);
-        setImage(user);
-        setUsername(user);
-        setLv(user);
-        setVoucherNum(user);
-        setPointNum(user);
-        setLotteryNum(user);
+    public void onSlideFragmentPause() {
+        super.onSlideFragmentPause();
     }
 
-    private void setLotteryNum(User user) {
+    @Override
+    public void onSlideFragmentResume() {
+        super.onSlideFragmentResume();
+        //根据用户登录状态更新显示内容
+        User user = AVUser.getCurrentUser(User.class);
+        if (user != null) {
+            user.fetchInBackground(new SafeGetCallback<AVObject>(getActivity()) {//获取最新的用户对象
+                @Override
+                public void getResult(AVObject object, AVException e) {
+                    setImage();
+                    setUsername();
+                    setLv();
+                    setPointNum();
+                }
+            });
+        } else {
+            setImage();
+            setUsername();
+            setLv();
+            setPointNum();
+        }
+        setVoucherNum();//未使用团购券
+        setLotteryNum();//未使用抵用券
+    }
+
+    private void setLotteryNum() {
+        User user = AVUser.getCurrentUser(User.class);
         if (user == null) {
             lotteryTv.setText("0");
         } else {//获取待使用的抵用券数量
             AVQuery<RewardLotteryRecord> query = AVQuery.getQuery(RewardLotteryRecord.class);
             query.whereEqualTo(RewardLotteryRecord.USER, user);
-            query.whereEqualTo(RewardLotteryRecord.STATUS, LotteryStateEnum.WAIT_USE);
-            query.include(RewardLotteryRecord.REWARD_LOTTERY);
-            query.findInBackground(new SafeFindCallback<RewardLotteryRecord>(getActivity()) {
+            query.whereEqualTo(RewardLotteryRecord.STATUS, LotteryStateEnum.WAIT_USE.getId());
+            query.countInBackground(new SafeCountCallback(getActivity()) {
                 @Override
-                public void findResult(List<RewardLotteryRecord> objects, AVException e) {
+                public void getCount(int count, AVException e) {
                     if (e == null) {
-                        lotteryTv.setText("" + getCanUseLotteryNum(objects));
+                        lotteryTv.setText("" + count);
                     } else {
                         lotteryTv.setText("0");
                     }
@@ -130,31 +155,17 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private int getCanUseLotteryNum(List<RewardLotteryRecord> objects) {
-        int num = 0;
-        for (RewardLotteryRecord lotteryRecord : objects) {
-            RewardLottery lottery = lotteryRecord.getRewardLottery();
-            if (lottery != null) {
-                int limitDays = lottery.getLimitDays();//有效天数
-                Date createDate = lotteryRecord.getCreatedAt();//获取日期
-                Date limitDate = DateUtils.getFutureDate(createDate, limitDays);//截至日期
-                if (DateUtils.getDate().getTime() <= limitDate.getTime()) {//可用,未过期
-                    ++num;
-                }
-            }
-        }
-        return num;
-    }
-
-    private void setPointNum(User user) {
+    private void setPointNum() {
+        User user = AVUser.getCurrentUser(User.class);
         if (user == null) {
             pointTv.setText("0");
-        } else {//获取该用户的剩余积分
+        } else {//todo 获取该用户的剩余积分(这里应该获取最新的user对象)
             pointTv.setText("" + user.getPoint());
         }
     }
 
-    private void setVoucherNum(User user) {
+    private void setVoucherNum() {
+        User user = AVUser.getCurrentUser(User.class);
         if (user == null) {
             voucherTv.setText("0");
         } else {//获取待使用的团购券数量
@@ -174,7 +185,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void setLv(User user) {
+    private void setLv() {
+        User user = AVUser.getCurrentUser(User.class);
         if (user == null) {//未登录不可见
             myLv.setVisibility(View.GONE);
         } else {
@@ -184,7 +196,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void setUsername(User user) {
+    private void setUsername() {
+        User user = AVUser.getCurrentUser(User.class);
         if (user == null) {
             myName.setText("请点击登陆");
         } else {
@@ -196,7 +209,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void setImage(User user) {
+    private void setImage() {
+        User user = AVUser.getCurrentUser(User.class);
         if (user == null || TextUtils.isEmpty(user.getImageUrl())) {//无头像
             myIv.setImageResource(R.drawable.no_user_icon);
         } else {
@@ -209,7 +223,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         voucherLayout.setOnClickListener(this);
         pointLayout.setOnClickListener(this);
         lotteryLayout.setOnClickListener(this);
-        myOrderBtn.setOnClickListener(this);
+        waitPayRv.setOnClickListener(this);
+        waitUseRv.setOnClickListener(this);
+        waitRemarkRv.setOnClickListener(this);
+        finishRv.setOnClickListener(this);
         myCollectionBtn.setOnClickListener(this);
         myRemarkBtn.setOnClickListener(this);
         myLikeBtn.setOnClickListener(this);
@@ -226,13 +243,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 jumpByUserState(null);
                 break;
             case R.id.mine_point_layout:
-                jumpByUserState(null);
+                jumpByUserState(PointRecordActivity.class);
                 break;
             case R.id.mine_lottery_layout:
-                jumpByUserState(null);
-                break;
-            case R.id.mine_my_order_btn:
-                jumpByUserState(null);
+                jumpByUserState(LotteryRecordActivity.class);
                 break;
             case R.id.mine_my_collection_btn:
                 jumpByUserState(null);
@@ -245,6 +259,18 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.mine_my_setting_btn:
                 infoLayout.performClick();
+                break;
+            case R.id.wait_pay_rv:
+                jumpByUserState(null);
+                break;
+            case R.id.wait_use_rv:
+                jumpByUserState(null);
+                break;
+            case R.id.wait_remark_rv:
+                jumpByUserState(null);
+                break;
+            case R.id.finish_rv:
+                jumpByUserState(null);
                 break;
         }
     }

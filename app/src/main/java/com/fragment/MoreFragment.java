@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.fragment.base.BaseFragment;
+import com.fragment.base.BaseSlideFragment;
 import com.group.R;
 import com.group.ScannerActivity;
 import com.util.Utils;
@@ -16,7 +16,7 @@ import com.widget.functionButton.SwitchFunctionButton;
 
 import roboguice.inject.InjectView;
 
-public class MoreFragment extends BaseFragment implements View.OnClickListener, SwitchFunctionButton.OnSwitchListener {
+public class MoreFragment extends BaseSlideFragment implements View.OnClickListener, SwitchFunctionButton.OnSwitchListener {
 
     @InjectView(R.id.more_wifi_btn)
     private SwitchFunctionButton wifiBtn;

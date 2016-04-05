@@ -192,13 +192,54 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <com.widget.functionButton.FunctionButton
-                android:id="@+id/mine_my_order_btn"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/function_button_height"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:functionIcon="@drawable/order_icon"
-                app:functionName="我的订单" />
+                android:orientation="vertical">
+
+                <com.widget.functionButton.FunctionButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/function_button_height"
+                    app:functionIcon="@drawable/order_icon"
+                    app:functionName="我的订单"
+                    app:nextIconVisibility="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.widget.radio.RadioView
+                        android:id="@+id/wait_pay_rv"
+                        style="@style/OrderRadioViewStyle"
+                        app:imageBackground="@drawable/wait_pay_icon"
+                        app:radioText="待支付" />
+
+                    <com.widget.radio.RadioView
+                        android:id="@+id/wait_use_rv"
+                        style="@style/OrderRadioViewStyle"
+                        app:imageBackground="@drawable/wait_use_icon"
+                        app:radioText="待使用" />
+
+                    <com.widget.radio.RadioView
+                        android:id="@+id/wait_remark_rv"
+                        style="@style/OrderRadioViewStyle"
+                        app:imageBackground="@drawable/wait_remark_icon"
+                        app:radioText="待评价" />
+
+                    <com.widget.radio.RadioView
+                        android:id="@+id/finish_rv"
+                        style="@style/OrderRadioViewStyle"
+                        app:imageBackground="@drawable/finish_order_icon"
+                        app:radioText="已完成" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height"
+                    android:background="@color/dividerColor" />
+            </LinearLayout>
 
             <com.widget.functionButton.FunctionButton
                 android:id="@+id/mine_my_collection_btn"

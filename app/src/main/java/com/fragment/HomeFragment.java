@@ -26,7 +26,7 @@ import com.dao.dbHelpers.CategoryHelper;
 import com.dao.dbHelpers.CityHelper;
 import com.dao.generate.Category;
 import com.dao.generate.City;
-import com.fragment.base.BaseFragment;
+import com.fragment.base.BaseSlideFragment;
 import com.google.inject.Inject;
 import com.group.H5Activity;
 import com.group.MerchantActivity;
@@ -57,7 +57,7 @@ import java.util.List;
 
 import roboguice.inject.InjectView;
 
-public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class HomeFragment extends BaseSlideFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private final int SELECT_CITY = 1;
 

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/point_record_merchant_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_press"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/point_record_category_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/point_record_merchant_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="彤德莱火锅(大学城店)"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/arrow_right" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/point_record_total_point_tv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/lv_back"
+            android:gravity="center"
+            android:text="40"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/point_record_voucher_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="清爽单人套餐1份,可叠加,免预约"
+                android:textColor="@color/gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/point_record_num_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="购买数量:4"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/point_record_time_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="获得时间:2016-03-04"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

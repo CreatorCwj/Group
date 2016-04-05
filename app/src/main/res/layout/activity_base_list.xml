@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/base_list_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:searchVisibility="false"
+        app:textIconVisibility="false" />
+
+    <com.widget.rlrView.view.RLRView
+        android:id="@+id/base_list_rlrView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:autoRefresh="true"
+        app:canLoadMore="true"
+        app:dividerColor="@android:color/transparent"
+        app:dividerHeight="12dp"
+        app:emptyView="@layout/empty_data_view" />
+
+</LinearLayout>

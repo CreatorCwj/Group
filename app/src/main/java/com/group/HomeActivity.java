@@ -1,7 +1,6 @@
 package com.group;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.adapter.SlideFragmentAdapter;
 import com.avos.avoscloud.AVException;
@@ -12,6 +11,7 @@ import com.fragment.HomeFragment;
 import com.fragment.MerchantFragment;
 import com.fragment.MineFragment;
 import com.fragment.MoreFragment;
+import com.fragment.base.BaseSlideFragment;
 import com.google.inject.Inject;
 import com.group.base.BaseFragmentActivity;
 import com.leancloud.SafeFindCallback;
@@ -45,7 +45,7 @@ public class HomeActivity extends BaseFragmentActivity {
         //每次进入时判断是否加载品类做缓存
         loadCategory();
         //添加界面
-        List<Fragment> fragments = new ArrayList<>();
+        List<BaseSlideFragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new MerchantFragment());
         fragments.add(new MineFragment());

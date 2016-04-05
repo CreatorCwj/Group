@@ -13,7 +13,6 @@ import com.fragment.MerchantFragment;
 import com.google.inject.Inject;
 import com.group.MerchantActivity;
 import com.group.R;
-import com.util.Utils;
 import com.widget.radio.RadioView;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 
@@ -53,32 +52,7 @@ public class ModelViewAdapter extends RecyclerViewAdapter<CategoryEnum> {
     }
 
     private void setImage(RadioView radioView, CategoryEnum categoryEnum) {
-        switch (categoryEnum) {
-            case FOOD:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.food_big_icon));
-                break;
-            case MOVIE:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.movie_big_icon));
-                break;
-            case HOTEL:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.hotel_big_icon));
-                break;
-            case TRAVEL:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.travel_big_icon));
-                break;
-            case ENTERTAINMENT:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.entertainment_big_icon));
-                break;
-            case BEAUTY:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.beauty_big_icon));
-                break;
-            case CAR:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.car_big_icon));
-                break;
-            case PHOTO:
-                radioView.setImageBackground(context.getResources().getDrawable(R.drawable.photo_big_icon));
-                break;
-        }
+        radioView.setImageBackground(context.getResources().getDrawable(categoryEnum.getBigIconId()));
     }
 
     @Override

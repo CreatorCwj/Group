@@ -40,7 +40,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <!-- 主界面底部RadioButton样式-->
+    <!-- 主界面底部RadioView样式-->
     <style name="MainRadioViewStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -50,6 +50,21 @@
         <item name="com.group:radioTextSize">13sp</item>
         <item name="android:background">#F5F5F5</item>
         <item name="com.group:textBackground">@color/main_radio_text_colors</item>
+    </style>
+
+    <!-- 订单列表四个状态按钮RadioView样式-->
+    <style name="OrderRadioViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:padding">10dp</item>
+        <item name="com.group:imageWidth">28dp</item>
+        <item name="com.group:imageHeight">28dp</item>
+        <item name="com.group:radioTextSize">13sp</item>
+        <item name="android:background">@drawable/item_press</item>
+        <item name="com.group:radioTextColor">@color/gray</item>
+        <item name="com.group:imageBottom">3dp</item>
+        <item name="com.group:canChecked">false</item>
     </style>
 
     <!-- RatingBarStyle-->

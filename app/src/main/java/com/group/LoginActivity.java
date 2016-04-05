@@ -98,11 +98,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void logIn(User user, AVException e) {
                 if (e == null && AVUser.getCurrentUser(User.class) != null) {
+                    AVUser.getCurrentUser(User.class).setFetchWhenSave(true);
                     Utils.showToast(LoginActivity.this, "登录成功");
                     setResult(RESULT_OK);//供startActivityForResult情况(需要知道登陆成功)使用
                     finish();
                 } else {
-                    Utils.showToast(LoginActivity.this, "登录失败");
+                    Utils.showToast(LoginActivity.this, "登录失败:" + (e == null ? "" : e.getMessage()));
                 }
                 cancelLoadingDialog();
             }

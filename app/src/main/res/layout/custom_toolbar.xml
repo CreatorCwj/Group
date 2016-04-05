@@ -67,23 +67,25 @@
 
     <RelativeLayout
         android:id="@+id/custom_toolbar_right_layout"
-        android:layout_width="45dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@drawable/icon_press">
 
         <TextView
             android:id="@+id/custom_toolbar_right_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:textColor="@android:color/white"
             android:textSize="17sp"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/custom_toolbar_right_iv"
-            android:layout_width="match_parent"
+            android:layout_width="45dp"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:paddingLeft="8dp"

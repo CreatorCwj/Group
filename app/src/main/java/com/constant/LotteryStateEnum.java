@@ -25,4 +25,12 @@ public enum LotteryStateEnum {
     public String getState() {
         return state;
     }
+
+    public static LotteryStateEnum getEnumMap(int statusId) {
+        for (LotteryStateEnum stateEnum : LotteryStateEnum.values()) {
+            if (stateEnum.getId() == statusId)
+                return stateEnum;
+        }
+        return null;
+    }
 }

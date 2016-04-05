@@ -72,7 +72,7 @@ public class BaseFragmentPagerAdapter<T extends BaseViewPagerFragment> extends P
         if (!fragment.isAdded()) {//第一次添加
             FragmentTransaction ft = fm.beginTransaction();
             ft.add(fragment, fragment.getClass().getSimpleName());
-            ft.commit();//提交生效,立即执行的话会执行fragment的生命周期
+            ft.commitAllowingStateLoss();//提交生效,立即执行的话会执行fragment的生命周期
             fm.executePendingTransactions();//立刻执行事务,commit只是提交,是否理科执行依赖于系统性能
             //第一次加载首页要手动调用一下首页的onViewPagerFragmentResume
             /*if (position == firstPage) {

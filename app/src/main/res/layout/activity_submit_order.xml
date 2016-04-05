@@ -125,7 +125,7 @@
                 app:functionDescribeColor="@color/green"
                 app:functionDescribeSize="18sp"
                 app:functionIconVisibility="false"
-                app:functionName="送满减券"
+                app:functionName="送满减券(每个订单)"
                 app:functionNameColor="@color/gray_dark"
                 app:functionNameSize="16sp"
                 app:nextIconVisibility="false" />
@@ -140,7 +140,7 @@
                 app:functionDescribeColor="@color/green"
                 app:functionDescribeSize="18sp"
                 app:functionIconVisibility="false"
-                app:functionName="送积分"
+                app:functionName="送积分(每张团购券)"
                 app:functionNameColor="@color/gray_dark"
                 app:functionNameSize="16sp"
                 app:nextIconVisibility="false" />
