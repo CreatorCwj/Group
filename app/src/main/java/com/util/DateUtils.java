@@ -190,6 +190,18 @@ public class DateUtils {
     }
 
     /**
+     * 把秒换算成x分x秒形式字符串
+     *
+     * @param seconds
+     * @return
+     */
+    public static String getTimeStringOfSeconds(long seconds) {
+        long minute = seconds / 60;
+        long second = seconds % 60;
+        return minute + "分" + second + "秒";
+    }
+
+    /**
      * 判断两个时间是否超过某个值
      *
      * @param date1

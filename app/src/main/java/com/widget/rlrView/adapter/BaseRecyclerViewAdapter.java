@@ -50,9 +50,8 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
      * @param data
      */
     public void resetData(List<T> data) {
-        dataList.clear();
-        dataList.addAll(data);
-        notifyDataSetChanged();
+        clearData();
+        addData(data);
     }
 
     /**

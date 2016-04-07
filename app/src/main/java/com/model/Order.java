@@ -19,6 +19,7 @@ public class Order extends BaseModel {
     public static final String PHONE = "phone";
     public static final String LIMIT_MINUTE = "limitMinute";
     public static final String STATUS = "status";
+    public static final String SPARE_SECONDS = "spareSeconds";
     public static final String USED_LOTTERY = "usedLottery";
 
     public static final String VOUCHER = "voucher";
@@ -62,6 +63,14 @@ public class Order extends BaseModel {
 
     public int getStatus() {
         return getInt(STATUS);
+    }
+
+    public void setSpareSeconds(long spareSeconds) {
+        put(SPARE_SECONDS, spareSeconds);
+    }
+
+    public long getSpareSeconds() {
+        return getLong(SPARE_SECONDS);
     }
 
     public void setUsedLottery(String usedLotteryId) {

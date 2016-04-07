@@ -5,6 +5,8 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.volley.listener.RequestCallback;
+import com.volley.listener.RequestListCallback;
 
 /**
  * Created by cwj on 16/1/12.
@@ -40,8 +42,15 @@ class NetworkManager {
     public static <T> void addToQueue(RequestModel<T> request) {
         if (request == null || requestQueue == null)
             return;
-        Request<T> req = new RequestObject<>(request);
-        requestQueue.add(req);
+        if (request.getRequestCallback() != null) {
+            if (request.getRequestCallback() instanceof RequestCallback)//对象
+                requestQueue.add(new RequestObject<>(request));
+            else if (request.getRequestCallback() instanceof RequestListCallback)//数组
+                requestQueue.add(new RequestListObject<>(request));
+        } else {//普通请求
+            Request<T> req = new RequestObject<>(request);
+            requestQueue.add(req);
+        }
     }
 
     /**

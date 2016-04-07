@@ -101,6 +101,7 @@
         <activity android:name=".LotteryRecordActivity" />
         <activity android:name=".BaseLotteryListActivity" />
         <activity android:name=".SelectLotteryActivity" />
+        <activity android:name=".OrderListActivity" />
     </application>
 
 </manifest>

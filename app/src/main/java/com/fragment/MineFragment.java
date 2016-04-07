@@ -22,6 +22,7 @@ import com.constant.OrderStateEnum;
 import com.fragment.base.BaseSlideFragment;
 import com.group.LoginActivity;
 import com.group.LotteryRecordActivity;
+import com.group.OrderListActivity;
 import com.group.PointRecordActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
@@ -237,52 +238,62 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.mine_info_layout://个人设置
-                jumpByUserState(null);
+                jumpByUserState(null, null);
                 break;
-            case R.id.mine_group_voucher_layout:
-                jumpByUserState(null);
+            case R.id.mine_group_voucher_layout://团购券
+                jumpByUserState(null, null);
                 break;
-            case R.id.mine_point_layout:
-                jumpByUserState(PointRecordActivity.class);
+            case R.id.mine_point_layout://积分列表
+                jumpByUserState(PointRecordActivity.class, null);
                 break;
-            case R.id.mine_lottery_layout:
-                jumpByUserState(LotteryRecordActivity.class);
+            case R.id.mine_lottery_layout://抵用券列表
+                jumpByUserState(LotteryRecordActivity.class, null);
                 break;
-            case R.id.mine_my_collection_btn:
-                jumpByUserState(null);
+            case R.id.mine_my_collection_btn://收藏
+                jumpByUserState(null, null);
                 break;
-            case R.id.mine_my_remark_btn:
-                jumpByUserState(null);
+            case R.id.mine_my_remark_btn://评论
+                jumpByUserState(null, null);
                 break;
-            case R.id.mine_my_like_btn:
-                jumpByUserState(null);
+            case R.id.mine_my_like_btn://我的喜爱
+                jumpByUserState(null, null);
                 break;
-            case R.id.mine_my_setting_btn:
+            case R.id.mine_my_setting_btn://个人设置
                 infoLayout.performClick();
                 break;
-            case R.id.wait_pay_rv:
-                jumpByUserState(null);
+            case R.id.wait_pay_rv://待支付订单
+                jumpOrderList(OrderStateEnum.WAIT_PAY);
                 break;
-            case R.id.wait_use_rv:
-                jumpByUserState(null);
+            case R.id.wait_use_rv://待使用订单
+                jumpOrderList(OrderStateEnum.WAIT_USE);
                 break;
-            case R.id.wait_remark_rv:
-                jumpByUserState(null);
+            case R.id.wait_remark_rv://待评论订单
+                jumpOrderList(OrderStateEnum.USED);
                 break;
-            case R.id.finish_rv:
-                jumpByUserState(null);
+            case R.id.finish_rv://已完成订单
+                jumpOrderList(OrderStateEnum.REMARKED);
                 break;
         }
     }
 
-    private void jumpByUserState(@Nullable Class<? extends Activity> userTarget) {
+    private void jumpOrderList(OrderStateEnum stateEnum) {
+        Intent intent = new Intent();
+        intent.putExtra(OrderListActivity.ORDER_STATE_KEY, stateEnum);
+        jumpByUserState(OrderListActivity.class, intent);
+    }
+
+    private void jumpByUserState(@Nullable Class<? extends Activity> userTarget, Intent intent) {
         User user = AVUser.getCurrentUser(User.class);
         if (user == null) {//未登录
             //跳转到登录界面
             startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {//登录
-            if (userTarget != null)//有要跳转的界面
-                startActivity(new Intent(getActivity(), userTarget));
+            if (userTarget != null) {//有要跳转的界面
+                if (intent == null)
+                    intent = new Intent();
+                intent.setClass(getActivity(), userTarget);
+                startActivity(intent);
+            }
         }
     }
 

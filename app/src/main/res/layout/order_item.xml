@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/item_press"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/lottery_record_merchant_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/icon_press"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:paddingBottom="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="10dp">
 
         <ImageView
-            android:id="@+id/lottery_record_category_iv"
+            android:id="@+id/order_item_category_iv"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginRight="10dp" />
 
         <TextView
-            android:id="@+id/lottery_record_merchant_name_tv"
+            android:id="@+id/order_item_merchant_name_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,10 +33,13 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/arrow_right" />
+        <TextView
+            android:id="@+id/order_item_status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="待支付"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -47,55 +52,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="8dp">
 
-        <LinearLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <com.widget.RoundImageView
+            android:id="@+id/order_item_merchant_iv"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/lv_back"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:gravity="bottom"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="¥"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/lottery_record_price_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:text="40"
-                    android:textColor="@android:color/white"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/lottery_record_use_price_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="满50可用"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
+            android:scaleType="centerCrop"
+            app:imageType="round"
+            app:radius="6dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,36 +70,38 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/order_item_voucher_name_tv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="支付红包"
+                android:text="清爽单人套餐,可叠加,免预约"
                 android:textColor="@color/gray"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/order_item_num_tv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="App下单使用,在线支付专享"
+                android:text="购买数量:4"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/lottery_record_time_tv"
+                android:id="@+id/order_item_price_tv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="获得时间:2016-03-04"
+                android:text="总价:¥119"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -146,29 +115,52 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:paddingBottom="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="4dp">
+
+        <LinearLayout
+            android:id="@+id/order_item_spare_time_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/history_icon" />
+
+            <TextView
+                android:id="@+id/order_item_count_time_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:singleLine="true"
+                android:text="18分30秒"
+                android:textColor="@color/red"
+                android:textSize="17sp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/lottery_record_status_tv"
+            android:id="@+id/order_item_fun_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
             android:singleLine="true"
-            android:text="已过期"
-            android:textColor="@color/gray"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/lottery_record_end_time_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="end"
-            android:singleLine="true"
-            android:text="有效期至:2016-04-16"
-            android:textColor="@color/gray"
+            android:text="付款"
+            android:textColor="@color/orange"
             android:textSize="14sp" />
 
     </LinearLayout>

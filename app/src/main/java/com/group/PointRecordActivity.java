@@ -12,7 +12,7 @@ import com.widget.rlrView.adapter.RecyclerViewAdapter;
  * Created by cwj on 16/4/6.
  * 积分记录列表
  */
-public class PointRecordActivity extends BaseListActivity<RewardPointRecord> {
+public class PointRecordActivity extends BaseAVQueryListActivity<RewardPointRecord> {
 
     @Override
     protected RecyclerViewAdapter<RewardPointRecord> getAdapter() {

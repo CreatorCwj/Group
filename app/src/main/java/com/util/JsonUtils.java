@@ -35,11 +35,10 @@ public class JsonUtils {
         try {
             JsonElement ele = new JsonParser().parse(jsonStr);
             if (ele.isJsonArray()) {
+                result = new ArrayList<>();
                 JsonArray array = ele.getAsJsonArray();
                 for (JsonElement item : array) {
                     T t = new Gson().fromJson(item, clazz);
-                    if (result == null)
-                        result = new ArrayList<>();
                     result.add(t);
                 }
             }

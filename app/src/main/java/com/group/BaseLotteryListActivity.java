@@ -18,7 +18,7 @@ import com.widget.rlrView.view.LoadMoreRecyclerView;
  * Created by cwj on 16/4/6.
  * 抵用券列表基类(展示抵用券记录)
  */
-public class BaseLotteryListActivity extends BaseListActivity<RewardLotteryRecord> implements LoadMoreRecyclerView.OnItemClickListener, LoadMoreRecyclerView.OnItemLongClickListener {
+public class BaseLotteryListActivity extends BaseAVQueryListActivity<RewardLotteryRecord> implements LoadMoreRecyclerView.OnItemClickListener, LoadMoreRecyclerView.OnItemLongClickListener {
 
     public static final String LOTTERY_STATUS_KEY = "status";
 

@@ -3,8 +3,10 @@ package com.volley;
 import android.content.Context;
 
 import com.android.volley.Request;
+import com.volley.listener.BaseRequestCallback;
 import com.volley.listener.RequestCallback;
 import com.volley.listener.RequestCancelCallback;
+import com.volley.listener.RequestListCallback;
 
 import java.util.Map;
 
@@ -44,8 +46,8 @@ class RequestModel<T> {
     //post方法请求体(非键值对那种,比如直接上传一张图片)
     private byte[] requestBody;
 
-    //请求回调
-    private RequestCallback<T> requestCallback;
+    //回调
+    private BaseRequestCallback baseRequestCallback;
 
     //取消请求回调
     private RequestCancelCallback requestCancelCallback;
@@ -127,12 +129,16 @@ class RequestModel<T> {
         this.requestBody = requestBody;
     }
 
-    public RequestCallback<T> getRequestCallback() {
-        return requestCallback;
+    public BaseRequestCallback getRequestCallback() {
+        return baseRequestCallback;
     }
 
     public void setRequestCallback(RequestCallback<T> requestCallback) {
-        this.requestCallback = requestCallback;
+        this.baseRequestCallback = requestCallback;
+    }
+
+    public void setRequestListCallback(RequestListCallback<T> requestListCallback) {
+        this.baseRequestCallback = requestListCallback;
     }
 
     public RequestCancelCallback getRequestCancelCallback() {

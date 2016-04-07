@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.volley.listener.RequestCallback;
 import com.volley.listener.RequestCancelCallback;
+import com.volley.listener.RequestListCallback;
 
 import java.util.Map;
 
@@ -62,6 +63,11 @@ public class Network<T> {
 
     public Network<T> setRequestCallback(RequestCallback<T> requestCallback) {
         request.setRequestCallback(requestCallback);
+        return this;
+    }
+
+    public Network<T> setRequestCallback(RequestListCallback<T> requestListCallback) {
+        request.setRequestListCallback(requestListCallback);
         return this;
     }
 
