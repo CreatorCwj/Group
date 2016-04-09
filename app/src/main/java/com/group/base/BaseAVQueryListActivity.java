@@ -1,4 +1,4 @@
-package com.group;
+package com.group.base;
 
 import com.avos.avoscloud.AVObject;
 

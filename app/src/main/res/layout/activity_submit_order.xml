@@ -151,6 +151,7 @@
         android:id="@+id/submit_order_submit_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/order_func_back"
         android:gravity="center"
         android:padding="17dp"
         android:text="提交订单"

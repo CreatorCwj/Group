@@ -216,6 +216,28 @@ public class CustomToolBar extends FrameLayout {
     }
 
     /**
+     * 设置右边功能按钮图标
+     *
+     * @param resId
+     */
+    public void setRightIcon(int resId) {
+        rightIconIv.setImageResource(resId);
+        if (rightIconIv.getVisibility() != VISIBLE)
+            rightIconIv.setVisibility(VISIBLE);
+    }
+
+    /**
+     * 设置左边功能按钮图标
+     *
+     * @param resId
+     */
+    public void setLeftIcon(int resId) {
+        leftIconIv.setImageResource(resId);
+        if (leftIconIv.getVisibility() != VISIBLE)
+            leftIconIv.setVisibility(VISIBLE);
+    }
+
+    /**
      * 标题按钮点击监听
      */
     public void setTextClickListener(View.OnClickListener listener) {

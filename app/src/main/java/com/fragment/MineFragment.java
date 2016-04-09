@@ -20,6 +20,7 @@ import com.constant.GradeEnum;
 import com.constant.LotteryStateEnum;
 import com.constant.OrderStateEnum;
 import com.fragment.base.BaseSlideFragment;
+import com.group.CollectionActivity;
 import com.group.LoginActivity;
 import com.group.LotteryRecordActivity;
 import com.group.OrderListActivity;
@@ -250,7 +251,7 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
                 jumpByUserState(LotteryRecordActivity.class, null);
                 break;
             case R.id.mine_my_collection_btn://收藏
-                jumpByUserState(null, null);
+                jumpByUserState(CollectionActivity.class, null);
                 break;
             case R.id.mine_my_remark_btn://评论
                 jumpByUserState(null, null);

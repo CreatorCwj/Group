@@ -1,4 +1,4 @@
-package com.group;
+package com.group.base;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -81,7 +81,7 @@ public class BaseLotteryListActivity extends BaseAVQueryListActivity<RewardLotte
         AVQuery<RewardLotteryRecord> query = AVQuery.getQuery(RewardLotteryRecord.class);
         query.whereEqualTo(RewardLotteryRecord.USER, AVUser.getCurrentUser());
         query.whereEqualTo(RewardLotteryRecord.STATUS, state.getId());//传入的抵用券状态
-        query.orderByDescending(RewardLotteryRecord.CREATED_AT);//获得时间排序
+        query.orderByDescending(RewardLotteryRecord.UPDATED_AT);//获得时间排序
         query.include(RewardLotteryRecord.REWARD_LOTTERY);
         query.include(RewardLotteryRecord.VOUCHER);
         query.include(RewardLotteryRecord.VOUCHER + "." + Voucher.MERCHANT);

@@ -1,6 +1,7 @@
 package com.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -11,17 +12,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVCloud;
+import com.avos.avoscloud.AVException;
 import com.constant.CategoryEnum;
+import com.constant.CloudFunction;
 import com.constant.OrderStateEnum;
+import com.group.OrderDetailActivity;
 import com.group.R;
+import com.group.VoucherDetailActivity;
 import com.imageLoader.ImageLoader;
+import com.leancloud.SafeFunctionCallback;
 import com.model.Category;
 import com.model.Order;
 import com.model.Voucher;
 import com.util.DateUtils;
 import com.util.DrawableUtils;
+import com.util.JsonUtils;
 import com.util.UIUtils;
+import com.util.Utils;
 import com.widget.RoundImageView;
+import com.widget.dialog.LoadingDialog;
+import com.widget.dialog.MessageDialog;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 import com.widget.rlrView.view.LoadMoreRecyclerView;
 
@@ -37,6 +48,9 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
 
     private Map<TextView, String> viewToId = new HashMap<>();
     private Map<String, Long> idToTime = new HashMap<>();
+
+    private MessageDialog messageDialog;
+    private LoadingDialog loadingDialog;
 
     public OrderAdapter(Context context) {
         super(context);
@@ -90,12 +104,13 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
             //设置剩余时间提示
             setSpareTime(viewHolder.spareTimeLayout, viewHolder.countTimeTv, order);
             //设置功能按钮
-            setFunc(viewHolder.functionTv, order.getStatus());
+            setFunc(viewHolder, order);
         }
     }
 
-    private void setFunc(TextView functionTv, int status) {
-        OrderStateEnum stateEnum = OrderStateEnum.getEnumMap(status);
+    private void setFunc(final OrderViewHolder viewHolder, final Order order) {
+        TextView functionTv = viewHolder.functionTv;
+        final OrderStateEnum stateEnum = OrderStateEnum.getEnumMap(order.getStatus());
         if (stateEnum == null) {
             functionTv.setVisibility(View.INVISIBLE);
             return;
@@ -111,14 +126,36 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
             case USED:
                 functionTv.setText("去评价");
                 break;
-            default:
+            case REMARKED:
+                functionTv.setText("再来一单");
+                break;
+            case OVERDUE:
                 functionTv.setText("订单详情");
                 break;
         }
         functionTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                switch (stateEnum) {
+                    case WAIT_PAY://支付,直接和item的点击一样
+                        viewHolder.itemView.performClick();
+                        break;
+                    case WAIT_USE://查看团购券
+                        Utils.showToast(context, "查看团购券");
+                        break;
+                    case USED://评价
+                        Utils.showToast(context, "评价");
+                        break;
+                    case REMARKED://再来一单
+                        Intent intent = new Intent(context, VoucherDetailActivity.class);
+                        intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, order.getVoucher());
+                        intent.putExtra(VoucherDetailActivity.MERCHANT_KEY, order.getVoucher().getMerchant());
+                        context.startActivity(intent);
+                        break;
+                    case OVERDUE://查看详情,直接和item的点击一样
+                        viewHolder.itemView.performClick();
+                        break;
+                }
             }
         });
     }
@@ -213,12 +250,56 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
 
     @Override
     public void onItemClick(int position) {
-
+        //跳转到订单详情页
+        Intent intent = new Intent(context, OrderDetailActivity.class);
+        intent.putExtra(OrderDetailActivity.ORDER_ID_KEY, getDataItem(position).getObjectId());
+        context.startActivity(intent);
     }
 
     @Override
     public void onItemLongClick(int position) {
+        //删除订单(待支付和已过期的订单可以删除)
+        Order order = getDataItem(position);
+        final String orderId = order.getObjectId();
+        if (order.getStatus() == OrderStateEnum.WAIT_PAY.getId() || order.getStatus() == OrderStateEnum.OVERDUE.getId()) {//可删除
+            if (messageDialog == null) {
+                messageDialog = new MessageDialog(context);
+                messageDialog.setTitle("删除订单");
+                messageDialog.setMessage("是否删除该订单");
+                messageDialog.setNegativeText("取消");
+                messageDialog.setPositiveText("删除");
+            }
+            messageDialog.setPositiveListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteOrder(orderId);
+                }
+            });
+            messageDialog.show();
+        }
+    }
 
+    private void deleteOrder(String orderId) {
+        if (loadingDialog == null) {
+            loadingDialog = new LoadingDialog(context);
+            loadingDialog.setCancelable(false);
+        }
+        //自定义删除订单方法,只删除待支付和已过期的订单
+        loadingDialog.show("删除订单中...");
+        Map<String, Object> params = new HashMap<>();
+        params.put("orderId", orderId);
+        AVCloud.rpcFunctionInBackground(CloudFunction.DELETE_ORDER, params, new SafeFunctionCallback<Object>(context) {
+            @Override
+            protected void functionBack(Object o, AVException e) {
+                if (e != null) {
+                    String reason = JsonUtils.getStrValueOfJsonStr(e.getMessage(), "error");
+                    Utils.showToast(context, "删除订单失败" + (reason == null ? "" : ":" + reason));
+                } else {
+                    Utils.showToast(context, "删除订单成功");
+                }
+                loadingDialog.cancel();
+            }
+        });
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder {

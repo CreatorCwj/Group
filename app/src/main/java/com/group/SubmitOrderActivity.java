@@ -2,7 +2,6 @@ package com.group;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,7 +18,6 @@ import com.model.RewardLotteryRecord;
 import com.model.RewardPoint;
 import com.model.User;
 import com.model.Voucher;
-import com.util.DrawableUtils;
 import com.util.JsonUtils;
 import com.util.Utils;
 import com.widget.CancelableEditView;
@@ -37,6 +35,7 @@ import roboguice.inject.InjectView;
 public class SubmitOrderActivity extends BaseActivity implements View.OnClickListener {
 
     public static final int LOGIN_CODE = 1;
+    public static final int SELECT_LOTTERY_CODE = 2;
 
     public static final String VOUCHER_KEY = "voucher";
     public static final String MERCHANT_KEY = "merchant";
@@ -97,20 +96,25 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
         numFb.setOnNumChangedListener(new SelectNumFunctionButton.OnNumChangedListener() {
             @Override
             public void onNumChanged(int newNum) {
-                updatePrice(newNum);
+                updatePrice();
             }
         });
     }
 
-    private void updatePrice(int newNum) {
+    private void updatePrice() {
+        int newNum = numFb.getNum();//最新数量
         float singlePrice = 0;
         if (voucher != null)
             singlePrice = (float) voucher.getCurrentPrice();
         //小计
         float subTotal = singlePrice * newNum;
         subTotalFb.setDescribe("¥" + subTotal);
-        //todo 总计(小计减去抵用券抵用的价格)
-        totalFb.setDescribe("¥" + subTotal);
+        //总计(小计减去抵用券抵用的价格,拿到的抵用券一定是符合要求的)
+        if (usedLottery == null) {
+            totalFb.setDescribe("¥" + subTotal);
+        } else {
+            totalFb.setDescribe("¥" + (subTotal - usedLottery.getRewardLottery().getPrice()));
+        }
     }
 
     private void receiveIntent() {
@@ -146,9 +150,6 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
             } else {
                 sendPointFb.setDescribe("无");
             }
-            //submit back
-            submitTv.setBackground(DrawableUtils.getStateDrawable(new DrawableUtils.RectStateDrawable(new int[]{DrawableUtils.STATE_PRESSED}, getResources().getColor(R.color.iconPressed))
-                    , new DrawableUtils.RectStateDrawable(new int[]{}, getResources().getColor(R.color.orange))));
         }
     }
 
@@ -198,9 +199,7 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
             protected void functionBack(Order newOrder, AVException e) {
                 if (e != null) {
                     String reason = JsonUtils.getStrValueOfJsonStr(e.getMessage(), "error");
-                    if (TextUtils.isEmpty(reason))
-                        reason = "";
-                    Utils.showToast(SubmitOrderActivity.this, "订单提交失败:" + reason);
+                    Utils.showToast(SubmitOrderActivity.this, "订单提交失败" + (reason == null ? "" : ":" + reason));
                 } else {
                     Utils.showToast(SubmitOrderActivity.this, "订单提交成功");
                     //tip and pay
@@ -266,9 +265,7 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
             protected void functionBack(Object obj, AVException e) {
                 if (e != null) {
                     String reason = JsonUtils.getStrValueOfJsonStr(e.getMessage(), "error");
-                    if (TextUtils.isEmpty(reason))
-                        reason = "";
-                    Utils.showToast(SubmitOrderActivity.this, "支付失败:" + reason);
+                    Utils.showToast(SubmitOrderActivity.this, "支付失败" + (reason == null ? "" : ":" + reason));
                 } else {
                     Utils.showToast(SubmitOrderActivity.this, "支付成功,团购券可在我的界面里查看");
                     finish();
@@ -279,7 +276,10 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void selectLottery() {
-
+        //选用抵用券
+        Intent intent = new Intent(SubmitOrderActivity.this, SelectLotteryActivity.class);
+        intent.putExtra(SelectLotteryActivity.SUB_TOTAL_PRICE_KEY, Double.parseDouble(subTotalFb.getDescribe().substring(1)));
+        startActivityForResult(intent, SELECT_LOTTERY_CODE);
     }
 
     private boolean checkLogin() {
@@ -299,6 +299,16 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
                 User user = AVUser.getCurrentUser(User.class);
                 if (user != null)//填写手机号(会覆盖)
                     phoneEt.setText(user.getMobilePhoneNumber());
+            } else if (requestCode == SELECT_LOTTERY_CODE) {//选择抵用券完成
+                usedLottery = data.getParcelableExtra(SelectLotteryActivity.SELECT_LOTTERY_KEY);
+                //更新view
+                if (usedLottery == null) {
+                    usedLotteryFb.setDescribe("使用抵用券");
+                } else {
+                    usedLotteryFb.setDescribe("满" + usedLottery.getRewardLottery().getPriceToUse() + "减" + usedLottery.getRewardLottery().getPrice());
+                }
+                //更新价格
+                updatePrice();
             }
         }
     }

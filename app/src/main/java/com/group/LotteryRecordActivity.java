@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.constant.LotteryStateEnum;
+import com.group.base.BaseLotteryListActivity;
 
 /**
  * Created by cwj on 16/4/6.

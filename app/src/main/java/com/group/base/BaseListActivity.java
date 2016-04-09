@@ -1,4 +1,4 @@
-package com.group;
+package com.group.base;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -7,7 +7,7 @@ import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
-import com.group.base.BaseActivity;
+import com.group.R;
 import com.leancloud.SafeFindCallback;
 import com.leancloud.SafeFunctionCallback;
 import com.widget.CustomToolBar;
@@ -27,7 +27,7 @@ import roboguice.inject.InjectView;
  * 列表页基类,可使用AVQuery或rpcFunction
  */
 @ContentView(R.layout.activity_base_list)
-public abstract class BaseListActivity<T extends AVObject> extends BaseActivity implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
+abstract class BaseListActivity<T extends AVObject> extends BaseActivity implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
 
     @InjectView(R.id.base_list_toolbar)
     protected CustomToolBar toolBar;

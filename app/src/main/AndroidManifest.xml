@@ -99,9 +99,13 @@
             android:label="@string/title_activity_submit_order" />
         <activity android:name=".PointRecordActivity" />
         <activity android:name=".LotteryRecordActivity" />
-        <activity android:name=".BaseLotteryListActivity" />
+        <activity android:name=".base.BaseLotteryListActivity" />
         <activity android:name=".SelectLotteryActivity" />
         <activity android:name=".OrderListActivity" />
+        <activity
+            android:name=".OrderDetailActivity"
+            android:label="@string/title_activity_order_detail" />
+        <activity android:name=".CollectionActivity" />
     </application>
 
 </manifest>

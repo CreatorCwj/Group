@@ -8,8 +8,10 @@ import com.adapter.OrderAdapter;
 import com.avos.avoscloud.AVUser;
 import com.constant.CloudFunction;
 import com.constant.OrderStateEnum;
+import com.group.base.BaseRpcFunctionListActivity;
 import com.model.Merchant;
 import com.model.Order;
+import com.model.RewardLotteryRecord;
 import com.model.Voucher;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 
@@ -58,6 +60,12 @@ public class OrderListActivity extends BaseRpcFunctionListActivity<Order> {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        rlrView.refresh();//实时刷新
+    }
+
+    @Override
     protected RecyclerViewAdapter<Order> getAdapter() {
         return new OrderAdapter(this);
     }
@@ -71,7 +79,7 @@ public class OrderListActivity extends BaseRpcFunctionListActivity<Order> {
     protected String getRpcFunctionName() {
         if (AVUser.getCurrentUser() == null)
             return null;
-        else return CloudFunction.GET_ORDER;
+        else return CloudFunction.GET_ORDERS;
     }
 
     @Override
@@ -88,7 +96,10 @@ public class OrderListActivity extends BaseRpcFunctionListActivity<Order> {
             return includes;
         includes = new ArrayList<>();
         includes.add(Order.USED_LOTTERY);
+        includes.add(Order.USED_LOTTERY + "." + RewardLotteryRecord.REWARD_LOTTERY);
         includes.add(Order.VOUCHER);
+        includes.add(Order.VOUCHER + "." + Voucher.REWARD_LOTTERY);
+        includes.add(Order.VOUCHER + "." + Voucher.REWARD_POINT);
         includes.add(Order.VOUCHER + "." + Voucher.MERCHANT);
         includes.add(Order.VOUCHER + "." + Voucher.MERCHANT + "." + Merchant.CATEGORY);
         includes.add(Order.VOUCHER + "." + Voucher.MERCHANT + "." + Merchant.SUB_CATEGORY);

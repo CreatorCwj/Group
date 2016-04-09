@@ -17,14 +17,19 @@ import com.adapter.RemarkAdapter;
 import com.adapter.VoucherAdapter;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.dao.generate.City;
 import com.group.base.BaseActivity;
 import com.imageLoader.ImageLoader;
 import com.leancloud.SafeCountCallback;
+import com.leancloud.SafeDeleteCallback;
 import com.leancloud.SafeFindCallback;
 import com.leancloud.SafeGetCallback;
+import com.leancloud.SafeSaveCallback;
+import com.model.Collection;
 import com.model.Merchant;
 import com.model.Remark;
+import com.model.User;
 import com.model.Voucher;
 import com.util.AppSetting;
 import com.util.Utils;
@@ -44,6 +49,8 @@ import roboguice.inject.InjectView;
 public class MerchantDetailActivity extends BaseActivity implements View.OnClickListener {
 
     public static final String MERCHANT_KEY = "merchant";
+
+    public static final int LOGIN_CODE = 1;
 
     @InjectView(R.id.merchant_detail_toolbar)
     private CustomToolBar toolBar;
@@ -107,6 +114,8 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
 
     private SelectDialog callDialog;
 
+    private Boolean hasCollected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,9 +149,95 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
             @Override
             public void onClick(View v) {
                 //需要根据是否已经收藏进行处理
-                Utils.showToast(MerchantDetailActivity.this, "收藏");
+                handleCollection();
             }
         });
+        loadIfCollected();//加载是否收藏过(根据此来设置收藏功能)
+    }
+
+    private void handleCollection() {
+        if (merchant == null)
+            return;
+        if (AVUser.getCurrentUser() == null) {//跳到登陆界面
+            startActivityForResult(new Intent(MerchantDetailActivity.this, LoginActivity.class), LOGIN_CODE);
+            return;
+        }
+        //根据是否收藏过做处理
+        if (hasCollected == null)
+            return;
+        if (hasCollected) {//收藏过,删除收藏
+            showLoadingDialog("取消收藏...");
+            getCollectionQuery().deleteAllInBackground(new SafeDeleteCallback(this) {
+                @Override
+                protected void delete(AVException e) {
+                    if (e != null) {
+                        Utils.showToast(MerchantDetailActivity.this, "取消收藏失败");
+                    } else {
+                        Utils.showToast(MerchantDetailActivity.this, "已取消收藏");
+                        updCollectionState(false);
+                    }
+                    cancelLoadingDialog();
+                }
+            });
+        } else {//增加收藏
+            showLoadingDialog("添加收藏...");
+            Collection collection = new Collection();
+            collection.setMerchant(merchant);
+            collection.setUser(AVUser.getCurrentUser(User.class));
+            collection.saveInBackground(new SafeSaveCallback(this) {
+                @Override
+                public void save(AVException e) {
+                    if (e != null) {
+                        Utils.showToast(MerchantDetailActivity.this, "收藏失败");
+                    } else {
+                        Utils.showToast(MerchantDetailActivity.this, "已收藏");
+                        updCollectionState(true);
+                    }
+                    cancelLoadingDialog();
+                }
+            });
+        }
+    }
+
+    private void loadIfCollected() {
+        if (merchant == null || AVUser.getCurrentUser() == null)
+            return;
+        //查询有没有收藏记录
+        getCollectionQuery().countInBackground(new SafeCountCallback(this) {
+            @Override
+            public void getCount(int i, AVException e) {
+                if (e == null) {
+                    updCollectionState(i > 0);//标志位标识是否已经收藏
+                }
+            }
+        });
+    }
+
+    private void updCollectionState(boolean hasCollected) {
+        this.hasCollected = hasCollected;
+        //img
+        if (hasCollected) {
+            toolBar.setRightIcon(R.drawable.collected_icon);
+        } else {
+            toolBar.setRightIcon(R.drawable.collect_icon);
+        }
+    }
+
+    private AVQuery<Collection> getCollectionQuery() {
+        AVQuery<Collection> query = AVQuery.getQuery(Collection.class);
+        query.whereEqualTo(Collection.MERCHANT, merchant);
+        query.whereEqualTo(Collection.USER, AVUser.getCurrentUser());
+        return query;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == LOGIN_CODE) {//登陆成功了
+                loadIfCollected();//再次请求收藏记录,设置收藏功能
+            }
+        }
     }
 
     private void setAlpha() {

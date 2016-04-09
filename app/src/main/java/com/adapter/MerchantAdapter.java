@@ -19,6 +19,7 @@ import com.dao.generate.City;
 import com.group.MerchantDetailActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
+import com.model.Area;
 import com.model.Category;
 import com.model.Merchant;
 import com.util.AppSetting;
@@ -92,8 +93,12 @@ public class MerchantAdapter extends RecyclerViewAdapter<Merchant> implements Lo
     }
 
     private String getAreaName(Merchant merchant) {
-        if (merchant.getArea() != null)
-            return merchant.getArea().getName();
+        Area subArea = merchant.getSubArea();
+        Area area = merchant.getArea();
+        if (subArea != null)//优先显示子商圈
+            return subArea.getName();
+        if (area != null)
+            return area.getName();
         return "";
     }
 

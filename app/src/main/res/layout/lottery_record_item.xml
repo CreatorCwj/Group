@@ -49,53 +49,58 @@
         android:gravity="center_vertical"
         android:padding="8dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/lv_back"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:background="@drawable/lv_back">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:gravity="bottom"
-                android:orientation="horizontal">
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="¥"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    android:layout_marginBottom="3dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="¥"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/lottery_record_price_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="40"
+                        android:textColor="@android:color/white"
+                        android:textSize="30sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/lottery_record_price_tv"
+                    android:id="@+id/lottery_record_use_price_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:singleLine="true"
-                    android:text="40"
+                    android:text="满999可用"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/lottery_record_use_price_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="满50可用"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

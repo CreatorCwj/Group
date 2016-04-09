@@ -20,4 +20,5 @@
     <string name="title_activity_merchant_detail">MerchantDetailActivity</string>
     <string name="title_activity_voucher_detail">VoucherDetailActivity</string>
     <string name="title_activity_submit_order">SubmitOrderActivity</string>
+    <string name="title_activity_order_detail">OrderDetailActivity</string>
 </resources>
