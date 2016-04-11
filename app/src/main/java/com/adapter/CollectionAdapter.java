@@ -51,6 +51,7 @@ public class CollectionAdapter extends RecyclerViewAdapter<Collection> implement
             viewHolder.areaTv.setText(getAreaName(merchant));
             if (merchant.getImages() != null && merchant.getImages().size() > 0)
                 ImageLoader.displayImage(viewHolder.merchantIv, merchant.getImages().get(0));//加载第一张图片
+            else viewHolder.merchantIv.setImageDrawable(null);
         }
     }
 
@@ -107,7 +108,7 @@ public class CollectionAdapter extends RecyclerViewAdapter<Collection> implement
         messageDialog.show();
     }
 
-    private void deleteCollection(Collection collection) {
+    private void deleteCollection(final Collection collection) {
         if (loadingDialog == null) {
             loadingDialog = new LoadingDialog(context);
             loadingDialog.setCancelable(false);
@@ -119,6 +120,7 @@ public class CollectionAdapter extends RecyclerViewAdapter<Collection> implement
                 if (e != null) {
                     Utils.showToast(context, "删除失败");
                 } else {
+                    removeData(collection);
                     Utils.showToast(context, "删除成功");
                 }
                 loadingDialog.cancel();

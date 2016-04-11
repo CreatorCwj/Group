@@ -21,9 +21,18 @@ public class Order extends BaseModel {
     public static final String STATUS = "status";
     public static final String SPARE_SECONDS = "spareSeconds";
     public static final String USED_LOTTERY = "usedLottery";
+    public static final String QR_CODE_IMAGE = "qrCodeImage";
 
     public static final String VOUCHER = "voucher";
     public static final String USER = "user";
+
+    public void setQrCodeImage(String qrCodeImage) {
+        put(QR_CODE_IMAGE, qrCodeImage);
+    }
+
+    public String getQrCodeImage() {
+        return getString(QR_CODE_IMAGE);
+    }
 
     public void setPhone(String phone) {
         put(PHONE, phone);

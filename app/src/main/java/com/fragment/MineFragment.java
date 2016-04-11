@@ -23,6 +23,8 @@ import com.fragment.base.BaseSlideFragment;
 import com.group.CollectionActivity;
 import com.group.LoginActivity;
 import com.group.LotteryRecordActivity;
+import com.group.MyCouponActivity;
+import com.group.MyRemarkActivity;
 import com.group.OrderListActivity;
 import com.group.PointRecordActivity;
 import com.group.R;
@@ -242,7 +244,7 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
                 jumpByUserState(null, null);
                 break;
             case R.id.mine_group_voucher_layout://团购券
-                jumpByUserState(null, null);
+                jumpByUserState(MyCouponActivity.class, null);
                 break;
             case R.id.mine_point_layout://积分列表
                 jumpByUserState(PointRecordActivity.class, null);
@@ -254,7 +256,7 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
                 jumpByUserState(CollectionActivity.class, null);
                 break;
             case R.id.mine_my_remark_btn://评论
-                jumpByUserState(null, null);
+                jumpByUserState(MyRemarkActivity.class, null);
                 break;
             case R.id.mine_my_like_btn://我的喜爱
                 jumpByUserState(null, null);

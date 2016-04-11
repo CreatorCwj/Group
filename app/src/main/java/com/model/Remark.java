@@ -1,5 +1,7 @@
 package com.model;
 
+import android.text.TextUtils;
+
 import com.avos.avoscloud.AVClassName;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
@@ -45,8 +47,8 @@ public class Remark extends BaseModel {
         return getInt(POINT);
     }
 
-    public void addImages(List<AVFile> images) {
-        addAll(IMAGES, images);
+    public void resetImages(List<AVFile> images) {
+        put(IMAGES, images);
     }
 
     public List<String> getImages() {
@@ -60,6 +62,10 @@ public class Remark extends BaseModel {
         return images;
     }
 
+    public List<AVFile> getImagesFiles() {
+        return getList(IMAGES);
+    }
+
     /**
      * 先存图片后保存数据(一定要用这个方法)
      *
@@ -67,11 +73,11 @@ public class Remark extends BaseModel {
      */
     public void saveInBackground(final SafeSaveCallback callback) {
         List<AVFile> files = getList(IMAGES);
-        if (files == null || files.size() <= 0) {//无图片直接保存
+        if (files == null || files.size() <= 0 || getNeedSaveFiles(files).size() <= 0) {//无图片需要上传,直接保存
             super.saveInBackground(callback);
-        } else {//先保存图片(已有的也没事,不会改变)
+        } else {//先保存图片(没有上传过的)
             try {
-                saveFileBeforeSave(files, false, new SafeSaveCallback(callback.getContext()) {
+                saveFileBeforeSave(getNeedSaveFiles(files), false, new SafeSaveCallback(callback.getContext()) {
                     @Override
                     public void save(AVException e) {
                         if (e != null) {//失败
@@ -89,6 +95,16 @@ public class Remark extends BaseModel {
                 callback.save(e);//报错
             }
         }
+    }
+
+    private List<AVFile> getNeedSaveFiles(List<AVFile> allFiles) {
+        List<AVFile> files = new ArrayList<>();
+        for (AVFile file : allFiles) {
+            if (TextUtils.isEmpty(file.getObjectId())) {//没有上传过
+                files.add(file);
+            }
+        }
+        return files;
     }
 
     public void setVoucher(String voucherId) {

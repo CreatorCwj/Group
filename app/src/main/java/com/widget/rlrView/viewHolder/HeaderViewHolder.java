@@ -15,8 +15,7 @@ public class HeaderViewHolder extends RecyclerView.ViewHolder {
     protected Context context;
 
     public HeaderViewHolder(Context context, int layoutId) {
-        super(LayoutInflater.from(context).inflate(layoutId, null));
-        this.context = context;
+        this(LayoutInflater.from(context).inflate(layoutId, null));
     }
 
     public HeaderViewHolder(View itemView) {

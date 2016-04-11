@@ -234,7 +234,6 @@ public class VoucherDetailActivity extends BaseActivity implements View.OnClickL
         //adapter view
         remarkAdapter = new RemarkAdapter(this);
         remarkView.setAdapter(remarkAdapter);
-        remarkView.setOnItemClickListener(remarkAdapter);
         loadRemark();
     }
 
@@ -345,8 +344,15 @@ public class VoucherDetailActivity extends BaseActivity implements View.OnClickL
                 enterToSubmitOrder();
                 break;
             case R.id.voucher_detail_all_remark_tv://全部评论
+                gotoAllRemark();
                 break;
         }
+    }
+
+    private void gotoAllRemark() {
+        Intent intent = new Intent(VoucherDetailActivity.this, AllRemarkActivity.class);
+        intent.putExtra(AllRemarkActivity.VOUCHER_KEY, voucher);
+        startActivity(intent);
     }
 
     private void enterToSubmitOrder() {

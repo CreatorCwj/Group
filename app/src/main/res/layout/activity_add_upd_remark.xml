@@ -1,0 +1,208 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/add_upd_remark_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:rightText="发布"
+        app:titleText="评论" />
+
+    <com.widget.SafeScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <com.widget.RoundImageView
+                    android:id="@+id/add_upd_remark_iv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="12dp"
+                    android:scaleType="centerCrop"
+                    app:imageType="round"
+                    app:radius="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/add_upd_remark_name_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/add_upd_remark_voucher_name_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:textColor="@color/gray"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RatingBar
+                            android:id="@+id/add_upd_remark_rating"
+                            style="@style/MyRatingBarStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="true"
+                            android:numStars="5"
+                            android:rating="0"
+                            android:stepSize="0.1" />
+
+                        <TextView
+                            android:id="@+id/add_upd_remark_point_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="0.0分"
+                            android:textColor="@color/orange"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:layout_marginBottom="12dp"
+                android:background="@color/dividerColor" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/dividerColor" />
+
+            <com.widget.RatingView
+                android:id="@+id/add_upd_remark_ratingView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:padding="13dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/dividerColor" />
+
+            <EditText
+                android:id="@+id/add_upd_remark_content_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="start"
+                android:lineSpacingExtra="6dp"
+                android:minLines="6"
+                android:padding="13dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingBottom="8dp"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:paddingTop="8dp">
+
+                <TextView
+                    android:id="@+id/add_upd_remark_limit_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/add_upd_remark_tip_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:layout_marginBottom="12dp"
+                android:background="@color/dividerColor" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/dividerColor" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingBottom="6dp"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:paddingTop="6dp"
+                android:text="添加照片"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <com.widget.remarkImagesLayout.OperateImagesLayout
+                android:id="@+id/add_upd_remark_image_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:padding="13dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:layout_marginBottom="12dp"
+                android:background="@color/dividerColor" />
+
+        </LinearLayout>
+    </com.widget.SafeScrollView>
+</LinearLayout>

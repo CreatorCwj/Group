@@ -17,6 +17,8 @@ import com.avos.avoscloud.AVException;
 import com.constant.CategoryEnum;
 import com.constant.CloudFunction;
 import com.constant.OrderStateEnum;
+import com.group.AddUpdRemarkActivity;
+import com.group.CouponActivity;
 import com.group.OrderDetailActivity;
 import com.group.R;
 import com.group.VoucherDetailActivity;
@@ -141,16 +143,13 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
                         viewHolder.itemView.performClick();
                         break;
                     case WAIT_USE://查看团购券
-                        Utils.showToast(context, "查看团购券");
+                        coupon(order);
                         break;
                     case USED://评价
-                        Utils.showToast(context, "评价");
+                        remark(order);
                         break;
                     case REMARKED://再来一单
-                        Intent intent = new Intent(context, VoucherDetailActivity.class);
-                        intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, order.getVoucher());
-                        intent.putExtra(VoucherDetailActivity.MERCHANT_KEY, order.getVoucher().getMerchant());
-                        context.startActivity(intent);
+                        gotoVoucher(order);
                         break;
                     case OVERDUE://查看详情,直接和item的点击一样
                         viewHolder.itemView.performClick();
@@ -158,6 +157,28 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
                 }
             }
         });
+    }
+
+    private void coupon(Order order) {
+        Intent intent = new Intent(context, CouponActivity.class);
+        intent.putExtra(CouponActivity.ORDER_KEY, order);
+        context.startActivity(intent);
+    }
+
+    private void gotoVoucher(Order order) {
+        Intent intent = new Intent(context, VoucherDetailActivity.class);
+        intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, order.getVoucher());
+        intent.putExtra(VoucherDetailActivity.MERCHANT_KEY, order.getVoucher().getMerchant());
+        context.startActivity(intent);
+    }
+
+    private void remark(Order order) {
+        Intent intent = new Intent(context, AddUpdRemarkActivity.class);
+        intent.putExtra(AddUpdRemarkActivity.ORDER_KEY, order);
+        intent.putExtra(AddUpdRemarkActivity.VOUCHER_KEY, order.getVoucher());
+        intent.putExtra(AddUpdRemarkActivity.MERCHANT_KEY, order.getVoucher().getMerchant());
+        intent.putExtra(AddUpdRemarkActivity.IS_UPD_KEY, false);
+        context.startActivity(intent);
     }
 
     private void setSpareTime(LinearLayout spareTimeLayout, TextView countTimeTv, Order order) {
@@ -259,8 +280,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
     @Override
     public void onItemLongClick(int position) {
         //删除订单(待支付和已过期的订单可以删除)
-        Order order = getDataItem(position);
-        final String orderId = order.getObjectId();
+        final Order order = getDataItem(position);
         if (order.getStatus() == OrderStateEnum.WAIT_PAY.getId() || order.getStatus() == OrderStateEnum.OVERDUE.getId()) {//可删除
             if (messageDialog == null) {
                 messageDialog = new MessageDialog(context);
@@ -272,14 +292,14 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
             messageDialog.setPositiveListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    deleteOrder(orderId);
+                    deleteOrder(order);
                 }
             });
             messageDialog.show();
         }
     }
 
-    private void deleteOrder(String orderId) {
+    private void deleteOrder(final Order order) {
         if (loadingDialog == null) {
             loadingDialog = new LoadingDialog(context);
             loadingDialog.setCancelable(false);
@@ -287,7 +307,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
         //自定义删除订单方法,只删除待支付和已过期的订单
         loadingDialog.show("删除订单中...");
         Map<String, Object> params = new HashMap<>();
-        params.put("orderId", orderId);
+        params.put("orderId", order.getObjectId());
         AVCloud.rpcFunctionInBackground(CloudFunction.DELETE_ORDER, params, new SafeFunctionCallback<Object>(context) {
             @Override
             protected void functionBack(Object o, AVException e) {
@@ -295,6 +315,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
                     String reason = JsonUtils.getStrValueOfJsonStr(e.getMessage(), "error");
                     Utils.showToast(context, "删除订单失败" + (reason == null ? "" : ":" + reason));
                 } else {
+                    removeData(order);
                     Utils.showToast(context, "删除订单成功");
                 }
                 loadingDialog.cancel();

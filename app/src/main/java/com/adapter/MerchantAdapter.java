@@ -58,6 +58,7 @@ public class MerchantAdapter extends RecyclerViewAdapter<Merchant> implements Lo
             setTags(viewHolder.tagsLayout, merchant.getTags());//添加tag
             if (merchant.getImages() != null && merchant.getImages().size() > 0)
                 ImageLoader.displayImage(viewHolder.imageView, merchant.getImages().get(0));//加载第一张图片
+            else viewHolder.imageView.setImageDrawable(null);
         }
     }
 

@@ -37,6 +37,16 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Re
     }
 
     /**
+     * 移除数据
+     *
+     * @param data
+     */
+    public void removeData(T data) {
+        dataList.remove(data);
+        notifyDataSetChanged();
+    }
+
+    /**
      * 清除数据
      */
     public void clearData() {

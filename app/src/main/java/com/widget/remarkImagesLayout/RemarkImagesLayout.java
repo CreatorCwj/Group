@@ -1,4 +1,4 @@
-package com.widget;
+package com.widget.remarkImagesLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.group.BigBitmapActivity;
 import com.imageLoader.ImageLoader;
@@ -118,34 +119,32 @@ public class RemarkImagesLayout extends LinearLayout {
 
     private void addImages() {
         for (int i = 0; i < NUM_OF_ROW; i++) {
-            ImageView imageView = getImageView();
-            imageViews.add(imageView);
-            firstLayout.addView(imageView);
-            if (i < NUM_OF_ROW - 1)
-                firstLayout.addView(getDivider());
+            firstLayout.addView(getRelativeLayout());
         }
         for (int i = 0; i < NUM_OF_ROW; i++) {
-            ImageView imageView = getImageView();
-            imageViews.add(imageView);
-            secondLayout.addView(imageView);
-            if (i < NUM_OF_ROW - 1)
-                secondLayout.addView(getDivider());
+            secondLayout.addView(getRelativeLayout());
         }
     }
 
-    private View getDivider() {
-        View view = new View(getContext());
-        view.setLayoutParams(new LayoutParams(UIUtils.dp2px(getContext(), 4), ViewGroup.LayoutParams.MATCH_PARENT));
-        return view;
+    private RelativeLayout getRelativeLayout() {
+        //container
+        RelativeLayout relativeLayout = new RelativeLayout(getContext());
+        LayoutParams params = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.weight = 1;
+        relativeLayout.setLayoutParams(params);
+        //image
+        ImageView imageView = getImageView();
+        imageViews.add(imageView);
+        relativeLayout.addView(imageView);
+        return relativeLayout;
     }
 
     private ImageView getImageView() {
         ImageView imageView = new ImageView(getContext());
-        LayoutParams params = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.weight = 1;
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(UIUtils.dp2px(getContext(), 80), UIUtils.dp2px(getContext(), 80));
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
         imageView.setLayoutParams(params);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setAdjustViewBounds(true);
         return imageView;
     }
 

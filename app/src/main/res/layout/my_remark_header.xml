@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="11dp">
+
+    <RelativeLayout
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="15dp">
+
+        <com.widget.RoundImageView
+            android:id="@+id/my_remark_header_img"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_user_icon"
+            app:imageType="circle"
+            app:strokeColor="#86DFD7"
+            app:strokeWidth="4dp" />
+
+        <TextView
+            android:id="@+id/my_remark_header_lv_tv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/lv_back"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="1.5dp"
+            android:singleLine="true"
+            android:text="Lv0"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/my_remark_header_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="评论"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/my_remark_header_remark_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

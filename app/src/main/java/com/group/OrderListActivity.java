@@ -66,6 +66,12 @@ public class OrderListActivity extends BaseRpcFunctionListActivity<Order> {
     }
 
     @Override
+    public void onRefresh() {
+        rlrView.clearData();//先清空再刷新
+        super.onRefresh();
+    }
+
+    @Override
     protected RecyclerViewAdapter<Order> getAdapter() {
         return new OrderAdapter(this);
     }

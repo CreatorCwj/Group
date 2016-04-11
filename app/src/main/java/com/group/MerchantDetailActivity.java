@@ -338,7 +338,6 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
         //adapter view
         remarkAdapter = new RemarkAdapter(this);
         remarkView.setAdapter(remarkAdapter);
-        remarkView.setOnItemClickListener(remarkAdapter);
         loadRemark();
     }
 
@@ -414,9 +413,15 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
                 call();
                 break;
             case R.id.merchant_detail_all_remark_tv:
-                Utils.showToast(MerchantDetailActivity.this, "全部评论");
+                gotoAllRemark();
                 break;
         }
+    }
+
+    private void gotoAllRemark() {
+        Intent intent = new Intent(MerchantDetailActivity.this, AllRemarkActivity.class);
+        intent.putExtra(AllRemarkActivity.MERCHANT_KEY, merchant);
+        startActivity(intent);
     }
 
     private void call() {

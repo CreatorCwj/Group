@@ -50,6 +50,11 @@ public class BaseFragmentPagerAdapter<T extends BaseViewPagerFragment> extends P
         setFirstPage();
     }
 
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return fragments.get(position).getTitle();
+    }
+
     //双向绑定,fragment处理生命周期使用
     private void attachFragment() {
         for (int i = 0; i < fragments.size(); ++i) {

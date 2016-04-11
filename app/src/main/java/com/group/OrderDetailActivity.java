@@ -38,6 +38,8 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
 
     public static final String ORDER_ID_KEY = "orderId";
 
+    public static final int REMARK_CODE = 0;
+
     @InjectView(R.id.order_detail_spareTime_layout)
     private LinearLayout spareTimeLayout;
 
@@ -128,7 +130,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 if (e != null) {//获取失败
                     cancelLoadingDialog();
                     String reason = JsonUtils.getStrValueOfJsonStr(e.getMessage(), "error");
-                    Utils.showToast(OrderDetailActivity.this, "获取订单信息失败:" + (reason == null ? "" : ":" + reason));
+                    Utils.showToast(OrderDetailActivity.this, "获取订单信息失败" + (reason == null ? "" : ":" + reason));
                     finish();
                 } else {
                     OrderDetailActivity.this.order = order;
@@ -286,18 +288,48 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
             case WAIT_PAY://支付(先提示)
                 tipPay();
                 break;
-            case WAIT_USE:
-                Utils.showToast(this, "查看团购券");
+            case WAIT_USE://团购券
+                coupon();
                 break;
-            case USED:
-                Utils.showToast(this, "评价");
+            case USED://评价
+                remark();
                 break;
             case REMARKED://再来一单
-                Intent intent = new Intent(OrderDetailActivity.this, VoucherDetailActivity.class);
-                intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, voucher);
-                intent.putExtra(VoucherDetailActivity.MERCHANT_KEY, merchant);
-                startActivity(intent);
+                gotoVoucher();
                 break;
+        }
+    }
+
+    private void coupon() {
+        Intent intent = new Intent(OrderDetailActivity.this, CouponActivity.class);
+        intent.putExtra(CouponActivity.ORDER_KEY, order);
+        startActivity(intent);
+    }
+
+    private void gotoVoucher() {
+        Intent intent = new Intent(OrderDetailActivity.this, VoucherDetailActivity.class);
+        intent.putExtra(VoucherDetailActivity.VOUCHER_KEY, voucher);
+        intent.putExtra(VoucherDetailActivity.MERCHANT_KEY, merchant);
+        startActivity(intent);
+    }
+
+    private void remark() {
+        Intent intent = new Intent(OrderDetailActivity.this, AddUpdRemarkActivity.class);
+        intent.putExtra(AddUpdRemarkActivity.ORDER_KEY, order);
+        intent.putExtra(AddUpdRemarkActivity.VOUCHER_KEY, voucher);
+        intent.putExtra(AddUpdRemarkActivity.MERCHANT_KEY, merchant);
+        intent.putExtra(AddUpdRemarkActivity.IS_UPD_KEY, false);
+        startActivityForResult(intent, REMARK_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REMARK_CODE) {//评论成功
+                //改变状态,再来一单(已评价)
+                updFuncTv(OrderStateEnum.REMARKED);
+            }
         }
     }
 

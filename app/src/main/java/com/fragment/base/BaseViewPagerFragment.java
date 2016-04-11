@@ -16,6 +16,10 @@ public abstract class BaseViewPagerFragment extends BaseFragment {
         this.position = position;
     }
 
+    public String getTitle() {
+        return "";
+    }
+
     /**
      * 使用onViewPagerFragmentResume替代更准确
      */
