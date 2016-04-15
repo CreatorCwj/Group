@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_like_back"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:text="选择你的兴趣爱好"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <com.widget.rlrView.view.RLRView
+        android:id="@+id/my_like_rlrView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        app:autoRefresh="false"
+        app:canLoadMore="false"
+        app:columnCount="3"
+        app:layoutType="grid" />
+
+    <Button
+        android:id="@+id/my_like_submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@android:color/white"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="完成"
+        android:textColor="@color/colorPrimary"
+        android:textSize="17sp" />
+</LinearLayout>

@@ -24,6 +24,7 @@ import com.group.CollectionActivity;
 import com.group.LoginActivity;
 import com.group.LotteryRecordActivity;
 import com.group.MyCouponActivity;
+import com.group.MyLikeActivity;
 import com.group.MyRemarkActivity;
 import com.group.OrderListActivity;
 import com.group.PointRecordActivity;
@@ -259,7 +260,7 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
                 jumpByUserState(MyRemarkActivity.class, null);
                 break;
             case R.id.mine_my_like_btn://我的喜爱
-                jumpByUserState(null, null);
+                jumpByUserState(MyLikeActivity.class, null);
                 break;
             case R.id.mine_my_setting_btn://个人设置
                 infoLayout.performClick();

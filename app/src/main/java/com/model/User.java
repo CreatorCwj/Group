@@ -28,8 +28,8 @@ public class User extends AVUser {
         return getString(DISPLAY_NAME);
     }
 
-    public void addLikes(List<Integer> categoryIds) {
-        addAllUnique(LIKES, categoryIds);
+    public void resetLikes(List<Integer> categoryIds) {
+        put(LIKES, categoryIds);
     }
 
     public List<Integer> getLikes() {

@@ -23,4 +23,5 @@
     <string name="title_activity_order_detail">OrderDetailActivity</string>
     <string name="title_activity_add_upd_remark">AddUpdRemarkActivity</string>
     <string name="title_activity_coupon">CouponActivity</string>
+    <string name="title_activity_my_like">MyLikeActivity</string>
 </resources>

@@ -11,7 +11,7 @@ import com.widget.rlrView.adapter.RecyclerViewAdapter;
 
 /**
  * Created by cwj on 16/1/22.
- * 自定义分割线:支持高度和颜色
+ * 自定义分割线:支持高度和颜色(线性垂直布局适用)
  */
 public class Divider extends RecyclerView.ItemDecoration {
 

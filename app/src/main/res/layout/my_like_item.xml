@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="16dp">
+
+    <com.widget.viewPagers.imageViewPager.PointView
+        android:id="@+id/my_like_item_pv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_centerInParent="true"
+        app:pointTextSize="18sp"
+        app:selectColor="@color/colorPrimary"
+        app:unSelectColor="@android:color/white" />
+
+</RelativeLayout>
