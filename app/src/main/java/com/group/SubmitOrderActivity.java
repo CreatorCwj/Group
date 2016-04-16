@@ -260,14 +260,17 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
         //采用模拟支付,调用自定义云函数检验相关信息,可以支付后直接支付相应价钱即可
         showLoadingDialog("正在支付中...");
         //自定义支付方法
-        AVCloud.rpcFunctionInBackground(CloudFunction.PAY_ORDER, order, new SafeFunctionCallback<Object>(this) {
+        AVCloud.rpcFunctionInBackground(CloudFunction.PAY_ORDER, order, new SafeFunctionCallback<Order>(this) {
             @Override
-            protected void functionBack(Object obj, AVException e) {
+            protected void functionBack(Order newOrder, AVException e) {
                 if (e != null) {
                     String reason = JsonUtils.getStrValueOfJsonStr(e.getMessage(), "error");
                     Utils.showToast(SubmitOrderActivity.this, "支付失败" + (reason == null ? "" : ":" + reason));
-                } else {
+                } else {//到查看团购券界面
                     Utils.showToast(SubmitOrderActivity.this, "支付成功,团购券可在我的界面里查看");
+                    Intent intent = new Intent(SubmitOrderActivity.this, CouponActivity.class);
+                    intent.putExtra(CouponActivity.ORDER_KEY, newOrder);
+                    startActivity(intent);
                     finish();
                 }
                 cancelLoadingDialog();

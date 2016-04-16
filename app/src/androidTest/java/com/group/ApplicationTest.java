@@ -12,5 +12,9 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void test() {
+        String str = "(大学城店)";
+        str = str.replace("(", "\\(");
+        str = str.replace(")", "\\)");
+        System.out.println(str.replaceAll("\\(", "\\("));
     }
 }

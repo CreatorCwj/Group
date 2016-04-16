@@ -32,6 +32,7 @@ import com.group.H5Activity;
 import com.group.MerchantActivity;
 import com.group.R;
 import com.group.ScannerActivity;
+import com.group.SearchActivity;
 import com.group.SelectCityActivity;
 import com.imageLoader.ImageLoader;
 import com.leancloud.SafeFindCallback;
@@ -443,7 +444,8 @@ public class HomeFragment extends BaseSlideFragment implements SwipeRefreshLayou
         toolBar.setSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.showToast(getActivity(), "搜索");
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
             }
         });
     }

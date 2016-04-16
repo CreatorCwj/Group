@@ -120,6 +120,13 @@
         <activity
             android:name=".MyLikeActivity"
             android:label="@string/title_activity_my_like" />
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".SearchMerchantActivity"
+            android:label="@string/title_activity_search_merchant" />
     </application>
 
 </manifest>

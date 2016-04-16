@@ -102,7 +102,7 @@ public class CancelableEditView extends LinearLayout {
             public void afterTextChanged(Editable s) {
                 String str = s.toString();
                 if (TextUtils.isEmpty(str)) {
-                    cancelIv.setVisibility(INVISIBLE);
+                    cancelIv.setVisibility(GONE);
                 } else if (cancelIv.getVisibility() != VISIBLE) {
                     cancelIv.setVisibility(VISIBLE);
                 }
@@ -161,10 +161,12 @@ public class CancelableEditView extends LinearLayout {
         editText = new EditText(getContext());
         LayoutParams params = new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params.weight = 1;
+        params.rightMargin = UIUtils.dp2px(getContext(), 10);
         editText.setPadding(0, 0, 0, 0);//一定要设置,好像EditText默认有padding
         editText.setBackground(null);
         editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.setSingleLine(true);
+        editText.setEllipsize(TextUtils.TruncateAt.END);//只有hint会省略
         editText.setHint(hintText);
         editText.setHintTextColor(hintColor);
         editText.setTextColor(editTextColor);
@@ -196,12 +198,30 @@ public class CancelableEditView extends LinearLayout {
     private void addCancelIcon() {
         cancelIv = new ImageView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 10);
-        params.leftMargin = params.rightMargin = UIUtils.dp2px(getContext(), 10);
+        params.rightMargin = params.bottomMargin = params.topMargin = UIUtils.dp2px(getContext(), 10);
         cancelIv.setAdjustViewBounds(true);
         cancelIv.setImageDrawable(cancelIcon);
-        cancelIv.setVisibility(INVISIBLE);
+        cancelIv.setVisibility(GONE);
         addView(cancelIv, params);
+    }
+
+    /**
+     * 是否可编辑,在开始时设置有效
+     *
+     * @param canEdit
+     */
+    public void setCanEdit(boolean canEdit) {
+        //设置edittext是否输入
+        editText.setFocusable(canEdit);
+        editText.setFocusableInTouchMode(canEdit);
+    }
+
+    public void setHintText(String hintText) {
+        editText.setHint(hintText);
+    }
+
+    public EditText getEditText() {
+        return editText;
     }
 
 }

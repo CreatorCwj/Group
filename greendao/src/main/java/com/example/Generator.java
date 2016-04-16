@@ -16,11 +16,19 @@ public class Generator {
         addCity(schema);
         addArea(schema);
         addCategory(schema);
+        addSearchRecord(schema);
         try {
             new DaoGenerator().generateAll(schema, "app/src/main/java");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static void addSearchRecord(Schema schema) {
+        Entity note = schema.addEntity("SearchRecord");
+        note.addIdProperty();
+        note.addStringProperty("name").notNull();
+        note.addLongProperty("lastUseTime").notNull();
     }
 
     private static void addCategory(Schema schema) {

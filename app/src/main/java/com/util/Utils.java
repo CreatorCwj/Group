@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -124,6 +125,22 @@ public class Utils {
                 sb.append(space);
         }
         return sb.toString();
+    }
+
+    /**
+     * 生成搜索关键字集合(左右括号特殊处理)
+     *
+     * @param text
+     * @return
+     */
+    public static List<String> getSearchWords(String text) {
+        List<String> words = new ArrayList<>();
+        for (String str : text.split(" ")) {
+            if (!TextUtils.isEmpty(str.trim())) {
+                words.add(str.trim().replace("(", "\\(").replace(")", "\\)"));//有实际意义的关键字
+            }
+        }
+        return words;
     }
 
 }

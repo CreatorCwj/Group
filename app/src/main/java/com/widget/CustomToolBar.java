@@ -26,7 +26,7 @@ public class CustomToolBar extends FrameLayout {
 
     private ImageView backIv;
     private TextView textView;
-    private TextView searchTextView;
+    private CancelableEditView searchEt;
     private ImageView leftIconIv;
     private ImageView rightIconIv;
     private TextView rightTv;
@@ -36,10 +36,12 @@ public class CustomToolBar extends FrameLayout {
     private boolean textVisibility;
     private boolean textIconVisibility;
     private boolean searchVisibility;
+    private boolean searchCanEdit;
     private String titleText;
     private Drawable leftIcon;
     private Drawable rightIcon;
     private String rightText;
+    private String searchHintText;
 
     public CustomToolBar(Context context) {
         this(context, null);
@@ -68,10 +70,12 @@ public class CustomToolBar extends FrameLayout {
             textVisibility = typedArray.getBoolean(R.styleable.CustomToolBar_textVisibility, true);
             textIconVisibility = typedArray.getBoolean(R.styleable.CustomToolBar_textIconVisibility, false);
             searchVisibility = typedArray.getBoolean(R.styleable.CustomToolBar_searchVisibility, false);
+            searchCanEdit = typedArray.getBoolean(R.styleable.CustomToolBar_searchCanEdit, false);
             titleText = typedArray.getString(R.styleable.CustomToolBar_titleText);
             leftIcon = typedArray.getDrawable(R.styleable.CustomToolBar_leftIcon);
             rightIcon = typedArray.getDrawable(R.styleable.CustomToolBar_rightIcon);
             rightText = typedArray.getString(R.styleable.CustomToolBar_rightText);
+            searchHintText = typedArray.getString(R.styleable.CustomToolBar_searchHintText);
             typedArray.recycle();
         }
     }
@@ -81,7 +85,7 @@ public class CustomToolBar extends FrameLayout {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.custom_toolbar, this);
         backIv = (ImageView) view.findViewById(R.id.custom_toolbar_back_iv);
         textView = (TextView) view.findViewById(R.id.custom_toolbar_tv);
-        searchTextView = (TextView) view.findViewById(R.id.custom_toolbar_search_tv);
+        searchEt = (CancelableEditView) view.findViewById(R.id.custom_toolbar_search_cet);
         leftIconIv = (ImageView) view.findViewById(R.id.custom_toolbar_left_iv);
         rightIconIv = (ImageView) view.findViewById(R.id.custom_toolbar_right_iv);
         rightTv = (TextView) view.findViewById(R.id.custom_toolbar_right_tv);
@@ -92,14 +96,21 @@ public class CustomToolBar extends FrameLayout {
         //可见性
         setVisible(backIv, backVisibility);
         setVisible(textView, textVisibility);
-        setVisible(searchTextView, searchVisibility);
+        setVisible(searchEt, searchVisibility);
         setVisible(leftIconIv, false);
         setVisible(rightIconIv, false);
         setVisible(rightTv, false);
+        //edittext
+        setEditText();
         //TextView限长
         setTextView();
         //setIcon
         setIcon();
+    }
+
+    private void setEditText() {
+        searchEt.setCanEdit(searchCanEdit);
+        searchEt.setHintText(searchHintText);
     }
 
     private void setIcon() {
@@ -198,7 +209,26 @@ public class CustomToolBar extends FrameLayout {
      * 搜索点击监听
      */
     public void setSearchClickListener(View.OnClickListener listener) {
-        searchTextView.setOnClickListener(listener);
+        searchEt.setOnClickListener(listener);
+        searchEt.getEditText().setOnClickListener(listener);
+    }
+
+    /**
+     * 设置文本改变监听器
+     *
+     * @param listener
+     */
+    public void setSearchTextChangedListener(CancelableEditView.OnEditTextChangedListener listener) {
+        searchEt.setOnEditTextChangedListener(listener);
+    }
+
+    /**
+     * 设置搜索框提示文字
+     *
+     * @param hintText
+     */
+    public void setSearchHintText(String hintText) {
+        searchEt.setHintText(hintText);
     }
 
     /**
@@ -249,6 +279,10 @@ public class CustomToolBar extends FrameLayout {
      */
     public TextView getTitleTextView() {
         return textView;
+    }
+
+    public String getSearchText() {
+        return searchEt.getEditText().getText().toString();
     }
 
 }

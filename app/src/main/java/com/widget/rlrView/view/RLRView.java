@@ -478,4 +478,10 @@ public class RLRView extends AutoRefreshSwipeView implements SwipeRefreshLayout.
         }
         return total;
     }
+
+    @Override
+    public void setVisibility(int visibility) {
+        super.setVisibility(visibility);
+        loadMoreRecyclerView.setVisibility(visibility);
+    }
 }

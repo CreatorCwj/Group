@@ -92,7 +92,7 @@ public class BaseDBHelper<T, K> implements SyncDBInterface<T, K>, AsyncDBInterfa
                     result = null;
                 }
                 if (listener != null)
-                    listener.onGetResult(result);
+                    listener.onInnerGetResult(result);
             }
         });
     }

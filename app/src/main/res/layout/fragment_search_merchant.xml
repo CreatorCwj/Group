@@ -1,0 +1,149 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:id="@+id/merchant_custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:rightIcon="@drawable/map_icon"
+        app:searchVisibility="true"
+        app:textIconVisibility="false"
+        app:textVisibility="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/merchant_fragment_category_filter_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/icon_press"
+            android:drawableRight="@drawable/sort_filter_right_icon"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="全部"
+            android:textColor="@color/main_radio_text_colors"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="@dimen/divider_height"
+            android:layout_height="match_parent"
+            android:background="@color/dividerColor" />
+
+        <TextView
+            android:id="@+id/merchant_fragment_area_filter_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/icon_press"
+            android:drawableRight="@drawable/sort_filter_right_icon"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="全城"
+            android:textColor="@color/main_radio_text_colors"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="@dimen/divider_height"
+            android:layout_height="match_parent"
+            android:background="@color/dividerColor" />
+
+        <TextView
+            android:id="@+id/merchant_fragment_sort_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/icon_press"
+            android:drawableRight="@drawable/sort_filter_right_icon"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="智能排序"
+            android:textColor="@color/main_radio_text_colors"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="@dimen/divider_height"
+            android:layout_height="match_parent"
+            android:background="@color/dividerColor" />
+
+        <TextView
+            android:id="@+id/merchant_fragment_filter_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/icon_press"
+            android:drawableRight="@drawable/sort_filter_right_icon"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="筛选"
+            android:textColor="@color/main_radio_text_colors"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/dividerColor" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/merchant_fragment_location_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/merchant_fragment_location_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:singleLine="false"
+                android:text="天津市西青区西环路天津市大学软件学院3号公寓附近"
+                android:textColor="@color/gray_dark"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:src="@drawable/refresh_icon" />
+        </LinearLayout>
+
+        <com.widget.rlrView.view.RLRView
+            android:id="@+id/merchant_fragment_rlrView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/merchant_fragment_location_layout"
+            app:autoRefresh="true"
+            app:canLoadMore="true"
+            app:dividerColor="@color/dividerColor"
+            app:dividerHeight="@dimen/divider_height"
+            app:emptyView="@layout/empty_data_view" />
+
+        <FrameLayout
+            android:id="@+id/filter_sort_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+</LinearLayout>

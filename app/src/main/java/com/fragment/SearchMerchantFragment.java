@@ -42,10 +42,9 @@ import java.util.List;
 
 import roboguice.inject.InjectView;
 
-public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
+public class SearchMerchantFragment extends BaseSlideFragment implements RLRView.OnRefreshListener, RLRView.OnLoadListener {
 
-    public static final String NEED_BACK_KEY = "needBack";
-    public static final String INIT_CATEGORY_KEY = "initCategory";
+    public static final String SEARCH_WORD_KEY = "searchWord";
 
     @InjectView(R.id.merchant_custom_toolbar)
     private CustomToolBar toolBar;
@@ -84,13 +83,14 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
     private Category category;
     private SortEnum sortEnum;
     private List<TagEnum> tagEnums;
+    private String searchWord;
 
     private SafeFindCallback<Merchant> safeFindCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_merchant, container, false);
+        return inflater.inflate(R.layout.fragment_search_merchant, container, false);
     }
 
     @Override
@@ -113,13 +113,8 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
     private void initArguments() {
         Bundle bundle = getArguments();
         if (bundle != null) {
-            toolBar.setBackVisibility(bundle.getBoolean(NEED_BACK_KEY, false));//是否需要返回
-            Category initCat = (Category) bundle.getSerializable(INIT_CATEGORY_KEY);
-            if (initCat != null) {//为null不用管
-                category = initCat;//init
-                categoryFilterTv.setText(category.getName());//changeText
-                categoryFragment.setFirstInit(category);
-            }
+            searchWord = bundle.getString(SEARCH_WORD_KEY, "");//搜索关键字
+            toolBar.setSearchHintText(searchWord);
         }
     }
 
@@ -280,7 +275,7 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
     }
 
     private void setToolBar() {
-        toolBar.setLeftIconClickListener(new View.OnClickListener() {
+        toolBar.setRightIconClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //有数据时才允许跳转到地图界面
@@ -291,10 +286,9 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
                 Utils.showToast(getActivity(), "地图展示");
             }
         });
-        toolBar.setRightIconClickListener(new View.OnClickListener() {
+        toolBar.setSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //跳到搜索界面
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent);
             }
@@ -327,11 +321,67 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
                 rlrView.stopRL();//结束刷新加载
             }
         };
+        //搜索查询和其他查询用and
         getMainQuery().findInBackground(safeFindCallback);//查询
     }
 
+    private AVQuery<Merchant> getSearchQuery() {
+        List<String> words = Utils.getSearchWords(searchWord);
+        if (words.size() <= 0)
+            return null;
+        return getSearchQuery(words);
+    }
+
+    private AVQuery<Merchant> getSearchQuery(List<String> words) {
+        List<AVQuery<Merchant>> andQueries = new ArrayList<>();
+        for (String word : words) {//关键字之间用and
+            andQueries.add(addOrQuery(word));
+        }
+        return AVQuery.and(andQueries);
+    }
+
+    private AVQuery<Merchant> addOrQuery(String word) {
+        List<AVQuery<Merchant>> orQueries = new ArrayList<>();
+        //商家名,商圈,品类的or查询
+        orQueries.add(getMerchantByNameLike(word));
+        orQueries.add(getMerchantByAreaLike(Merchant.AREA, word));
+        orQueries.add(getMerchantByAreaLike(Merchant.SUB_AREA, word));
+        orQueries.add(getMerchantByCategoryLike(Merchant.CATEGORY, word));
+        orQueries.add(getMerchantByCategoryLike(Merchant.SUB_CATEGORY, word));
+        return AVQuery.or(orQueries);
+    }
+
+    private AVQuery<Merchant> getMerchantByAreaLike(String key, String word) {
+        AVQuery<com.model.Area> areaQuery = AVQuery.getQuery(com.model.Area.class);
+        areaQuery.whereContains(com.model.Area.NAME, word);
+        AVQuery<Merchant> query = AVQuery.getQuery(Merchant.class);
+        query.whereMatchesQuery(key, areaQuery);
+        return query;
+    }
+
+    private AVQuery<Merchant> getMerchantByCategoryLike(String key, String word) {
+        AVQuery<com.model.Category> categoryQuery = AVQuery.getQuery(com.model.Category.class);
+        categoryQuery.whereContains(com.model.Category.NAME, word);
+        AVQuery<Merchant> query = AVQuery.getQuery(Merchant.class);
+        query.whereMatchesQuery(key, categoryQuery);
+        return query;
+    }
+
+    private AVQuery<Merchant> getMerchantByNameLike(String word) {
+        AVQuery<Merchant> query = AVQuery.getQuery(Merchant.class);
+        query.whereContains(Merchant.NAME, word);
+        return query;
+    }
+
     private AVQuery<Merchant> getMainQuery() {
+        List<AVQuery<Merchant>> andQueries = new ArrayList<>();//搜索查询和其他查询用and
+        //搜索查询
+        AVQuery<Merchant> searchQuery = getSearchQuery();
+        if (searchQuery != null)
+            andQueries.add(searchQuery);
+        //其他条件查询
         AVQuery<Merchant> mainQuery = AVQuery.getQuery(Merchant.class);
+        andQueries.add(mainQuery);
         //cityId(商圈没有时还能定到当前城市)
         City city = AppSetting.getCity();
         if (city != null)
@@ -366,30 +416,32 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
                 tags.add(tagEnum.getId());
             mainQuery.whereContainedIn(Merchant.TAGS, tags);
         }
+        //组合
+        AVQuery<Merchant> query = AVQuery.and(andQueries);
         //sort(排序,在主查询指定)
         if (sortEnum != null && !sortEnum.isAllFirstFilter()) {//不为空且不为一级全部才有过滤
             switch (sortEnum) {
                 case POINT:
-                    mainQuery.orderByDescending(Merchant.POINT);
+                    query.orderByDescending(Merchant.POINT);
                     break;
                 case DISTANCE:
                     if (curLocation != null)//当前定位有才有用,否则该排序无效
-                        mainQuery.whereNear(Merchant.LOCATION, new AVGeoPoint(curLocation.getLatitude(), curLocation.getLongitude()));
+                        query.whereNear(Merchant.LOCATION, new AVGeoPoint(curLocation.getLatitude(), curLocation.getLongitude()));
                     break;
                 case AVERAGE:
-                    mainQuery.orderByDescending(Merchant.AVERAGE);
+                    query.orderByDescending(Merchant.AVERAGE);
                     break;
             }
         }
         //include
-        mainQuery.include(Merchant.CATEGORY);
-        mainQuery.include(Merchant.SUB_CATEGORY);
-        mainQuery.include(Merchant.AREA);
-        mainQuery.include(Merchant.SUB_AREA);
+        query.include(Merchant.CATEGORY);
+        query.include(Merchant.SUB_CATEGORY);
+        query.include(Merchant.AREA);
+        query.include(Merchant.SUB_AREA);
         //当前分页
-        mainQuery.skip(rlrView.getSkipCount());
-        mainQuery.setLimit(rlrView.getPageSize());
-        return mainQuery;
+        query.skip(rlrView.getSkipCount());
+        query.setLimit(rlrView.getPageSize());
+        return query;
     }
 
     private <T extends AVObject> AVQuery<T> getInnerQuery(Class<T> clazz, String key, Object value) {

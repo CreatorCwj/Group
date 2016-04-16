@@ -9,5 +9,7 @@
         <attr name="leftIcon" format="reference" />
         <attr name="rightIcon" format="reference" />
         <attr name="rightText" format="string" />
+        <attr name="searchCanEdit" format="boolean" />
+        <attr name="searchHintText" format="string" />
     </declare-styleable>
 </resources>

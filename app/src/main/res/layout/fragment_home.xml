@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:rightIcon="@drawable/scanner_icon"
+        app:searchHintText="@string/search_hint_text"
         app:searchVisibility="true"
         app:textIconVisibility="true"
         app:titleText="请选择城市" />

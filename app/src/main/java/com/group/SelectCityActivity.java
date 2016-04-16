@@ -87,7 +87,7 @@ public class SelectCityActivity extends BaseActivity {
 
     private void setAllData() {
         //查找全部时用异步,否则有点卡
-        cityHelper.findAllAsync(new DBOperationListener<City>() {
+        cityHelper.findAllAsync(new DBOperationListener<City>(this) {
             @Override
             public void onGetResult(List<City> result) {
                 setAdapter(result, false);

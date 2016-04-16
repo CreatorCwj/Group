@@ -20,7 +20,7 @@
         android:background="@android:color/white"
         android:elevation="4dp"
         app:cancelIcon="@drawable/close_gray_dark"
-        app:editTextColor="@color/black"
+        app:editColor="@color/black"
         app:editTextSize="17sp"
         app:hintColor="@color/gray"
         app:hintIcon="@drawable/search_gray"
