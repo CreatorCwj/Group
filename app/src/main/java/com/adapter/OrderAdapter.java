@@ -243,7 +243,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
             categoryIv.setImageDrawable(null);
             return;
         }
-        categoryIv.setImageResource(categoryEnum.getSmallIconId());
+        categoryIv.setImageResource(categoryEnum.getBigIconId());
     }
 
     @Override

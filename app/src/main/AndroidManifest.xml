@@ -127,6 +127,18 @@
         <activity
             android:name=".SearchMerchantActivity"
             android:label="@string/title_activity_search_merchant" />
+        <activity
+            android:name=".MapSearchActivity"
+            android:label="@string/title_activity_map_search" />
+        <activity
+            android:name=".MapMerchantActivity"
+            android:label="@string/title_activity_map_merchant" />
+        <activity
+            android:name=".RouteListActivity"
+            android:label="@string/title_activity_route_list" />
+        <activity
+            android:name=".MapNavigateActivity"
+            android:label="@string/title_activity_map_navigate" />
     </application>
 
 </manifest>

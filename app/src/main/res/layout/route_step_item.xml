@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/route_step_iv"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="15dp" />
+
+    <TextView
+        android:id="@+id/route_step_describe_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="2dp"
+        android:singleLine="false"
+        android:textColor="@color/gray_dark"
+        android:textSize="15sp" />
+</LinearLayout>

@@ -143,7 +143,7 @@ public class MyRemarkAdapter extends RecyclerViewAdapter<Remark> {
             categoryIv.setImageDrawable(null);
             return;
         }
-        categoryIv.setImageResource(categoryEnum.getSmallIconId());
+        categoryIv.setImageResource(categoryEnum.getBigIconId());
     }
 
     @Override

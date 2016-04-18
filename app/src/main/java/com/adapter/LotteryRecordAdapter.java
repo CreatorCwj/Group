@@ -78,7 +78,7 @@ public class LotteryRecordAdapter extends RecyclerViewAdapter<RewardLotteryRecor
             categoryIv.setImageDrawable(null);
             return;
         }
-        categoryIv.setImageResource(categoryEnum.getSmallIconId());
+        categoryIv.setImageResource(categoryEnum.getBigIconId());
     }
 
     @Override

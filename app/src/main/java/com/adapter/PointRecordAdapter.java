@@ -58,7 +58,7 @@ public class PointRecordAdapter extends RecyclerViewAdapter<RewardPointRecord> {
             categoryIv.setImageDrawable(null);
             return;
         }
-        categoryIv.setImageResource(categoryEnum.getSmallIconId());
+        categoryIv.setImageResource(categoryEnum.getBigIconId());
     }
 
     @Override

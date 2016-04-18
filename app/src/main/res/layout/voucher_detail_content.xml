@@ -43,7 +43,6 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="89"
                 android:textColor="@color/colorPrimary"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -66,7 +65,6 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="¥110"
                 android:textColor="@color/gray"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -98,7 +96,6 @@
         android:ellipsize="end"
         android:padding="13dp"
         android:singleLine="true"
-        android:text="已售105519"
         android:textColor="@color/gray"
         android:textSize="15sp" />
 

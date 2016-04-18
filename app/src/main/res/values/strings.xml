@@ -26,4 +26,8 @@
     <string name="title_activity_my_like">MyLikeActivity</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_search_merchant">SearchMerchantActivity</string>
+    <string name="title_activity_map_search">MapSearchActivity</string>
+    <string name="title_activity_map_merchant">MapMerchantActivity</string>
+    <string name="title_activity_route_list">RouteListActivity</string>
+    <string name="title_activity_map_navigate">MapNavigateActivity</string>
 </resources>

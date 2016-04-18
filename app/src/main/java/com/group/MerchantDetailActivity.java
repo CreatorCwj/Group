@@ -407,7 +407,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
                 openBigBitmap();
                 break;
             case R.id.merchant_detail_address_layout://进入地图
-                Utils.showToast(MerchantDetailActivity.this, "地图");
+                gotoMap();
                 break;
             case R.id.merchant_detail_call://打电话(选择)
                 call();
@@ -416,6 +416,12 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
                 gotoAllRemark();
                 break;
         }
+    }
+
+    private void gotoMap() {
+        Intent intent = new Intent(MerchantDetailActivity.this, MapMerchantActivity.class);
+        intent.putExtra(MapMerchantActivity.MERCHANT_KEY, merchant);
+        startActivity(intent);
     }
 
     private void gotoAllRemark() {

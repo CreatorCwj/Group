@@ -25,6 +25,7 @@ import com.dao.generate.NearbyArea;
 import com.fragment.base.BaseFragment;
 import com.fragment.base.BaseSlideFragment;
 import com.fragment.base.BaseSortFilterFragment;
+import com.group.MapSearchActivity;
 import com.group.R;
 import com.group.SearchActivity;
 import com.leancloud.SafeFindCallback;
@@ -288,7 +289,13 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
                     Utils.showToast(getActivity(), "无数据");
                     return;
                 }
-                Utils.showToast(getActivity(), "地图展示");
+                ArrayList<Merchant> arrayList = new ArrayList<>();
+                for (Merchant merchant : adapter.getData()) {
+                    arrayList.add(merchant);
+                }
+                Intent intent = new Intent(getActivity(), MapSearchActivity.class);
+                intent.putParcelableArrayListExtra(MapSearchActivity.MERCHANTS_KEY, arrayList);
+                startActivity(intent);
             }
         });
         toolBar.setRightIconClickListener(new View.OnClickListener() {

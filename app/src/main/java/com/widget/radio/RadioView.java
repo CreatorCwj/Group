@@ -188,12 +188,20 @@ public class RadioView extends RelativeLayout {
         imageView.setBackground(imageBackground);
     }
 
+    public void setImageBackground(int resId) {
+        imageView.setImageResource(resId);
+    }
+
     public void setTextBackground(ColorStateList textBackground) {
         textView.setTextColor(textBackground);
     }
 
     public void setRadioText(String text) {
         textView.setText(text);
+    }
+
+    public String getRadioText() {
+        return textView.getText().toString();
     }
 
     /**
