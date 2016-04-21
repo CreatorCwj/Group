@@ -10,9 +10,15 @@ import android.view.ViewGroup;
 import com.fragment.base.BaseSlideFragment;
 import com.group.R;
 import com.group.ScannerActivity;
+import com.imageLoader.FileCache;
+import com.imageLoader.ImageLoader;
+import com.util.AppSetting;
 import com.util.Utils;
 import com.widget.functionButton.FunctionButton;
 import com.widget.functionButton.SwitchFunctionButton;
+
+import java.io.File;
+import java.text.DecimalFormat;
 
 import roboguice.inject.InjectView;
 
@@ -51,6 +57,29 @@ public class MoreFragment extends BaseSlideFragment implements View.OnClickListe
         setListener();
     }
 
+    @Override
+    public void onSlideFragmentResume() {
+        super.onSlideFragmentResume();
+        //重新获取数据
+        refreshCacheSize();
+        refreshWifiEnv();
+    }
+
+    private void refreshWifiEnv() {
+        boolean wifiEnv = AppSetting.getWifiEnv();
+        wifiBtn.setSwitch(wifiEnv, false);
+    }
+
+    private void refreshCacheSize() {
+        File dir = FileCache.getCacheDir();
+        if (dir != null) {
+            double size = Utils.getDirSize(FileCache.getCacheDir());
+            DecimalFormat df = new DecimalFormat("0.00");
+            String sizeStr = df.format(size) + "K";
+            cacheBtn.setDescribe(sizeStr);
+        }
+    }
+
     private void setListener() {
         wifiBtn.setOnSwitchListener(this);
         pushBtn.setOnSwitchListener(this);
@@ -65,11 +94,15 @@ public class MoreFragment extends BaseSlideFragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.more_cache_btn:
+                ImageLoader.clearDiskCache();
+                refreshCacheSize();
+                Utils.showToast(getActivity(), "已清空缓存");
                 break;
             case R.id.more_scanner_btn://扫一扫
                 startActivity(new Intent(getActivity(), ScannerActivity.class));
                 break;
             case R.id.more_update_btn:
+                Utils.showToast(getActivity(), updateBtn.getDescribe());
                 break;
             case R.id.more_advice_btn:
                 break;
@@ -82,7 +115,8 @@ public class MoreFragment extends BaseSlideFragment implements View.OnClickListe
     public void onSwitch(View v, boolean isOn) {
         switch (v.getId()) {
             case R.id.more_wifi_btn:
-                Utils.showToast(getActivity(), (isOn ? "wifi功能打开" : "wifi功能关闭"));
+                AppSetting.setWifiEnv(isOn);
+                Utils.showToast(getActivity(), (isOn ? "省流量功能打开" : "省流量功能关闭"));
                 break;
             case R.id.more_push_btn:
                 Utils.showToast(getActivity(), (isOn ? "推送功能打开" : "推送功能关闭"));

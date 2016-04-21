@@ -11,7 +11,7 @@
         app:backVisibility="true"
         app:searchVisibility="false"
         app:textIconVisibility="false"
-        app:titleText="注册" />
+        app:titleText="忘记密码" />
 
     <View
         android:layout_width="match_parent"
@@ -86,7 +86,7 @@
         app:editColor="@color/black"
         app:editTextSize="15sp"
         app:hintColor="@color/gray"
-        app:hintText="密码"
+        app:hintText="新密码"
         app:maximumLength="18"
         app:textType="password" />
 
@@ -132,7 +132,7 @@
         android:layout_margin="16dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="注册"
+        android:text="重置"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 </LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.group">
+    package="com.group" >
 
     <!-- 相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -31,11 +31,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".WelcomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/WelcomeTheme">
+            android:theme="@style/WelcomeTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,7 +54,7 @@
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -139,6 +139,25 @@
         <activity
             android:name=".MapNavigateActivity"
             android:label="@string/title_activity_map_navigate" />
+        <activity
+            android:name=".PersonActivity"
+            android:label="@string/title_activity_person" />
+        <activity
+            android:name=".UpdDisplayNameActivity"
+            android:label="@string/title_activity_upd_display_name" />
+        <activity
+            android:name=".UpdUserIconActivity"
+            android:label="@string/title_activity_upd_user_icon" />
+        <activity
+            android:name=".UpdPwdActivity"
+            android:label="@string/title_activity_upd_pwd" />
+        <activity
+            android:name=".ForgetPwdActivity"
+            android:label="@string/title_activity_forget_pwd" />
+        <activity
+            android:name=".QuickLoginActivity"
+            android:label="@string/title_activity_quick_login" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:titleText="修改昵称" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:text="用户昵称:"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <com.widget.CancelableEditView
+        android:id="@+id/upd_display_name_cet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@android:color/white"
+        android:paddingLeft="16dp"
+        app:cancelIcon="@drawable/close_gray_dark"
+        app:editColor="@color/black"
+        app:editTextSize="16sp"
+        app:hintColor="@color/gray"
+        app:hintText="昵称"
+        app:maximumLength="15" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:singleLine="false"
+        android:text="限4-15个字符,一个汉字算一个字符"
+        android:textColor="@color/gray_dark"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/upd_display_name_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+</LinearLayout>

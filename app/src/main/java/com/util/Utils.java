@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -141,6 +142,31 @@ public class Utils {
             }
         }
         return words;
+    }
+
+    /**
+     * 获取文件夹大小,单位KB
+     *
+     * @param file
+     * @return
+     */
+    public static double getDirSize(File file) {
+        //判断文件是否存在
+        if (file.exists()) {
+            //如果是目录则递归计算其内容的总大小
+            if (file.isDirectory()) {
+                File[] children = file.listFiles();
+                double size = 0;
+                for (File f : children)
+                    size += getDirSize(f);
+                return size;
+            } else {//如果是文件则直接返回其大小,以“KB”为单位
+                return (double) file.length() / 1024;
+            }
+        } else {
+            System.out.println("文件或者文件夹不存在，请检查路径是否正确！");
+            return 0.0;
+        }
     }
 
 }

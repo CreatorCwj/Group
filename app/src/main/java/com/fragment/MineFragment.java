@@ -27,6 +27,7 @@ import com.group.MyCouponActivity;
 import com.group.MyLikeActivity;
 import com.group.MyRemarkActivity;
 import com.group.OrderListActivity;
+import com.group.PersonActivity;
 import com.group.PointRecordActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
@@ -242,7 +243,7 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.mine_info_layout://个人设置
-                jumpByUserState(null, null);
+                jumpByUserState(PersonActivity.class, null);
                 break;
             case R.id.mine_group_voucher_layout://团购券
                 jumpByUserState(MyCouponActivity.class, null);

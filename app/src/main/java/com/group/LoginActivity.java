@@ -1,5 +1,6 @@
 package com.group;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,6 +23,7 @@ import roboguice.inject.InjectView;
 @ContentView(R.layout.activity_login)
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
+    private static final int QUICK_LOGIN_CODE = 0;
     private static final int SIGN_UP_CODE = 1;
 
     @InjectView(R.id.login_toolbar)
@@ -72,12 +74,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 login();
                 break;
             case R.id.forget_pwd_tv:
-                Utils.showToast(LoginActivity.this, "忘记密码");
+                gotoActivity(ForgetPwdActivity.class);
                 break;
             case R.id.quick_login_tv:
-                Utils.showToast(LoginActivity.this, "快速登录");
+                gotoActivity(QuickLoginActivity.class);
                 break;
         }
+    }
+
+    private void gotoActivity(Class<? extends Activity> clazz) {
+        Intent intent = new Intent(LoginActivity.this, clazz);
+        startActivityForResult(intent, QUICK_LOGIN_CODE);
     }
 
     private void login() {
@@ -117,6 +124,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             if (requestCode == SIGN_UP_CODE) {//自动填写信息
                 usernameEt.setText(data.getStringExtra(SignUpActivity.USERNAME));
                 pwdEt.setText(data.getStringExtra(SignUpActivity.PASSWORD));
+            } else if (requestCode == QUICK_LOGIN_CODE) {//登陆成功,自动关闭界面
+                finish();
             }
         }
     }

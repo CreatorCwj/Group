@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.widget.CustomToolBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backVisibility="true"
+        app:titleText="个人设置" />
+
+    <com.widget.SafeScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="11dp">
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="10dp">
+
+                    <com.widget.RoundImageView
+                        android:id="@+id/person_iv"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/no_user_icon"
+                        app:imageType="circle"
+                        app:strokeColor="#86DFD7"
+                        app:strokeWidth="4dp" />
+
+                    <TextView
+                        android:id="@+id/person_lv_tv"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/lv_back"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="1.5dp"
+                        android:singleLine="true"
+                        android:text="Lv0"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/person_username_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="一世红蓝魂"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/person_growth_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="成长值:150"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/person_point_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="积分:50"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/person_icon_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                app:functionIcon="@drawable/user_image_icon"
+                app:functionName="修改头像" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/person_username_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_marginBottom="12dp"
+                app:functionBackHaveTop="false"
+                app:functionDescribe="修改"
+                app:functionDescribeColor="@color/colorPrimary"
+                app:functionIcon="@drawable/username_icon"
+                app:functionName="一世红蓝魂" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/person_phone_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                app:functionDescribe="更换"
+                app:functionDescribeColor="@color/colorPrimary"
+                app:functionIcon="@drawable/celephone_icon"
+                app:functionName="137****6571" />
+
+            <com.widget.functionButton.FunctionButton
+                android:id="@+id/person_pwd_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                app:functionBackHaveTop="false"
+                app:functionDescribe="修改"
+                app:functionDescribeColor="@color/colorPrimary"
+                app:functionIcon="@drawable/password_icon"
+                app:functionName="登录密码" />
+
+            <Button
+                android:id="@+id/person_logout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/function_button_height"
+                android:layout_margin="16dp"
+                android:background="@color/red"
+                android:gravity="center"
+                android:text="注销"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </com.widget.SafeScrollView>
+</LinearLayout>

@@ -30,4 +30,10 @@
     <string name="title_activity_map_merchant">MapMerchantActivity</string>
     <string name="title_activity_route_list">RouteListActivity</string>
     <string name="title_activity_map_navigate">MapNavigateActivity</string>
+    <string name="title_activity_person">PersonActivity</string>
+    <string name="title_activity_upd_display_name">UpdDisplayNameActivity</string>
+    <string name="title_activity_upd_user_icon">UpdUserIconActivity</string>
+    <string name="title_activity_upd_pwd">UpdPwdActivity</string>
+    <string name="title_activity_forget_pwd">ForgetPwdActivity</string>
+    <string name="title_activity_quick_login">QuickLoginActivity</string>
 </resources>

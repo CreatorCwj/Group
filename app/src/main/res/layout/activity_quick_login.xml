@@ -11,7 +11,7 @@
         app:backVisibility="true"
         app:searchVisibility="false"
         app:textIconVisibility="false"
-        app:titleText="注册" />
+        app:titleText="快捷登陆" />
 
     <View
         android:layout_width="match_parent"
@@ -76,55 +76,6 @@
         android:layout_height="@dimen/divider_height"
         android:background="@color/dividerColor" />
 
-    <com.widget.CancelableEditView
-        android:id="@+id/sign_up_pwd_et"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/function_button_height"
-        android:background="@android:color/white"
-        android:paddingLeft="16dp"
-        app:cancelIcon="@drawable/close_gray_dark"
-        app:editColor="@color/black"
-        app:editTextSize="15sp"
-        app:hintColor="@color/gray"
-        app:hintText="密码"
-        app:maximumLength="18"
-        app:textType="password" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_height"
-        android:background="@color/dividerColor" />
-
-    <com.widget.CancelableEditView
-        android:id="@+id/sign_up_pwd2_et"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/function_button_height"
-        android:background="@android:color/white"
-        android:paddingLeft="16dp"
-        app:cancelIcon="@drawable/close_gray_dark"
-        app:editColor="@color/black"
-        app:editTextSize="15sp"
-        app:hintColor="@color/gray"
-        app:hintText="确认密码"
-        app:maximumLength="18"
-        app:textType="password" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_height"
-        android:background="@color/dividerColor" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:singleLine="false"
-        android:text="密码为最少6个字符,最多18个字符"
-        android:textColor="@color/gray_dark"
-        android:textSize="14sp" />
-
     <Button
         android:id="@+id/sign_up_btn"
         android:layout_width="match_parent"
@@ -132,7 +83,7 @@
         android:layout_margin="16dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="注册"
+        android:text="登陆"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 </LinearLayout>

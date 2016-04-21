@@ -5,20 +5,24 @@ import android.view.View;
 import android.widget.Button;
 
 import com.adapter.MyLikeAdapter;
+import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
+import com.constant.CloudFunction;
 import com.dao.dbHelpers.CategoryHelper;
 import com.dao.generate.Category;
 import com.google.inject.Inject;
 import com.group.base.BaseActivity;
-import com.leancloud.SafeSaveCallback;
+import com.leancloud.SafeFunctionCallback;
 import com.model.User;
 import com.util.Utils;
 import com.widget.rlrView.view.LoadMoreRecyclerView;
 import com.widget.rlrView.view.RLRView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -104,12 +108,11 @@ public class MyLikeActivity extends BaseActivity implements View.OnClickListener
                 likes.add(adapter.getDataItem(i).getCategoryId());
             }
         }
-        User user = AVUser.getCurrentUser(User.class);
-        user.resetLikes(likes);
-        user.setFetchWhenSave(true);
-        user.saveInBackground(new SafeSaveCallback(this) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("likeIds", likes);
+        AVCloud.rpcFunctionInBackground(CloudFunction.UPD_MY_LIKE, params, new SafeFunctionCallback<User>(this) {
             @Override
-            public void save(AVException e) {
+            protected void functionBack(User user, AVException e) {
                 if (e != null) {
                     Utils.showToast(MyLikeActivity.this, "设置失败");
                 } else {

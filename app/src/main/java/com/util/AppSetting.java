@@ -18,6 +18,7 @@ public class AppSetting {
 
     private static final String START_COUNT_KEY = "startCount";
     private static final String CITY_KEY = "city";
+    private static final String WIFI_ENV_KEY = "wifiEnv";
 
     private static SharedPreferences sharedPreferences;
 
@@ -60,5 +61,19 @@ public class AppSetting {
         if (TextUtils.isEmpty(cityStr))
             return null;
         return JsonUtils.toObject(cityStr, City.class);
+    }
+
+    /**
+     * 获取wifi环境状态
+     */
+    public static boolean getWifiEnv() {
+        return sharedPreferences.getBoolean(WIFI_ENV_KEY, false);//默认未打开
+    }
+
+    /**
+     * 设置wifi环境状态
+     */
+    public static void setWifiEnv(boolean wifiEnv) {
+        sharedPreferences.edit().putBoolean(WIFI_ENV_KEY, wifiEnv).commit();
     }
 }

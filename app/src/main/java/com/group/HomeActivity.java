@@ -1,6 +1,7 @@
 package com.group;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.adapter.SlideFragmentAdapter;
 import com.avos.avoscloud.AVException;
@@ -17,6 +18,7 @@ import com.group.base.BaseFragmentActivity;
 import com.leancloud.SafeFindCallback;
 import com.model.Category;
 import com.util.AppSetting;
+import com.util.Utils;
 import com.widget.radio.RadioLayout;
 
 import java.util.ArrayList;
@@ -27,6 +29,9 @@ import roboguice.inject.InjectView;
 
 @ContentView(R.layout.activity_home)
 public class HomeActivity extends BaseFragmentActivity {
+
+    private final int DELAY_TIME = 1500;
+    private long preTime = -1;
 
     @InjectView(R.id.main_radioLayout)
     private RadioLayout radioLayout;
@@ -75,4 +80,19 @@ public class HomeActivity extends BaseFragmentActivity {
         });
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - preTime) >= DELAY_TIME) {//第一次按,提示,并重置第一次按的时间
+                Utils.showToast(this, "再按一次退出应用");
+                preTime = System.currentTimeMillis();
+            } else {//第二次按有效,退出界面和应用
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

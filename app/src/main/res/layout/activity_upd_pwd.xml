@@ -6,21 +6,22 @@
     android:orientation="vertical">
 
     <com.widget.CustomToolBar
+        android:id="@+id/login_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         app:backVisibility="true"
         app:searchVisibility="false"
         app:textIconVisibility="false"
-        app:titleText="注册" />
+        app:titleText="修改密码" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider_height"
-        android:layout_marginTop="16dp"
         android:background="@color/dividerColor" />
 
     <com.widget.CancelableEditView
-        android:id="@+id/sign_up_username_et"
+        android:id="@+id/upd_pwd_ori_pwd_cet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/function_button_height"
         android:background="@android:color/white"
@@ -29,47 +30,9 @@
         app:editColor="@color/black"
         app:editTextSize="15sp"
         app:hintColor="@color/gray"
-        app:hintText="手机号"
-        app:maximumLength="11"
-        app:textType="number" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_height"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/function_button_height"
-        android:background="@android:color/white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <com.widget.CancelableEditView
-            android:id="@+id/sign_up_code_et"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/function_button_height"
-            android:layout_weight="1"
-            android:paddingLeft="16dp"
-            app:cancelIcon="@drawable/close_gray_dark"
-            app:editColor="@color/black"
-            app:editTextSize="15sp"
-            app:hintColor="@color/gray"
-            app:hintText="6位数字验证码"
-            app:maximumLength="6"
-            app:textType="number" />
-
-        <TextView
-            android:id="@+id/sign_up_code_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="发送验证码"
-            android:textColor="@color/colorPrimary"
-            android:textSize="13sp" />
-    </LinearLayout>
+        app:hintText="原密码"
+        app:maximumLength="18"
+        app:textType="password" />
 
     <View
         android:layout_width="match_parent"
@@ -77,7 +40,7 @@
         android:background="@color/dividerColor" />
 
     <com.widget.CancelableEditView
-        android:id="@+id/sign_up_pwd_et"
+        android:id="@+id/upd_pwd_new_pwd_cet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/function_button_height"
         android:background="@android:color/white"
@@ -96,7 +59,7 @@
         android:background="@color/dividerColor" />
 
     <com.widget.CancelableEditView
-        android:id="@+id/sign_up_pwd2_et"
+        android:id="@+id/upd_pwd_new_pwd2_cet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/function_button_height"
         android:background="@android:color/white"
@@ -126,13 +89,13 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/sign_up_btn"
+        android:id="@+id/upd_pwd_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/function_button_height"
         android:layout_margin="16dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="注册"
+        android:text="修改"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 </LinearLayout>

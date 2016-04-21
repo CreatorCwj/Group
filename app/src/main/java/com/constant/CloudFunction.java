@@ -11,5 +11,8 @@ public class CloudFunction {
     public static final String GET_ORDERS = "getOrderList";
     public static final String GET_ORDER = "getOrder";
     public static final String DELETE_ORDER = "deleteOrder";
+    public static final String UPD_DISPLAY_NAME = "updDisplayName";
+    public static final String UPD_MY_LIKE = "updMyLike";
+    public static final String UPD_USER_ICON = "updUserIcon";
 
 }

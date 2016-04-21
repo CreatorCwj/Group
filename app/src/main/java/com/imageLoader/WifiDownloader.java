@@ -3,6 +3,7 @@ package com.imageLoader;
 import android.content.Context;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.util.AppSetting;
 import com.util.Utils;
 
 import java.io.IOException;
@@ -25,8 +26,8 @@ public class WifiDownloader extends BaseImageDownloader {
 
     @Override
     protected InputStream getStreamFromNetwork(String imageUri, Object extra) throws IOException {
-        //如果不是wifi环境则不从网络下载
-        if (!Utils.isWifiConnected(context))
+        //如果不是wifi环境且非wifi环境省流量时不加载
+        if (!Utils.isWifiConnected(context) && AppSetting.getWifiEnv())
             return null;
         return super.getStreamFromNetwork(imageUri, extra);
     }

@@ -1,6 +1,5 @@
 package com.group;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,13 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.group.base.BaseActivity;
-import com.leancloud.SafeLogInCallback;
 import com.leancloud.SafeRequestMobileCodeCallback;
-import com.leancloud.SafeSaveCallback;
-import com.model.User;
+import com.leancloud.SafeUpdPwdCallback;
 import com.util.DrawableUtils;
 import com.util.UIUtils;
 import com.util.Utils;
@@ -26,11 +22,8 @@ import com.widget.CancelableEditView;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
-@ContentView(R.layout.activity_sign_up)
-public class SignUpActivity extends BaseActivity implements View.OnClickListener {
-
-    public static final String USERNAME = "username";
-    public static final String PASSWORD = "password";
+@ContentView(R.layout.activity_forget_pwd)
+public class ForgetPwdActivity extends BaseActivity implements View.OnClickListener {
 
     private static final int COUNTDOWN_TIME = 60;//倒计时60秒
 
@@ -82,70 +75,43 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                 sendCode();
                 break;
             case R.id.sign_up_btn:
-                //注册
-                signUp();
+                //重置密码
+                resetPwd();
                 break;
         }
     }
 
-    //已有账号也可能成功(相当于重置密码,不影响正常逻辑)
-    private void signUp() {
-        final String phone = usernameEt.getText();
-        if (!Utils.isCorrectPhone(phone)) {
-            Utils.showToast(this, "请输入正确手机号");
-            return;
-        }
+    private void resetPwd() {
         String code = codeEt.getText();
         if (TextUtils.isEmpty(code)) {
-            Utils.showToast(SignUpActivity.this, "请输入验证码");
+            Utils.showToast(ForgetPwdActivity.this, "请输入验证码");
             return;
         }
         final String pwd = pwdEt.getText();
         if (TextUtils.isEmpty(pwd) || pwd.length() < 6 || pwd.length() > 18) {
-            Utils.showToast(SignUpActivity.this, "请输入正确6-18位密码");
+            Utils.showToast(ForgetPwdActivity.this, "请输入正确6-18位密码");
             return;
         }
         String pwd2 = pwd2Et.getText();
         if (TextUtils.isEmpty(pwd2)) {
-            Utils.showToast(SignUpActivity.this, "请输入确认密码");
+            Utils.showToast(ForgetPwdActivity.this, "请输入确认密码");
             return;
         }
         if (!pwd2.equals(pwd)) {
-            Utils.showToast(SignUpActivity.this, "两次密码不同");
+            Utils.showToast(ForgetPwdActivity.this, "两次密码不同");
             return;
         }
-        showLoadingDialog("正在注册...");
-        AVUser.signUpOrLoginByMobilePhoneInBackground(phone, code, User.class, new SafeLogInCallback<User>(this) {
-
+        showLoadingDialog("重置密码...");
+        AVUser.resetPasswordBySmsCodeInBackground(code, pwd, new SafeUpdPwdCallback(this) {
             @Override
-            public void logIn(User user, AVException e) {
-                if (AVUser.getCurrentUser() != null)//***注册时不自动登录
-                    AVUser.logOut();
-                if (e == null) {
-                    user.setPassword(pwd);
-                    user.saveInBackground(new SafeSaveCallback(SignUpActivity.this) {
-                        @Override
-                        public void save(AVException e) {
-                            if (AVUser.getCurrentUser() != null)//***注册时不自动登录
-                                AVUser.logOut();
-                            if (e == null) {
-                                Utils.showToast(SignUpActivity.this, "注册成功");
-                                //返回登录界面,带回信息
-                                Intent intent = new Intent();
-                                intent.putExtra(USERNAME, phone);
-                                intent.putExtra(PASSWORD, pwd);
-                                setResult(RESULT_OK, intent);
-                                finish();
-                            } else {
-                                Utils.showToast(SignUpActivity.this, "注册失败");
-                            }
-                            cancelLoadingDialog();
-                        }
-                    });
+            public void update(AVException e) {
+                if (e != null) {
+                    Utils.showToast(ForgetPwdActivity.this, "重置密码失败");
                 } else {
-                    Utils.showToast(SignUpActivity.this, "注册失败");
-                    cancelLoadingDialog();
+                    Utils.showToast(ForgetPwdActivity.this, "重置密码成功");
+                    finish();
                 }
+                cancelLoadingDialog();
             }
         });
     }
@@ -160,19 +126,18 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         changeCodeState(false);
         //发送
         showLoadingDialog("正在发送验证码...");
-        AVOSCloud.requestSMSCodeInBackground(phone, new SafeRequestMobileCodeCallback(this) {
-
+        AVUser.requestPasswordResetBySmsCodeInBackground(phone, new SafeRequestMobileCodeCallback(this) {
             @Override
             public void sendResult(AVException e) {
                 if (e == null) {
-                    Utils.showToast(SignUpActivity.this, "验证码发送成功");
+                    Utils.showToast(ForgetPwdActivity.this, "验证码发送成功");
                     //发送成功,开始倒计时
                     setCodeTime(COUNTDOWN_TIME);
                     handler.sendEmptyMessageDelayed(1, 1000);//1秒1发,what代表进行了几秒
                 } else {
                     //发送失败重置状态
                     changeCodeState(true);
-                    Utils.showToast(SignUpActivity.this, "验证码发送失败");
+                    Utils.showToast(ForgetPwdActivity.this, "验证码发送失败");
                 }
                 cancelLoadingDialog();
             }

@@ -51,25 +51,36 @@ public class SwitchFunctionButton extends FunctionButton {
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isOn) {//开了就关上
-                    imageView.setImageDrawable(switchOffDrawable);
-                } else {//关了就开开
-                    imageView.setImageDrawable(switchOnDrawable);
-                }
-                isOn = !isOn;//更新状态
-                if (listener != null)
-                    listener.onSwitch(SwitchFunctionButton.this, isOn);
+                updView(true);
             }
         });
+    }
+
+    private void updView(boolean invokeListener) {
+        if (isOn) {//开了就关上
+            imageView.setImageDrawable(switchOffDrawable);
+        } else {//关了就开开
+            imageView.setImageDrawable(switchOnDrawable);
+        }
+        isOn = !isOn;//更新状态
+        if (listener != null && invokeListener)
+            listener.onSwitch(SwitchFunctionButton.this, isOn);
     }
 
     /**
      * 设置开关状态,也会调用监听器(改变的话)
      */
     public void setSwitch(boolean isOn) {
+        setSwitch(isOn, true);
+    }
+
+    /**
+     * 设置开关状态,可设置是否调用监听(改变的话)
+     */
+    public void setSwitch(boolean isOn, boolean invokeListener) {
         if (this.isOn == isOn)
             return;
-        imageView.performClick();//主动调用点击事件(别的逻辑都在点击里面干了,不需处理)
+        updView(invokeListener);
     }
 
     private void initDrawable() {

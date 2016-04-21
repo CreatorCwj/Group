@@ -50,7 +50,11 @@ public class MyRemarkActivity extends BaseAVQueryListActivity<Remark> {
     private void setHeaderInfo() {
         User user = AVUser.getCurrentUser(User.class);
         if (user != null) {
-            ImageLoader.displayImage(header.img, user.getImageUrl());
+            if (TextUtils.isEmpty(user.getImageUrl())) {
+                header.img.setImageResource(R.drawable.no_user_icon);
+            } else {
+                ImageLoader.displayImage(header.img, user.getImageUrl());
+            }
             header.lvTv.setText("Lv" + GradeEnum.getGradeByValue(user.getGrowthValue()).getGrade());
             if (TextUtils.isEmpty(user.getDisplayName())) {//没有昵称用username
                 header.nameTv.setText(user.getUsername());
