@@ -27,9 +27,9 @@ import com.model.Merchant;
 import com.model.Remark;
 import com.model.Voucher;
 import com.util.AppSetting;
-import com.util.Utils;
 import com.widget.AdapterLinearLayout;
 import com.widget.CustomToolBar;
+import com.widget.dialog.ShareDialog;
 import com.widget.pullToZoomView.PullToZoomScrollViewEx;
 
 import java.util.ArrayList;
@@ -116,6 +116,8 @@ public class VoucherDetailActivity extends BaseActivity implements View.OnClickL
     private RemarkAdapter remarkAdapter;
     private MerchantAdapter merchantAdapter;
 
+    private ShareDialog shareDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,9 +137,18 @@ public class VoucherDetailActivity extends BaseActivity implements View.OnClickL
         toolBar.setRightIconClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.showToast(VoucherDetailActivity.this, "分享");
+                shareToWx();
             }
         });
+    }
+
+    private void shareToWx() {
+        if (merchant == null || voucher == null)
+            return;
+        if (shareDialog == null) {
+            shareDialog = new ShareDialog(this, "http://tj.meituan.com/", "我推荐 " + merchant.getName(), "套餐:" + voucher.getName());
+        }
+        shareDialog.show();
     }
 
     private void setTopView() {

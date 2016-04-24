@@ -36,6 +36,7 @@ import com.util.Utils;
 import com.widget.AdapterLinearLayout;
 import com.widget.CustomToolBar;
 import com.widget.dialog.SelectDialog;
+import com.widget.dialog.ShareDialog;
 import com.widget.pullToZoomView.PullToZoomScrollViewEx;
 import com.widget.viewPagers.imageViewPager.PointView;
 
@@ -113,6 +114,7 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     private Merchant merchant;
 
     private SelectDialog callDialog;
+    private ShareDialog shareDialog;
 
     private Boolean hasCollected;
 
@@ -142,7 +144,8 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
         toolBar.setLeftIconClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.showToast(MerchantDetailActivity.this, "分享");
+                //分享
+                shareToWx();
             }
         });
         toolBar.setRightIconClickListener(new View.OnClickListener() {
@@ -153,6 +156,15 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
             }
         });
         loadIfCollected();//加载是否收藏过(根据此来设置收藏功能)
+    }
+
+    private void shareToWx() {
+        if (merchant == null)
+            return;
+        if (shareDialog == null) {
+            shareDialog = new ShareDialog(this, "http://tj.meituan.com/", "我发现 " + merchant.getName() + " 不错", "地址:" + merchant.getAddress());
+        }
+        shareDialog.show();
     }
 
     private void handleCollection() {

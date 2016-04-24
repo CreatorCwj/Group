@@ -26,7 +26,7 @@ public abstract class BaseAlertDialog extends BaseDialog {
     private TextView titleTextView;
     private TextView positiveTextView;
     private TextView negativeTextView;
-    RelativeLayout contentLayout;
+    protected RelativeLayout contentLayout;
 
     private View.OnClickListener customPositiveListener;
     private View.OnClickListener customNegativeListener;

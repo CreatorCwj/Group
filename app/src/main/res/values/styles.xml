@@ -25,6 +25,11 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
+    <!-- 透明样式activity-->
+    <style name="TransparentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <!--datePickerTheme-->
     <style name="datePickerTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:datePickerStyle">@style/datePickerStyle</item>
