@@ -14,5 +14,6 @@ public class CloudFunction {
     public static final String UPD_DISPLAY_NAME = "updDisplayName";
     public static final String UPD_MY_LIKE = "updMyLike";
     public static final String UPD_USER_ICON = "updUserIcon";
+    public static final String SET_PUSH_ID = "setPushId";
 
 }

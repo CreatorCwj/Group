@@ -4,18 +4,26 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVUser;
+import com.constant.CloudFunction;
 import com.group.base.BaseActivity;
+import com.leancloud.SafeFunctionCallback;
 import com.leancloud.SafeLogInCallback;
 import com.model.User;
 import com.util.Utils;
 import com.widget.CancelableEditView;
 import com.widget.CustomToolBar;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -106,6 +114,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             public void logIn(User user, AVException e) {
                 if (e == null && AVUser.getCurrentUser(User.class) != null) {
                     AVUser.getCurrentUser(User.class).setFetchWhenSave(true);
+                    setPushId();
                     Utils.showToast(LoginActivity.this, "登录成功");
                     setResult(RESULT_OK);//供startActivityForResult情况(需要知道登陆成功)使用
                     finish();
@@ -115,6 +124,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 cancelLoadingDialog();
             }
         }, User.class);
+    }
+
+    private void setPushId() {
+        String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+        if (!TextUtils.isEmpty(installationId)) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("pushId", installationId);
+            AVCloud.rpcFunctionInBackground(CloudFunction.SET_PUSH_ID, params, new SafeFunctionCallback<String>(this) {
+                @Override
+                protected void functionBack(String s, AVException e) {
+                    if (e != null) {
+                        Log.i("setPushId", "用户注册失败");
+                    } else {
+                        Log.i("setPushId", "用户注册成功");
+                    }
+                }
+            });
+        }
     }
 
     @Override

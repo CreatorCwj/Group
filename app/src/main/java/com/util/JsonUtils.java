@@ -68,10 +68,25 @@ public class JsonUtils {
      */
     public static String getStrValueOfJsonStr(String jsonStr, String key) {
         try {
-            JsonElement ele = new JsonParser().parse(jsonStr);
-            return ele.getAsJsonObject().get(key).getAsString();
+            JsonElement ele = getValueOfJsonStr(jsonStr, key);
+            if (ele != null) {
+                return ele.getAsString();
+            }
         } catch (Exception e) {
-            return "";
+            e.printStackTrace();
         }
+        return "";
+    }
+
+    public static JsonElement getValueOfJsonStr(String jsonStr, String key) {
+        try {
+            JsonElement ele = new JsonParser().parse(jsonStr);
+            if (ele.isJsonObject()) {
+                return ele.getAsJsonObject().get(key);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

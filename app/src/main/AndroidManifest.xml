@@ -54,13 +54,35 @@
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+        <receiver
+            android:name="com.receiver.MerchantPushReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.group.MERCHANT_PUSH" />
             </intent-filter>
         </receiver>
+
+        <receiver
+            android:name="com.receiver.OrderPushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.group.ORDER_PUSH" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+        <!--<action android:name="android.intent.action.USER_PRESENT" />-->
+        <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
 
         <!-- 百度定位地图 -->
         <service
@@ -74,7 +96,8 @@
 
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home" />
+            android:label="@string/title_activity_home"
+            android:launchMode="singleTask" />
         <activity
             android:name=".SelectCityActivity"
             android:label="@string/title_activity_select_city" />

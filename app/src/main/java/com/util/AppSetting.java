@@ -19,6 +19,7 @@ public class AppSetting {
     private static final String START_COUNT_KEY = "startCount";
     private static final String CITY_KEY = "city";
     private static final String WIFI_ENV_KEY = "wifiEnv";
+    private static final String PUSH_KEY = "push";
 
     private static SharedPreferences sharedPreferences;
 
@@ -75,5 +76,19 @@ public class AppSetting {
      */
     public static void setWifiEnv(boolean wifiEnv) {
         sharedPreferences.edit().putBoolean(WIFI_ENV_KEY, wifiEnv).commit();
+    }
+
+    /**
+     * 获取推送状态
+     */
+    public static boolean getPush() {
+        return sharedPreferences.getBoolean(PUSH_KEY, true);//默认打开
+    }
+
+    /**
+     * 设置推送状态
+     */
+    public static void setPush(boolean push) {
+        sharedPreferences.edit().putBoolean(PUSH_KEY, push).commit();
     }
 }

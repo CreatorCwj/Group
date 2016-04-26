@@ -63,6 +63,12 @@ public class MoreFragment extends BaseSlideFragment implements View.OnClickListe
         //重新获取数据
         refreshCacheSize();
         refreshWifiEnv();
+        refreshPush();
+    }
+
+    private void refreshPush() {
+        boolean push = AppSetting.getPush();
+        pushBtn.setSwitch(push, false);
     }
 
     private void refreshWifiEnv() {
@@ -119,6 +125,7 @@ public class MoreFragment extends BaseSlideFragment implements View.OnClickListe
                 Utils.showToast(getActivity(), (isOn ? "省流量功能打开" : "省流量功能关闭"));
                 break;
             case R.id.more_push_btn:
+                AppSetting.setPush(isOn);
                 Utils.showToast(getActivity(), (isOn ? "推送功能打开" : "推送功能关闭"));
                 break;
         }

@@ -4,21 +4,28 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
+import com.constant.CloudFunction;
 import com.constant.GradeEnum;
 import com.group.base.BaseActivity;
 import com.imageLoader.ImageLoader;
+import com.leancloud.SafeFunctionCallback;
 import com.leancloud.SafeGetCallback;
 import com.model.User;
 import com.util.Utils;
 import com.widget.RoundImageView;
 import com.widget.functionButton.FunctionButton;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -173,9 +180,25 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
     private void logOut() {
         if (!isLogin())
             return;
+        setPushId();
         AVUser.logOut();
         Utils.showToast(this, "已注销");
         finish();
+    }
+
+    private void setPushId() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("pushId", "");
+        AVCloud.rpcFunctionInBackground(CloudFunction.SET_PUSH_ID, params, new SafeFunctionCallback<String>(this) {
+            @Override
+            protected void functionBack(String s, AVException e) {
+                if (e != null) {
+                    Log.i("setPushId", "用户注册失败");
+                } else {
+                    Log.i("setPushId", "用户注册成功");
+                }
+            }
+        });
     }
 
     private boolean isLogin() {

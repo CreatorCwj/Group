@@ -1,14 +1,19 @@
 package com.application;
 
 import android.app.Application;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.PushService;
+import com.avos.avoscloud.SaveCallback;
 import com.baidu.mapapi.SDKInitializer;
 import com.dao.base.DaoManager;
+import com.group.HomeActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
 import com.location.Location;
@@ -84,7 +89,20 @@ public class GroupApplication extends Application {
     }
 
     private void initPush() {
-
+        //默认启动界面(也可以用subscribe/unsubscribe来订阅/退订某个频道(名字只能由26字母和数字构成)对应打开的界面,订阅要在保存installation前,退订后也要重新save一下installation)
+        PushService.setDefaultPushCallback(getApplicationContext(), HomeActivity.class);
+        AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                if (e == null) {
+                    //获取到唯一的注册ID，卸载后id也删除(可以理解为存储在app包的一个数据,不卸载就一直用一个)
+//                    String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+                    Log.i("InstallationId", "推送初始化成功");
+                } else {
+                    Log.i("InstallationId", "推送初始化失败");
+                }
+            }
+        });
     }
 
 }

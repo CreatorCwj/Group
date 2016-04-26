@@ -49,6 +49,7 @@ import roboguice.inject.InjectView;
 @ContentView(R.layout.activity_merchant_detail)
 public class MerchantDetailActivity extends BaseActivity implements View.OnClickListener {
 
+    public static final String MERCHANT_ID_KEY = "merchantId";//推送用
     public static final String MERCHANT_KEY = "merchant";
 
     public static final int LOGIN_CODE = 1;
@@ -121,10 +122,35 @@ public class MerchantDetailActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        receiveIntent();
-        setToolbar();
-        setListener();
-        setInfo();
+        String merchantId = getIntent().getStringExtra(MERCHANT_ID_KEY);
+        if (!TextUtils.isEmpty(merchantId)) {//需要加载的,推送用
+            showLoadingDialog("加载商家信息...");
+            AVQuery<Merchant> query = AVQuery.getQuery(Merchant.class);
+            query.include(Merchant.CATEGORY);
+            query.include(Merchant.SUB_CATEGORY);
+            query.include(Merchant.AREA);
+            query.include(Merchant.SUB_AREA);
+            query.getInBackground(merchantId, new SafeGetCallback<Merchant>(this) {
+                @Override
+                public void getResult(Merchant object, AVException e) {
+                    if (e != null) {
+                        Utils.showToast(MerchantDetailActivity.this, "商家信息加载失败");
+                        finish();
+                    } else {
+                        merchant = object;
+                        setToolbar();
+                        setListener();
+                        setInfo();
+                    }
+                    cancelLoadingDialog();
+                }
+            });
+        } else {//直接设置即可
+            receiveIntent();
+            setToolbar();
+            setListener();
+            setInfo();
+        }
     }
 
     private void setListener() {
