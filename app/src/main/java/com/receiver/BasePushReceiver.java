@@ -20,6 +20,8 @@ import roboguice.receiver.RoboBroadcastReceiver;
  */
 public abstract class BasePushReceiver extends RoboBroadcastReceiver {
 
+    private final String DATA_KEY = "com.avos.avoscloud.Data";
+
     private final int NOTIFICATION_ID = 1000;
 
     @Inject
@@ -34,6 +36,8 @@ public abstract class BasePushReceiver extends RoboBroadcastReceiver {
         super.handleReceive(context, intent);
         boolean push = AppSetting.getPush();
         if (!push)//不接收推送
+            return;
+        if (intent == null || !intent.hasExtra(DATA_KEY))//不是推送来的
             return;
         //设置通知栏
         initNotification(context, intent);
@@ -67,7 +71,7 @@ public abstract class BasePushReceiver extends RoboBroadcastReceiver {
     }
 
     protected String getInfo(Intent intent, String key) {
-        String json = intent.getExtras().getString("com.avos.avoscloud.Data");
+        String json = intent.getExtras().getString(DATA_KEY);
         return JsonUtils.getStrValueOfJsonStr(json, key);
     }
 

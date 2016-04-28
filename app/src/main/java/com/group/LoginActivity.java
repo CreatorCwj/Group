@@ -131,9 +131,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (!TextUtils.isEmpty(installationId)) {
             Map<String, Object> params = new HashMap<>();
             params.put("pushId", installationId);
-            AVCloud.rpcFunctionInBackground(CloudFunction.SET_PUSH_ID, params, new SafeFunctionCallback<String>(this) {
+            AVCloud.rpcFunctionInBackground(CloudFunction.SET_PUSH_ID, params, new SafeFunctionCallback<Object>(this) {
                 @Override
-                protected void functionBack(String s, AVException e) {
+                protected void functionBack(Object s, AVException e) {
                     if (e != null) {
                         Log.i("setPushId", "用户注册失败");
                     } else {

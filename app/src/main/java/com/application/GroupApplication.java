@@ -2,8 +2,10 @@ package com.application;
 
 import android.app.Application;
 import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
@@ -12,10 +14,12 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.PushService;
 import com.avos.avoscloud.SaveCallback;
 import com.baidu.mapapi.SDKInitializer;
+import com.constant.CloudFunction;
 import com.dao.base.DaoManager;
 import com.group.HomeActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
+import com.leancloud.SafeFunctionCallback;
 import com.location.Location;
 import com.model.Activity;
 import com.model.Area;
@@ -38,6 +42,9 @@ import com.model.User;
 import com.model.Voucher;
 import com.util.AppSetting;
 import com.volley.Network;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by cwj on 16/3/4.
@@ -95,9 +102,24 @@ public class GroupApplication extends Application {
             @Override
             public void done(AVException e) {
                 if (e == null) {
-                    //获取到唯一的注册ID，卸载后id也删除(可以理解为存储在app包的一个数据,不卸载就一直用一个)
-//                    String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
                     Log.i("InstallationId", "推送初始化成功");
+                    //获取到唯一的注册ID，卸载后id也删除(可以理解为存储在app包的一个数据,不卸载就一直用一个)
+                    String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+                    User user = AVUser.getCurrentUser(User.class);
+                    if (user != null && !TextUtils.isEmpty(installationId)) {
+                        Map<String, Object> params = new HashMap<>();
+                        params.put("pushId", installationId);
+                        AVCloud.rpcFunctionInBackground(CloudFunction.SET_PUSH_ID, params, new SafeFunctionCallback<Object>(getApplicationContext()) {
+                            @Override
+                            protected void functionBack(Object s, AVException e) {
+                                if (e != null) {
+                                    Log.i("setPushId", "用户推送注册失败");
+                                } else {
+                                    Log.i("setPushId", "用户推送注册成功");
+                                }
+                            }
+                        });
+                    }
                 } else {
                     Log.i("InstallationId", "推送初始化失败");
                 }
