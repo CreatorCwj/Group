@@ -22,14 +22,21 @@
         android:textColor="@android:color/white"
         android:textSize="11sp" />
 
-    <com.widget.RoundImageView
+    <ImageView
+        android:id="@+id/voucher_img"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="centerCrop" />
+
+    <!--<com.widget.RoundImageView
         android:id="@+id/voucher_img"
         android:layout_width="68dp"
         android:layout_height="68dp"
         android:layout_marginRight="10dp"
         android:scaleType="centerCrop"
         app:imageType="round"
-        app:radius="3dp" />
+        app:radius="3dp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"

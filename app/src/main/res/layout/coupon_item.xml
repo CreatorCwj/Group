@@ -80,7 +80,15 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <com.widget.RoundImageView
+        <ImageView
+            android:id="@+id/coupon_item_qr_code_iv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="8dp"
+            android:padding="5dp"
+            android:scaleType="fitXY" />
+
+        <!--<com.widget.RoundImageView
             android:id="@+id/coupon_item_qr_code_iv"
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -90,7 +98,7 @@
             app:imageType="round"
             app:radius="3dp"
             app:strokeColor="@color/dividerColor"
-            app:strokeWidth="1dp" />
+            app:strokeWidth="1dp" />-->
 
         <TextView
             android:layout_width="wrap_content"

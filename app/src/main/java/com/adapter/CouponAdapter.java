@@ -5,12 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.group.R;
 import com.imageLoader.ImageLoader;
 import com.model.Order;
-import com.widget.RoundImageView;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 
 /**
@@ -57,7 +57,7 @@ public class CouponAdapter extends RecyclerViewAdapter<Order> {
 
     public class CouponViewHolder extends RecyclerView.ViewHolder {
 
-        RoundImageView qrCodeIv;
+        ImageView qrCodeIv;
         TextView merchantNameTv;
         TextView voucherNameTv;
         TextView numTv;
@@ -65,7 +65,7 @@ public class CouponAdapter extends RecyclerViewAdapter<Order> {
 
         public CouponViewHolder(View itemView) {
             super(itemView);
-            qrCodeIv = (RoundImageView) itemView.findViewById(R.id.coupon_item_qr_code_iv);
+            qrCodeIv = (ImageView) itemView.findViewById(R.id.coupon_item_qr_code_iv);
             merchantNameTv = (TextView) itemView.findViewById(R.id.coupon_item_merchant_name_tv);
             voucherNameTv = (TextView) itemView.findViewById(R.id.coupon_item_voucher_name_tv);
             numTv = (TextView) itemView.findViewById(R.id.coupon_item_num_tv);

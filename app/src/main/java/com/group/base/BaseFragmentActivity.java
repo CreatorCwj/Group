@@ -25,7 +25,7 @@ public class BaseFragmentActivity extends RoboFragmentActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    final public void onBackPressed() {
         //先循环每个子fragment(可见的)的回退事件,都返回false则交由系统处理
         boolean isConsumed = false;
         if (fragments != null && fragments.size() > 0) {
@@ -35,8 +35,15 @@ public class BaseFragmentActivity extends RoboFragmentActivity {
                 }
             }
         }
-        if (!isConsumed)
-            super.onBackPressed();
+        if (!isConsumed) {//没有消耗掉,当成正常的返回由用户处理,用户处理完成后决定是否继续交由系统处理
+            boolean userConsumed = onBack();
+            if (!userConsumed)//用户处理后没有消耗,继续由系统处理
+                super.onBackPressed();
+        }
+    }
+
+    public boolean onBack() {
+        return false;//默认未处理
     }
 
     //fragment可见指的是可以看见,也就是说逐层都要可见

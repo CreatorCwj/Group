@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -18,7 +19,6 @@ import com.model.Category;
 import com.model.Collection;
 import com.model.Merchant;
 import com.util.Utils;
-import com.widget.RoundImageView;
 import com.widget.dialog.LoadingDialog;
 import com.widget.dialog.MessageDialog;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
@@ -130,7 +130,7 @@ public class CollectionAdapter extends RecyclerViewAdapter<Collection> implement
 
     public class CollectionViewHolder extends RecyclerView.ViewHolder {
 
-        RoundImageView merchantIv;
+        ImageView merchantIv;
         RatingBar ratingBar;
         TextView merchantNameTv;
         TextView remarkNumTv;
@@ -140,7 +140,7 @@ public class CollectionAdapter extends RecyclerViewAdapter<Collection> implement
 
         public CollectionViewHolder(View itemView) {
             super(itemView);
-            merchantIv = (RoundImageView) itemView.findViewById(R.id.collection_item_iv);
+            merchantIv = (ImageView) itemView.findViewById(R.id.collection_item_iv);
             ratingBar = (RatingBar) itemView.findViewById(R.id.collection_item_rating);
             merchantNameTv = (TextView) itemView.findViewById(R.id.collection_item_merchant_name_tv);
             remarkNumTv = (TextView) itemView.findViewById(R.id.collection_item_remark_num);

@@ -99,9 +99,7 @@
                 android:id="@+id/merchant_detail_address_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:gravity="center_vertical|start"
-                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -120,6 +118,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:background="@drawable/icon_press"
+            android:maxHeight="50dp"
             android:padding="10dp"
             android:src="@drawable/call_icon" />
     </LinearLayout>

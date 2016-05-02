@@ -384,7 +384,7 @@ public class MerchantFragment extends BaseSlideFragment implements RLRView.OnRef
                         mainQuery.whereNear(Merchant.LOCATION, new AVGeoPoint(curLocation.getLatitude(), curLocation.getLongitude()));
                     break;
                 case AVERAGE:
-                    mainQuery.orderByDescending(Merchant.AVERAGE);
+                    mainQuery.orderByAscending(Merchant.AVERAGE);
                     break;
             }
         }

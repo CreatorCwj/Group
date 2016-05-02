@@ -32,8 +32,10 @@
 
     <ImageView
         android:id="@+id/hot_category_iv"
-        android:layout_width="35dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="60dp" />
 
 </LinearLayout>

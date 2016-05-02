@@ -32,7 +32,6 @@ import com.util.DrawableUtils;
 import com.util.JsonUtils;
 import com.util.UIUtils;
 import com.util.Utils;
-import com.widget.RoundImageView;
 import com.widget.dialog.LoadingDialog;
 import com.widget.dialog.MessageDialog;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
@@ -73,9 +72,6 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
                     String id = entry.getValue();
                     long newSpareSeconds = idToTime.get(id);
                     if (newSpareSeconds <= 0) {//过期
-                        //移除相应订单的记录
-                        idToTime.remove(id);
-                        viewToId.remove(countTv);
                         countTv.setText("已过期");
                     } else {
                         String spareTime = DateUtils.getTimeStringOfSeconds(newSpareSeconds);
@@ -184,36 +180,16 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
     private void setSpareTime(LinearLayout spareTimeLayout, TextView countTimeTv, Order order) {
         if (order.getStatus() != OrderStateEnum.WAIT_PAY.getId() || order.getLimitMinute() <= 0) {//非待支付状态或没有限制时间不显示
             spareTimeLayout.setVisibility(View.INVISIBLE);
-            //移除相应订单的记录
-            idToTime.remove(order.getObjectId());
-            viewToId.remove(countTimeTv);
-        } else {//有限时
+            viewToId.remove(countTimeTv);//该view当前不显示内容
+        } else {//有限时,且id-time已有记录
             spareTimeLayout.setVisibility(View.VISIBLE);
-            long spareSeconds = order.getSpareSeconds();
-            if (spareSeconds <= 0) {//已过期
-                //移除相应订单的记录
-                idToTime.remove(order.getObjectId());
-                viewToId.remove(countTimeTv);
+            viewToId.put(countTimeTv, order.getObjectId());//加入view-id关系
+            long newSpareSeconds = idToTime.get(order.getObjectId());
+            if (newSpareSeconds <= 0) {//过期了
                 countTimeTv.setText("已过期");
-            } else {//未过期
-                if (idToTime.containsKey(order.getObjectId())) {//已经有过该记录,直接获取最新的即可
-                    viewToId.put(countTimeTv, order.getObjectId());//加入view-id关系
-                    long newSpareSeconds = idToTime.get(order.getObjectId());
-                    if (newSpareSeconds <= 0) {//过期了
-                        //移除相应订单的记录
-                        idToTime.remove(order.getObjectId());
-                        viewToId.remove(countTimeTv);
-                        countTimeTv.setText("已过期");
-                    } else {//显示最新剩余时间
-                        String spareTime = DateUtils.getTimeStringOfSeconds(newSpareSeconds);
-                        countTimeTv.setText(spareTime);
-                    }
-                } else {//第一次,放入关系map
-                    idToTime.put(order.getObjectId(), spareSeconds);
-                    viewToId.put(countTimeTv, order.getObjectId());
-                    String spareTime = DateUtils.getTimeStringOfSeconds(spareSeconds);
-                    countTimeTv.setText(spareTime);
-                }
+            } else {//显示最新剩余时间
+                String spareTime = DateUtils.getTimeStringOfSeconds(newSpareSeconds);
+                countTimeTv.setText(spareTime);
             }
         }
     }
@@ -227,7 +203,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
         statusTv.setText(stateEnum.getState());
     }
 
-    private void setMerchantIv(RoundImageView merchantIv, Voucher voucher) {
+    private void setMerchantIv(ImageView merchantIv, Voucher voucher) {
         if (voucher.getImages() != null && voucher.getImages().size() > 0) {
             ImageLoader.displayImage(merchantIv, voucher.getImages().get(0));
         } else if (voucher.getMerchant().getImages() != null && voucher.getMerchant().getImages().size() > 0) {
@@ -250,7 +226,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
     public void addData(List<Order> data) {
         //把新加入的数据的剩余时间全部初始化加入到关系map中
         for (Order order : data) {
-            if (order.getStatus() == OrderStateEnum.WAIT_PAY.getId() && order.getLimitMinute() > 0 && order.getSpareSeconds() > 0) {//有剩余时间
+            if (order.getStatus() == OrderStateEnum.WAIT_PAY.getId() && order.getLimitMinute() > 0) {//有剩余时间
                 idToTime.put(order.getObjectId(), order.getSpareSeconds());//加入
             }
         }
@@ -326,7 +302,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
     public class OrderViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout spareTimeLayout;
-        RoundImageView merchantIv;
+        ImageView merchantIv;
         ImageView categoryIv;
         TextView merchantNameTv;
         TextView statusTv;
@@ -339,7 +315,7 @@ public class OrderAdapter extends RecyclerViewAdapter<Order> implements LoadMore
         public OrderViewHolder(View itemView) {
             super(itemView);
             spareTimeLayout = (LinearLayout) itemView.findViewById(R.id.order_item_spare_time_layout);
-            merchantIv = (RoundImageView) itemView.findViewById(R.id.order_item_merchant_iv);
+            merchantIv = (ImageView) itemView.findViewById(R.id.order_item_merchant_iv);
             categoryIv = (ImageView) itemView.findViewById(R.id.order_item_category_iv);
             merchantNameTv = (TextView) itemView.findViewById(R.id.order_item_merchant_name_tv);
             statusTv = (TextView) itemView.findViewById(R.id.order_item_status_tv);
