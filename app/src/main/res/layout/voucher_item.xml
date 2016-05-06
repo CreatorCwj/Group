@@ -22,21 +22,14 @@
         android:textColor="@android:color/white"
         android:textSize="11sp" />
 
-    <ImageView
-        android:id="@+id/voucher_img"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        android:layout_marginRight="10dp"
-        android:scaleType="centerCrop" />
-
-    <!--<com.widget.RoundImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/voucher_img"
         android:layout_width="68dp"
         android:layout_height="68dp"
         android:layout_marginRight="10dp"
         android:scaleType="centerCrop"
-        app:imageType="round"
-        app:radius="3dp" />-->
+        app:riv_corner_radius="3dp"
+        app:riv_oval="false" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,8 +52,8 @@
                 android:gravity="center_vertical"
                 android:maxWidth="170dp"
                 android:singleLine="true"
-                android:textColor="@color/black"
                 android:text="100元代金券一张,可叠加,免预约"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <LinearLayout

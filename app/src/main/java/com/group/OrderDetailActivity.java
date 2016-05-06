@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,7 +23,6 @@ import com.model.Voucher;
 import com.util.DateUtils;
 import com.util.JsonUtils;
 import com.util.Utils;
-import com.widget.RoundImageView;
 import com.widget.dialog.MessageDialog;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     private LinearLayout merchantLayout;
 
     @InjectView(R.id.order_detail_iv)
-    private RoundImageView iv;
+    private ImageView iv;
 
     @InjectView(R.id.order_detail_merchant_name_tv)
     private TextView merchantNameTv;

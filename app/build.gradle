@@ -48,4 +48,6 @@ dependencies {
     compile 'com.meituan.android.zxing:library:0.1.18'
     //greenDao
     compile 'de.greenrobot:greendao:2.1.0'
+    //roundImageView
+    compile 'com.makeramen:roundedimageview:2.2.1'
 }

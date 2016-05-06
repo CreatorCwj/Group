@@ -8,21 +8,14 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/collection_item_iv"
-        android:layout_width="83dp"
-        android:layout_height="83dp"
-        android:layout_marginRight="8dp"
-        android:scaleType="centerCrop" />
-
-    <!--<com.widget.RoundImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/collection_item_iv"
         android:layout_width="83dp"
         android:layout_height="83dp"
         android:layout_marginRight="8dp"
         android:scaleType="centerCrop"
-        app:imageType="round"
-        app:radius="6dp" />-->
+        app:riv_corner_radius="6dp"
+        app:riv_oval="false" />
 
     <LinearLayout
         android:layout_width="match_parent"

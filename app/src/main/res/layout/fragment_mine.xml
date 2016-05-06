@@ -35,16 +35,17 @@
                     android:layout_weight="1"
                     android:padding="12dp">
 
-                    <com.widget.RoundImageView
+                    <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/mine_iv"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="12dp"
+                        android:padding="5dp"
                         android:scaleType="centerCrop"
-                        app:imageType="circle"
-                        app:strokeColor="#86DFD7"
-                        app:strokeWidth="2dp" />
+                        app:riv_border_color="#86DFD7"
+                        app:riv_border_width="2dp"
+                        app:riv_oval="true" />
 
                     <TextView
                         android:id="@+id/mine_name"

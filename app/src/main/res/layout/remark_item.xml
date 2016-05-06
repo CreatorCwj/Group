@@ -14,14 +14,14 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.widget.RoundImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/remark_item_user_img"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/no_user_icon"
-            app:imageType="circle" />
+            app:riv_oval="true" />
 
         <LinearLayout
             android:layout_width="match_parent"

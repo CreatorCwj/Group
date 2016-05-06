@@ -13,15 +13,15 @@
         android:layout_height="80dp"
         android:layout_marginBottom="15dp">
 
-        <com.widget.RoundImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/my_remark_header_img"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/no_user_icon"
-            app:imageType="circle"
-            app:strokeColor="#86DFD7"
-            app:strokeWidth="4dp" />
+            app:riv_border_color="#86DFD7"
+            app:riv_border_width="4dp"
+            app:riv_oval="true" />
 
         <TextView
             android:id="@+id/my_remark_header_lv_tv"

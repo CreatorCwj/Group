@@ -2,12 +2,12 @@ package com.group;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.group.base.BaseActivity;
 import com.imageLoader.ImageLoader;
 import com.model.Order;
-import com.widget.RoundImageView;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -30,7 +30,7 @@ public class CouponActivity extends BaseActivity {
     private TextView orderIdTv;
 
     @InjectView(R.id.coupon_qr_code_iv)
-    private RoundImageView qrCodeIv;
+    private ImageView qrCodeIv;
 
     private Order order;
 

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVCloud;
@@ -21,7 +22,6 @@ import com.leancloud.SafeFunctionCallback;
 import com.leancloud.SafeGetCallback;
 import com.model.User;
 import com.util.Utils;
-import com.widget.RoundImageView;
 import com.widget.functionButton.FunctionButton;
 
 import java.util.HashMap;
@@ -38,7 +38,7 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
     private final int UPD_USER_CODE = 1;
 
     @InjectView(R.id.person_iv)
-    private RoundImageView userIv;
+    private ImageView userIv;
 
     @InjectView(R.id.person_lv_tv)
     private TextView lvTv;

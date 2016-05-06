@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adapter.MyRemarkAdapter;
@@ -20,7 +21,6 @@ import com.model.Merchant;
 import com.model.Remark;
 import com.model.User;
 import com.model.Voucher;
-import com.widget.RoundImageView;
 import com.widget.rlrView.adapter.RecyclerViewAdapter;
 import com.widget.rlrView.viewHolder.HeaderViewHolder;
 
@@ -135,7 +135,7 @@ public class MyRemarkActivity extends BaseAVQueryListActivity<Remark> {
 
     public class MyRemarkHeader extends HeaderViewHolder {
 
-        RoundImageView img;
+        ImageView img;
         TextView lvTv;
         TextView nameTv;
         TextView remarkNumTv;
@@ -143,7 +143,7 @@ public class MyRemarkActivity extends BaseAVQueryListActivity<Remark> {
         public MyRemarkHeader(Context context, int layoutId) {
             super(context, layoutId);
             itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            img = (RoundImageView) itemView.findViewById(R.id.my_remark_header_img);
+            img = (ImageView) itemView.findViewById(R.id.my_remark_header_img);
             lvTv = (TextView) itemView.findViewById(R.id.my_remark_header_lv_tv);
             nameTv = (TextView) itemView.findViewById(R.id.my_remark_header_name_tv);
             remarkNumTv = (TextView) itemView.findViewById(R.id.my_remark_header_remark_num_tv);

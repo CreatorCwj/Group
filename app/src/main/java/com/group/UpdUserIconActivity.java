@@ -27,7 +27,6 @@ import com.model.User;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.util.Utils;
 import com.widget.CustomToolBar;
-import com.widget.RoundImageView;
 import com.widget.dialog.SelectDialog;
 
 import java.io.ByteArrayOutputStream;
@@ -50,7 +49,7 @@ public class UpdUserIconActivity extends BaseActivity implements View.OnClickLis
     private CustomToolBar toolBar;
 
     @InjectView(R.id.upd_user_icon_iv)
-    private RoundImageView imageView;
+    private ImageView imageView;
 
     @InjectView(R.id.upd_user_icon_btn)
     private Button selectBtn;

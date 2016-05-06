@@ -88,14 +88,14 @@
                 android:orientation="horizontal"
                 android:padding="12dp">
 
-                <com.widget.RoundImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/order_detail_iv"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginRight="12dp"
                     android:scaleType="centerCrop"
-                    app:imageType="round"
-                    app:radius="6dp" />
+                    app:riv_corner_radius="6dp"
+                    app:riv_oval="false" />
 
                 <LinearLayout
                     android:layout_width="0dp"

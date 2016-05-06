@@ -33,15 +33,15 @@
                     android:layout_height="80dp"
                     android:layout_marginBottom="10dp">
 
-                    <com.widget.RoundImageView
+                    <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/person_iv"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/no_user_icon"
-                        app:imageType="circle"
-                        app:strokeColor="#86DFD7"
-                        app:strokeWidth="4dp" />
+                        app:riv_border_color="#86DFD7"
+                        app:riv_border_width="4dp"
+                        app:riv_oval="true" />
 
                     <TextView
                         android:id="@+id/person_lv_tv"

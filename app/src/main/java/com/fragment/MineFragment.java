@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,7 +37,6 @@ import com.leancloud.SafeGetCallback;
 import com.model.Order;
 import com.model.RewardLotteryRecord;
 import com.model.User;
-import com.widget.RoundImageView;
 import com.widget.functionButton.FunctionButton;
 import com.widget.radio.RadioView;
 
@@ -48,7 +48,7 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
     private RelativeLayout infoLayout;
 
     @InjectView(R.id.mine_iv)
-    private RoundImageView myIv;
+    private ImageView myIv;
 
     @InjectView(R.id.mine_name)
     private TextView myName;
