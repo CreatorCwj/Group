@@ -13,10 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVCloud;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.constant.CloudFunction;
 import com.constant.GradeEnum;
 import com.constant.LotteryStateEnum;
 import com.constant.OrderStateEnum;
@@ -33,12 +35,15 @@ import com.group.PointRecordActivity;
 import com.group.R;
 import com.imageLoader.ImageLoader;
 import com.leancloud.SafeCountCallback;
+import com.leancloud.SafeFunctionCallback;
 import com.leancloud.SafeGetCallback;
 import com.model.Order;
 import com.model.RewardLotteryRecord;
 import com.model.User;
 import com.widget.functionButton.FunctionButton;
 import com.widget.radio.RadioView;
+
+import java.util.Map;
 
 import roboguice.inject.InjectView;
 
@@ -127,17 +132,34 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
                     setImage();
                     setUsername();
                     setLv();
-                    setPointNum();
                 }
             });
         } else {
             setImage();
             setUsername();
             setLv();
-            setPointNum();
         }
         setVoucherNum();//未使用团购券
         setLotteryNum();//未使用抵用券
+        setPoint();//积分
+    }
+
+    private void setPoint() {
+        User user = AVUser.getCurrentUser(User.class);
+        if (user == null) {
+            pointTv.setText("0");
+        } else {
+            AVCloud.rpcFunctionInBackground(CloudFunction.GET_POINT, null, new SafeFunctionCallback<Map>(getActivity()) {
+                @Override
+                protected void functionBack(Map map, AVException e) {
+                    if (e != null) {
+                        pointTv.setText("0");
+                    } else {
+                        pointTv.setText("" + map.get("point"));
+                    }
+                }
+            });
+        }
     }
 
     private void setLotteryNum() {
@@ -158,15 +180,6 @@ public class MineFragment extends BaseSlideFragment implements View.OnClickListe
                     }
                 }
             });
-        }
-    }
-
-    private void setPointNum() {
-        User user = AVUser.getCurrentUser(User.class);
-        if (user == null) {
-            pointTv.setText("0");
-        } else {//todo 获取该用户的剩余积分(这里应该获取最新的user对象)
-            pointTv.setText("" + user.getPoint());
         }
     }
 

@@ -66,7 +66,6 @@
                     android:layout_marginBottom="10dp"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="一世红蓝魂"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
 
@@ -83,7 +82,7 @@
                         android:layout_marginRight="25dp"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="成长值:150"
+                        android:text="成长值:0"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
 
@@ -93,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="积分:50"
+                        android:text="积分:0"
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -115,8 +114,7 @@
                 app:functionBackHaveTop="false"
                 app:functionDescribe="修改"
                 app:functionDescribeColor="@color/colorPrimary"
-                app:functionIcon="@drawable/username_icon"
-                app:functionName="一世红蓝魂" />
+                app:functionIcon="@drawable/username_icon" />
 
             <com.widget.functionButton.FunctionButton
                 android:id="@+id/person_phone_fb"
@@ -124,8 +122,7 @@
                 android:layout_height="@dimen/function_button_height"
                 app:functionDescribe="更换"
                 app:functionDescribeColor="@color/colorPrimary"
-                app:functionIcon="@drawable/celephone_icon"
-                app:functionName="137****6571" />
+                app:functionIcon="@drawable/celephone_icon" />
 
             <com.widget.functionButton.FunctionButton
                 android:id="@+id/person_pwd_fb"

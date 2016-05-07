@@ -111,7 +111,16 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
             }
             lvTv.setText("Lv" + GradeEnum.getGradeByValue(user.getGrowthValue()).getGrade());
             growthTv.setText("成长值:" + user.getGrowthValue());
-            pointTv.setText("积分:" + user.getPoint());
+            AVCloud.rpcFunctionInBackground(CloudFunction.GET_POINT, null, new SafeFunctionCallback<Map>(this) {
+                @Override
+                protected void functionBack(Map map, AVException e) {
+                    if (e != null) {
+                        pointTv.setText("积分:0");
+                    } else {
+                        pointTv.setText("积分:" + map.get("point"));
+                    }
+                }
+            });
             if (TextUtils.isEmpty(user.getDisplayName())) {//没有昵称用username
                 usernameTv.setText(user.getUsername());
             } else {
@@ -138,6 +147,8 @@ public class PersonActivity extends BaseActivity implements View.OnClickListener
     }
 
     private String getPhone(String username) {
+        if (TextUtils.isEmpty(username) || username.length() != 11)
+            return "";
         return username.substring(0, 3) + "****" + username.substring(7);
     }
 

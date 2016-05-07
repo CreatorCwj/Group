@@ -161,6 +161,12 @@ public class AddUpdRemarkActivity extends BaseActivity {
                 needUpload.add(url);
             }
         }
+        if (newFiles.size() <= 0 && needUpload.size() <= 0) {//没有图片要置为null
+            remark.remove(Remark.IMAGES);
+            save();
+            return;
+        }
+        //上传图片
         if (needUpload.size() <= 0) {//没有需要上传的本地图片(已经构建好files),直接上传即可
             remark.resetImages(newFiles);
             save();

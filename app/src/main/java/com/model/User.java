@@ -15,7 +15,7 @@ public class User extends AVUser {
     public static final String LIKES = "likes";
     public static final String IMAGE = "image";
     public static final String GROWTH_VALUE = "growthValue";
-    public static final String POINT = "point";
+    public static final String POINT = "rewardPoints";
 
     //做推送时候再说
     public static final String INSTALLATION_ID = "installationId";
