@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- LeanCloud-->
-    <string name="app_id">eGMBckk3XOhHizqwKd2NKE31-gzGzoHsz</string>
-    <string name="app_key">fDMYvGaf6PaLiqklFJ9i8gQ6</string>
-    <string name="master_key">yuLjR1M5AN5On60IvtAETvhH</string>
+    <string name="app_id">xDhIJw0qsJa7JujvT2sYfYps-gzGzoHsz</string>
+    <string name="app_key">o2g8BhIfwQcSC4mE3DT1KKSr</string>
+    <string name="master_key">N9R5WGx5KMEp9kkQo0WkFMOE</string>
     <!-- API Store-->
     <string name="apiKey">f9a56eeac28a8e4499e54e806862c629</string>
     <!-- 百度地图-->
